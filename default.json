@@ -6,18 +6,23 @@
     ":automergeBranch",
     ":semanticCommits",
     ":semanticCommitScope(deps)",
+    ":preserveSemverRanges",
     ":rebaseStalePrs",
     ":prNotPending",
     ":prHourlyLimitNone",
-    ":prConcurrentLimitNone",
     "helpers:disableTypesNodeMajor",
-    ":dependencyDashboard",
+    "helpers:pinGitHubActionDigests",
     ":maintainLockFilesWeekly",
-    ":preserveSemverRanges",
     "docker:enableMajor",
     "docker:pinDigests",
+    "group:monorepos",
+    "group:recommended",
+    "replacements:all",
+    "workaraounds:all",
     "github>whitesource/merge-confidence:beta"
   ],
+
+  "prConcurrentLimit": 5,
 
   "internalChecksFilter": "strict",
 
