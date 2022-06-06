@@ -18,7 +18,7 @@
     "group:monorepos",
     "group:recommended",
     "replacements:all",
-    "workaraounds:all",
+    "workarounds:all",
     "github>whitesource/merge-confidence:beta"
   ],
 
