@@ -41,6 +41,8 @@
 
   "labels": ["dependencies"],
 
+  "postUpdateOptions": ["gomodTidy", "npmDedupe", "yarnDedupeHighest"],
+
   "packageRules": [
     {
       "description": "Disable dependency dashboard approval for major updates",
