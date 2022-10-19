@@ -7,7 +7,6 @@
     ":ignoreModulesAndTests",
     ":preserveSemverRanges",
     ":rebaseStalePrs",
-    ":prNotPending",
     ":prHourlyLimitNone",
     ":automergeDigest",
     ":automergeMinor",
