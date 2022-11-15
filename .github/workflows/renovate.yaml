@@ -13,10 +13,16 @@ on:
   workflow_dispatch:
     inputs:
       dry_run:
-        description: Performs a dry run by logging messages instead of creating/updating/deleting branches and PRs.
+        description: Perform a dry run by logging messages instead of creating/updating/deleting branches and PRs.
         required: true
         type: string
         default: 'full'
+      log_level:
+        description: Set the log level.
+        required: false
+        type: choice
+        default: 'info'
+        options: ['trace', 'debug', 'info', 'warn', 'error', 'fatal']
 
 permissions: {}
 
@@ -47,7 +53,7 @@ jobs:
         with:
           token: 'x-access-token:${{ steps.get_workflow_token.outputs.token }}'
         env:
-          LOG_LEVEL: debug
+          LOG_LEVEL: ${{ github.event.inputs.log_level || 'info' }}
           RENOVATE_AUTODISCOVER: true
           RENOVATE_CONFIG: '{"extends": ["github>bfra-me/renovate-config"]}'
           RENOVATE_DRY_RUN: ${{ (github.event_name == 'workflow_dispatch' && github.event.inputs.dry_run) || (github.event_name == 'pull_request' || github.event_name == 'push') && 'full' }}
