@@ -23,6 +23,11 @@ on:
         type: choice
         default: 'info'
         options: ['trace', 'debug', 'info', 'warn', 'error', 'fatal']
+      print_config:
+        description: Log the fully-resolved Renovate config for each repository, plus fully-resolved presets.
+        required: false
+        type: boolean
+        default: false
 
 permissions: {}
 
@@ -61,5 +66,5 @@ jobs:
           RENOVATE_GIT_PRIVATE_KEY: ${{ secrets.APPLICATION_PRIVATE_KEY }}
           RENOVATE_IGNORE_PR_AUTHOR: true
           RENOVATE_PLATFORM: github
-          RENOVATE_PRINT_CONFIG: true
+          RENOVATE_PRINT_CONFIG: ${{ github.event.inputs.print_config || 'false' }}
           RENOVATE_USERNAME: 'bfra-me[bot]'
