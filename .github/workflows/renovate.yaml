@@ -38,10 +38,12 @@ jobs:
       - name: Renovate
         uses: renovatebot/github-action@v34.21.2
         with:
-          token: ${{ steps.get_workflow_token.outputs.token }}
+          token: 'x-access-token:${{ steps.get_workflow_token.outputs.token }}'
         env:
           LOG_LEVEL: debug
           RENOVATE_CONFIG: '{"extends": "github>bfra-me"}'
           RENOVATE_DRY_RUN: ${{ (github.event_name == 'workflow_dispatch' && github.event.inputs.dry_run) || (github.event_name == 'pull_request' || github.event_name == 'push') && 'full' }}
+          RENOVATE_GIT_AUTHOR: 'bfra-me[bot] <${{ secrets.APPLICATION_ID }}+bfra-me@users.noreply.github.com>'
           RENOVATE_PLATFORM: github
           RENOVATE_PRINT_CONFIG: true
+          RENOVATE_USERNAME: 'bfra-me[bot]'
