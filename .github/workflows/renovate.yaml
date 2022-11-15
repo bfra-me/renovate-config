@@ -35,11 +35,11 @@ jobs:
           application_private_key: ${{ secrets.APPLICATION_PRIVATE_KEY }}
           organization: ${{ github.repository_owner }}
           permissions: >
-            checks:write
-            contents:write
-            issues:write
-            pull_requests:write
-            vulnerability_alerts:read
+            checks:write,
+            contents:write,
+            issues:write,
+            pull_requests:write,
+            vulnerability_alerts:read,
             workflows:write
 
       - name: Renovate
