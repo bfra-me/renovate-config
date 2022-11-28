@@ -7,6 +7,30 @@ on:
     paths: [.github/workflows/renovate.yaml]
   schedule:
     - cron: '0/15 * * * *'
+  workflow_call:
+    inputs:
+      dry_run:
+        description: Perform a dry run by logging messages instead of creating/updating/deleting branches and PRs.
+        required: false
+        type: boolean
+        default: true
+      log_level:
+        description: Set the log level.
+        required: false
+        type: string
+        default: 'info'
+      print_config:
+        description: Log the fully-resolved Renovate config for each repository, plus fully-resolved presets.
+        required: false
+        type: boolean
+        default: false
+    secrets:
+      APPLICATION_ID:
+        description: GitHub App ID
+        required: true
+      APPLICATION_PRIVATE_KEY:
+        description: GitHub App private key
+        required: true
   workflow_dispatch:
     inputs:
       dry_run:
