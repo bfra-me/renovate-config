@@ -63,6 +63,8 @@ on:
 permissions: {}
 
 env:
+  AUTODISCOVER: ${{ !startsWith(github.event_name, 'workflow') || inputs.autodiscover }}
+  DRY_RUN: ${{ contains(fromJson('["push", "pull_request"]'), github.event_name) || inputs.dry_run }}
   FORCE_COLOR: 3
 
 jobs:
@@ -90,10 +92,10 @@ jobs:
           token: 'x-access-token:${{ steps.get_workflow_token.outputs.token }}'
         env:
           LOG_LEVEL: ${{ inputs.log_level || 'info' }}
-          RENOVATE_AUTODISCOVER: ${{ inputs.autodiscover || true }}
-          RENOVATE_DRY_RUN: ${{ (inputs.dry_run || github.event_name == 'pull_request' || github.event_name == 'push') && 'full' || '' }}
+          RENOVATE_AUTODISCOVER: ${{ env.AUTODISCOVER }}
+          RENOVATE_DRY_RUN: ${{ fromJSON(env.DRY_RUN) && 'full' }}
           RENOVATE_GIT_AUTHOR: 'bfra-me[bot] <118100583+bfra-me[bot]@users.noreply.github.com>'
           RENOVATE_PLATFORM: github
-          RENOVATE_PRINT_CONFIG: ${{ inputs.print_config || false }}
-          RENOVATE_REPOSITORIES: ${{ inputs.autodiscover && '' || format('["{0}"]', github.repository) }}
+          RENOVATE_PRINT_CONFIG: ${{ inputs.print_config }}
+          RENOVATE_REPOSITORIES: ${{ !fromJSON(env.AUTODISCOVER) && format('["{0}"]', github.repository) }}
           RENOVATE_USERNAME: 'bfra-me[bot]'
