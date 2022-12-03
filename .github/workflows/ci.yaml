@@ -37,4 +37,5 @@ jobs:
     with:
       autodiscover: false
       log_level: debug
+      print_config: true
     secrets: inherit
