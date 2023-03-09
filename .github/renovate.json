@@ -4,7 +4,7 @@
   "packageRules": [
     {
       "description": "Automerge Renovate GitHub Action updates and include Renovate's release notes in the PR body",
-      "matchPackageNames": ["renovate/github-action"],
+      "matchPackageNames": ["renovatebot/github-action"],
       "matchUpdateTypes": ["digest", "major", "minor", "patch", "pinDigest"],
       "automergeType": "pr",
       "prCreation": "immediate",
