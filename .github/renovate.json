@@ -20,7 +20,7 @@
       "commitMessageTopic": "references to {{depName}}",
       "semanticCommitType": "docs",
       "semanticCommitScope": null,
-      "seperateMajorMinor": false,
+      "separateMajorMinor": false,
       "stabilityDays": 0
     }
   ]
