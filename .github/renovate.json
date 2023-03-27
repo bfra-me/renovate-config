@@ -15,7 +15,7 @@
     },
     {
       "matchPaths": ["**/*.md"],
-      "extends": ["bfra-me/renovate-config:automerge/enabled"],
+      "extends": ["github>bfra-me/renovate-config:automerge/enabled"],
       "additionalBranchPrefix": "docs-",
       "commitMessageTopic": "references to {{depName}}",
       "semanticCommitType": "docs",
