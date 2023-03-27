@@ -19,58 +19,6 @@ env:
   LOG_LEVEL: debug
 
 jobs:
-  dump-workflow-contexts:
-    name: Dump workflow contexts
-    runs-on: ubuntu-latest
-    steps:
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
-      - name: Dump job context
-        env:
-          JOB_CONTEXT: ${{ toJson(job) }}
-        run: echo "$JOB_CONTEXT"
-      - name: Dump steps context
-        env:
-          STEPS_CONTEXT: ${{ toJson(steps) }}
-        run: echo "$STEPS_CONTEXT"
-      - name: Dump runner context
-        env:
-          RUNNER_CONTEXT: ${{ toJson(runner) }}
-        run: echo "$RUNNER_CONTEXT"
-      - name: Dump strategy context
-        env:
-          STRATEGY_CONTEXT: ${{ toJson(strategy) }}
-        run: echo "$STRATEGY_CONTEXT"
-      - name: Dump matrix context
-        env:
-          MATRIX_CONTEXT: ${{ toJson(matrix) }}
-        run: echo "$MATRIX_CONTEXT"
-      - name: Dump secrets context
-        env:
-          SECRETS_CONTEXT: ${{ toJson(secrets) }}
-        run: echo "$SECRETS_CONTEXT"
-      - name: Dump env context
-        env:
-          ENV_CONTEXT: ${{ toJson(env) }}
-        run: echo "$ENV_CONTEXT"
-      - name: Dump vars context
-        env:
-          VARS_CONTEXT: ${{ toJson(vars) }}
-        run: echo "$VARS_CONTEXT"
-      - name: Dump inputs context
-        env:
-          INPUTS_CONTEXT: ${{ toJson(inputs) }}
-        run: echo "$INPUTS_CONTEXT"
-      - name: Dump needs context
-        env:
-          NEEDS_CONTEXT: ${{ toJson(needs) }}
-        run: echo "$NEEDS_CONTEXT"
-      - name: Dump environment variables
-        run: |
-          env | sort
-
   validate-config-presets:
     name: Validate config presets
     runs-on: ubuntu-latest
@@ -88,12 +36,12 @@ jobs:
 
   renovate-pr:
     if: contains(github.event_name, 'pull_request')
-    name: Renovate PR
+    name: 'Renovate PR #${{ github.event.number }}'
     needs: validate-config-presets
     secrets: inherit
     uses: ./.github/workflows/renovate.yaml
     with:
       autodiscover: false
-      branch: ${{ github.ref_name }}
+      branch: ${{ github.head_ref }}
       dry_run: true
       print_config: true
