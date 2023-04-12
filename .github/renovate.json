@@ -1,27 +1,37 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["local>bfra-me/renovate-config"],
+  "extends": [
+    "local>bfra-me/renovate-config"
+  ],
   "automergeType": "pr",
   "prCreation": "immediate",
   "semanticCommitScope": "deps",
   "packageRules": [
     {
-      "matchDepTypes": ["dependencies"],
+      "matchDepTypes": [
+        "dependencies"
+      ],
       "semanticCommitType": "build"
     },
     {
-      "matchPaths": ["./.github/workflows/**"],
+      "matchPaths": [
+        "./.github/workflows/**"
+      ],
       "semanticCommitType": "ci"
     },
     {
-      "matchPaths": ["**/*.md"],
-      "extends": ["github>bfra-me/renovate-config:automerge/enabled"],
+      "matchPaths": [
+        "**/*.md"
+      ],
+      "extends": [
+        "github>bfra-me/renovate-config:automerge/enabled"
+      ],
       "additionalBranchPrefix": "docs-",
       "commitMessageTopic": "references to {{depName}}",
       "semanticCommitType": "docs",
       "semanticCommitScope": null,
       "separateMajorMinor": false,
-      "stabilityDays": 0
+      "minimumReleaseAge": null
     }
   ]
 }
