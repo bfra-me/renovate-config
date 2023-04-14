@@ -88,7 +88,7 @@ concurrency:
 permissions: {}
 
 env:
-  RENOVATE_VERSION: 35.46.0 # renovate: datasource=docker depName=renovate packageName=renovate/renovate
+  RENOVATE_VERSION: 35.47.0 # renovate: datasource=docker depName=renovate packageName=renovate/renovate
 
 jobs:
   renovate:
@@ -157,6 +157,7 @@ jobs:
               allowedPostUpgradeCommands: [
                 '^npm ci$',
                 '^npm ci --ignore-scripts$',
+                '^npx prettier --write \\.$',
                 '^pnpm install --frozen-lockfile$',
                 '^pnpm install --frozen-lockfile --ignore-scripts$',
                 '^yarn install --frozen-lockfile$',
