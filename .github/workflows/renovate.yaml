@@ -102,8 +102,8 @@ jobs:
           branches="$(jq 'split(",")' -Rc <(echo '${{ inputs.branch }}'))"
           if [[ "$branches" != "[]" ]]; then
             # Prepend the default branch to the list of input branches.
-            default_branch="${{ github.event.repository.default_branch }}"
-            echo "RENOVATE_BASE_BRANCHES=$(jq '["$default_branch"] + .' -c <(echo $branches))" >> $GITHUB_ENV
+            base_branches=$(jq '["${{ github.event.repository.default_branch }}"] + .' -c <(echo $branches))
+            echo "RENOVATE_BASE_BRANCHES=$base_branches" >> $GITHUB_ENV
             echo "RENOVATE_USE_BASE_BRANCH_CONFIG=merge" >> $GITHUB_ENV
           fi
           env_vars=$(sed 's/^[[:space:]]*//' <<EOF
