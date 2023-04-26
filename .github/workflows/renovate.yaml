@@ -136,24 +136,20 @@ jobs:
         # required when the workflow is triggered from workflow_call because the github context is that of the workflow
         # that called this workflow.
         run: |
-          base_branches=
-          branches="$(jq 'split(",")' -Rc <(echo '${{ inputs.branch }}'))"
-          if [[ "$branches" != "[]" ]]; then
-            base_branches=$branches
-          fi
           # Create outputs for this configuration
+          [[ -n "${{ inputs.branch }}" ]] && base_branches=$(jq 'split(",")' -Rc <(echo '${{ inputs.branch }}'))
           sed 's/^[[:space:]]*//' <<EOF >> $GITHUB_OUTPUT
             autodiscover=${{ env.autodiscover }}
             base-branches=${base_branches}
             docker-image=renovate/renovate:${{ env.RENOVATE_VERSION }}${{ env.use_slim && '-slim' || ''}}
             dry-run=${{ env.dry_run }}
             force-color=true
-            global-config=${{ env.zzglobal_config }}
+            global-config=$(echo "${zzglobal_config}" | tr -d '\n')
             log-level=${{ env.log_level }}
             print-config=${{ env.print_config }}
             renovate-version=${{ env.RENOVATE_VERSION }}
             repositories=${{ !fromJSON(env.autodiscover) && format('["{0}"]', github.repository) || '' }}
-            use-slim=${use_slim}
+            use-slim=${{ env.use_slim }}
           EOF
         shell: bash
 
