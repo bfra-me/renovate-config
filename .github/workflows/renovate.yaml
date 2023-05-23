@@ -224,7 +224,8 @@ jobs:
             renovate-cache-${{ steps.configure.outputs.renovate-version }}-
             renovate-cache-
 
-      - run: >
+      - continue-on-error: true
+        run: >
           [ -d /tmp/renovate ] && sudo chown -R 1000 /tmp/renovate
 
       - name: Renovate ${{ env.RENOVATE_VERSION }}
@@ -262,5 +263,6 @@ jobs:
           token: 'x-access-token:${{ steps.get_workflow_token.outputs.token }}'
           useSlim: ${{ steps.configure.outputs.use-slim }}
 
-      - run: >
+      - continue-on-error: true
+        run: >
           [ -d /tmp/renovate ] && sudo chown -R $(whoami) /tmp/renovate
