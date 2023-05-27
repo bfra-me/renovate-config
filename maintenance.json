@@ -17,9 +17,9 @@
     "recreateClosed": true,
 
     "assigneesFromCodeOwners": true,
-    "assigneesSampleSize": 2,
+    "assigneesSampleSize": 1,
     "reviewersFromCodeOwners": true,
-    "reviewersSampleSize": 2,
+    "reviewersSampleSize": 1,
 
     "timezone": "America/Phoenix"
   },

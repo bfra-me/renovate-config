@@ -141,7 +141,6 @@ jobs:
                 'Use the global config preset for the @bfra-me organization.',
                 '_See the [renovate workflow](https://github.com/bfra-me/renovate-config/blob/main/.github/workflows/renovate.yaml) for details._',
               ],
-              exposeAllEnv: true,
               packageRules: [
                 {
                   matchPackagePatterns: ['*'],
@@ -152,7 +151,6 @@ jobs:
                   rangeStrategy: 'update-lockfile',
                 },
               ],
-              schedule: ['at any time'],
             }
 
         # Use the contains function to convert the boolean input to a string and compare it to 'false'. This is
