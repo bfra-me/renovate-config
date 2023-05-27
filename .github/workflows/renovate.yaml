@@ -239,7 +239,7 @@ jobs:
           RENOVATE_REPOSITORY_CACHE: ${{ steps.configure.outputs.enable-cache == 'true' && 'enabled' || 'disabled' }}
           RENOVATE_USERNAME: 'bfra-me[bot]'
         with:
-          env-regex: '^(?:CI|FORCE_COLOR|GITHUB_(?:(?!PATH|ENV).)+|(?:HTTPS?|NO)_PROXY|(?:https?|no)_proxy)|LOG_LEVEL|NODE_OPTIONS|RENOVATE_\w+|RUNNER_\w+)$'
+          env-regex: '^(?:CI|FORCE_COLOR|GITHUB_(?:(?!PATH|ENV).)+|(?:HTTPS?|NO)_PROXY|(?:https?|no)_proxy|LOG_LEVEL|NODE_OPTIONS|RENOVATE_\w+|RUNNER_\w+)$'
           renovate-version: ${{ env.RENOVATE_DOCKER_VERSION }}
           token: 'x-access-token:${{ steps.get_workflow_token.outputs.token }}'
           useSlim: false
