@@ -107,11 +107,18 @@ jobs:
       renovate-version: ${{ steps.configure.outputs.renovate-version }}
       repositories: ${{ steps.configure.outputs.repositories }}
     steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo '$GITHUB_CONTEXT'
       - name: Configure workflow run
         id: configure
         env:
           autodiscover: ${{ inputs.autodiscover || contains(inputs.autodiscover, 'false') && 'false' || 'true' }}
           dry_run: ${{ inputs.dry_run || contains(inputs.dry_run, 'false') && 'false' }}
+          # Check if this workflow was triggered from an organization account. We assume the `repository_owner` is the
+          # account that triggered the workflow.
+          is-org-account: ${{ github.repository.owner.type == 'Organization' && 'true' || 'false' }}
           log_level: ${{ inputs.log_level || 'debug' }}
           print_config: ${{ inputs.print_config || 'false' }}
           cache: ${{ inputs.cache && !inputs.dry_run && 'true' || github.event_name == 'schedule' && 'true' || 'false' }}
@@ -153,9 +160,7 @@ jobs:
             dry-run=${{ env.dry_run }}
             enable-cache=${{ env.cache }}
             global-config=$(echo "${zzglobal_config}" | tr -d '\n')
-            # Check if this workflow was triggered from an organization account. We assume the `repository_owner` is the
-            # account that triggered the workflow.
-            is-org-account="${{ github.repository.owner.type == 'Organization' && 'true' || 'false' }}"
+            is-org-account=${{ env.is-org-account }}
             log-level=${{ env.log_level }}
             print-config=${{ env.print_config }}
             renovate-version=$(echo "${{ env.RENOVATE_DOCKER_VERSION }}" | tr -d '\-slim')
