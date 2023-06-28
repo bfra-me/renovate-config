@@ -170,7 +170,7 @@ jobs:
         with:
           application_id: ${{ secrets.APPLICATION_ID }}
           application_private_key: ${{ secrets.APPLICATION_PRIVATE_KEY }}
-          organization: ${{ steps.configure.outputs.is-org-account && github.repository_owner || '' }}
+          organization: ${{ fromJSON(steps.configure.outputs.is-org-account) && github.repository_owner || '' }}
           permissions: >
             checks:write,
             contents:write,
