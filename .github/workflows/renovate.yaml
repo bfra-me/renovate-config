@@ -107,10 +107,6 @@ jobs:
       renovate-version: ${{ steps.configure.outputs.renovate-version }}
       repositories: ${{ steps.configure.outputs.repositories }}
     steps:
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo '$GITHUB_CONTEXT'
       - name: Configure workflow run
         id: configure
         env:
@@ -118,7 +114,7 @@ jobs:
           dry_run: ${{ inputs.dry_run || contains(inputs.dry_run, 'false') && 'false' }}
           # Check if this workflow was triggered from an organization account. We assume the `repository_owner` is the
           # account that triggered the workflow.
-          is-org-account: ${{ github.repository.owner.type == 'Organization' && 'true' || 'false' }}
+          is-org-account: ${{ github.event.organization && 'true' || 'false' }}
           log_level: ${{ inputs.log_level || 'debug' }}
           print_config: ${{ inputs.print_config || 'false' }}
           cache: ${{ inputs.cache && !inputs.dry_run && 'true' || github.event_name == 'schedule' && 'true' || 'false' }}
