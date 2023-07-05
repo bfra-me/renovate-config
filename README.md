@@ -22,15 +22,18 @@ This repository contains [Renovate](https://renovatebot.com/) configuration pres
 
 ## Reusable Workflow
 
-In order to reuse the workflow from this repository, add it to your GitHub Actions workflow:
+To reuse the workflow from this repository, add it to your GitHub Actions workflow:
 
 ```yaml
 - name: Renovate
-  uses: bfra-me/renovate-config@v1.5.11
+  uses: bfra-me/renovate-config/.github/workflows/renovate.yaml@v1.5.11
   with:
-    config: renovate.json
-  env:
-    GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+    dry_run: false
+    renovate_git_author: 'fro-bot[bot] <109017866+fro-bot[bot]@users.noreply.github.com>'
+    renovate_username: 'fro-bot[bot]'
+  secrets:
+    APPLICATION_ID: ${{ secrets.APPLICATION_ID }}
+    APPLICATION_PRIVATE_KEY: ${{ secrets.APPLICATION_PRIVATE_KEY }}
 ```
 
 ## License
