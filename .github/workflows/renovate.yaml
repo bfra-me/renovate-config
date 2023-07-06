@@ -97,7 +97,7 @@ concurrency:
 permissions: {}
 
 env:
-  RENOVATE_VERSION: 35.159.6 # renovate: datasource=docker depName=renovate packageName=ghcr.io/renovatebot/renovate
+  RENOVATE_VERSION: 35.159.7 # renovate: datasource=docker depName=renovate packageName=ghcr.io/renovatebot/renovate
 
 jobs:
   renovate:
@@ -210,9 +210,8 @@ jobs:
         with:
           path: ${{ env.RENOVATE_CACHE_DIR }}
           key: >-
-            renovate-cache-${{ steps.configure.outputs.renovate-version }}-${{ github.repository_owner }}-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
+            renovate-cache-${{ steps.configure.outputs.renovate-version }}-${{ github.repository_owner }}-${{ github.sha }}
           restore-keys: |
-            renovate-cache-${{ steps.configure.outputs.renovate-version }}-${{ github.repository_owner }}-${{ github.sha }}-
             renovate-cache-${{ steps.configure.outputs.renovate-version }}-${{ github.repository_owner }}-
             renovate-cache-${{ steps.configure.outputs.renovate-version }}-
             renovate-cache-
@@ -224,7 +223,7 @@ jobs:
           [ -d /tmp/renovate ] && sudo chown -R 1000 /tmp/renovate || true
 
       - name: Renovate ${{ steps.configure.outputs.renovate-version }}
-        uses: renovatebot/github-action@96a5122bb4c10a5b16d944b3a27398c5d75d2064 # v38.1.9
+        uses: renovatebot/github-action@222a0037473b9a3d9232a7dbcda9eafd901903cc # v38.1.11
         env:
           FORCE_COLOR: 3
           LOG_LEVEL: ${{ steps.configure.outputs.log-level }}
