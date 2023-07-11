@@ -5,7 +5,7 @@
   "ignorePresets": [":ignoreModulesAndTests"],
 
   "extends": [
-    "config:base",
+    "config:recomended",
     ":semanticCommits",
     ":separateMultipleMajorReleases",
     "docker:enableMajor",
