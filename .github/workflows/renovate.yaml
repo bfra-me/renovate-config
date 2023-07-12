@@ -224,7 +224,7 @@ jobs:
           [ -d /tmp/renovate ] && sudo chown -R 1000 /tmp/renovate || true
 
       - name: Renovate ${{ steps.configure.outputs.renovate-version }}
-        uses: renovatebot/github-action@8dd353442b603b79e9ad46ebd25bdac25d67ccfa # v38.1.13
+        uses: renovatebot/github-action@eb0ef0ca2efe27f0b0a70ca6cd1eee63fcfbb61a # v39.0.0
         env:
           FORCE_COLOR: 3
           LOG_LEVEL: ${{ steps.configure.outputs.log-level }}
