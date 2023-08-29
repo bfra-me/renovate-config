@@ -76,7 +76,7 @@
     },
     {
       "extends": [
-        "github>bfra-me/renovate-config:maintenance/internal"
+        "github>bfra-me/renovate-config:maintenance/pinGitHubActionDigestsToSemver"
       ],
       "matchRepositories": ["bfra-me/**"]
     }
