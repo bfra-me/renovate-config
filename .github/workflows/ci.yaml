@@ -46,7 +46,7 @@ jobs:
     needs: validate-config-presets
     runs-on: ubuntu-latest
     steps:
-      - uses: bfra-me/renovate-action@v2.1.9
+      - uses: bfra-me/renovate-action@473d4a7bf559b373a60c40fcc8c0e21bb42e464b # v2.1.9
         with:
           branch: ${{ github.head_ref }}
           dry_run: ${{ github.event_name == 'pull_request' && true }}
