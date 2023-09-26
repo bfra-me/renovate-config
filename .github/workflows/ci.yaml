@@ -44,13 +44,16 @@ jobs:
     if: github.repository == 'bfra-me/renovate-config'
     name: Renovate CI
     needs: validate-config-presets
-    secrets: inherit
-    uses: ./.github/workflows/renovate.yaml
-    with:
-      autodiscover: false
-      branch: ${{ github.head_ref }}
-      dry_run: ${{ github.event_name == 'pull_request' && true }}
-      print_config: ${{ github.event_name == 'pull_request' && true }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: bfra-me/renovate-action@v2.1.9
+        with:
+          branch: ${{ github.head_ref }}
+          dry_run: ${{ github.event_name == 'pull_request' && true }}
+          print_config: ${{ github.event_name == 'pull_request' && true }}
+          renovate_app_id: ${{ secrets.APPLICATION_ID }}
+          renovate_app_pem: ${{ secrets.APPLICATION_PRIVATE_KEY }}
+          renovate_app_slug: ${{ github.repository_owner }}
 
   release:
     env:
