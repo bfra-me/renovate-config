@@ -40,7 +40,6 @@
     "description": "Optimize settings for GitHub merge queues.",
     "automergeType": "pr",
     "prCreation": "immediate",
-    "rebaseWhen": "conflicted",
     "platformAutomerge": true
   }
 }
