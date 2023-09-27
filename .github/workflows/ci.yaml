@@ -27,7 +27,7 @@ jobs:
     name: Renovate CI
     runs-on: ubuntu-latest
     steps:
-      - uses: bfra-me/renovate-action@59b2a4cff9f683e9f96b4ef43b4dd0c00296387e # v2.1.20
+      - uses: bfra-me/renovate-action@6095943c2c6cabe80870da81caf6d4df9444f25f # v2.1.21
         with:
           branch: ${{ github.head_ref }}
           dry_run: ${{ github.event_name == 'pull_request' || github.event.inputs.dry_run && true }}
