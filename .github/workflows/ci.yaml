@@ -37,7 +37,7 @@ jobs:
 
   release:
     env:
-      DRY_RUN: ${{ github.event_name != 'pull_request' || github.event.inputs.dry_run && 'true' || 'false' }}
+      DRY_RUN: ${{ github.event_name == 'pull_request' || github.event.inputs.dry_run && 'true' || 'false' }}
       FORCE_COLOR: true
     name: Release
     runs-on: ubuntu-latest
