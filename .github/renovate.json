@@ -48,7 +48,7 @@
       "customType": "regex",
       "fileMatch": ["^README\\.md$"],
       "matchStrings": [
-        "\"github>bfra-me/renovate-config#(?<currentValue>.+)\""
+        "\"github>bfra-me\\/renovate-config#(?<currentValue>.+?)\""
       ],
       "depNameTemplate": "bfra-me/renovate-config",
       "datasourceTemplate": "github-releases"
