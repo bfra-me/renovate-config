@@ -1,13 +1,16 @@
 {
+  "description": "Use default automerge settings.",
+  "extends": [
+    ":automergeBranch",
+    ":automergeRequireAllStatusChecks",
+    "github>bfra-me/renovate-config:automerge/all-update-types-except-major"
+  ],
+  "automergeStrategy": "squash",
+
   "default": {
-    "description": "Use default automerge settings.",
-    "extends": [
-      ":automergeBranch",
-      ":automergeRequireAllStatusChecks",
-      "github>bfra-me/renovate-config:automerge/all-update-types-except-major"
-    ],
-    "automergeStrategy": "squash"
+    "extends": ["github>bfra-me/renovate-config:automerge"]
   },
+
   "enabled": {
     "automerge": true,
     "addLabels": ["automerge"],
@@ -19,6 +22,7 @@
     "dependencyDashboardApproval": false,
     "reviewersFromCodeOwners": false
   },
+
   "all-update-types-except-major": {
     "description": "Automerge all update types except `major` and unstable (`0.x.x`) versions.",
     "packageRules": [

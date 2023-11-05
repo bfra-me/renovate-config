@@ -1,15 +1,17 @@
 {
+  "description": "Use default group preset settings.",
+  "extends": [
+    "group:linters",
+    "github>bfra-me/renovate-config:group/github-actions",
+    "github>bfra-me/renovate-config:group/jest",
+    "github>bfra-me/renovate-config:group/octokit",
+    "github>bfra-me/renovate-config:group/prettier",
+    "github>bfra-me/renovate-config:group/rollup",
+    "github>bfra-me/renovate-config:group/types"
+  ],
+
   "default": {
-    "description": "Use default group preset settings.",
-    "extends": [
-      "group:linters",
-      "github>bfra-me/renovate-config:group/github-actions",
-      "github>bfra-me/renovate-config:group/jest",
-      "github>bfra-me/renovate-config:group/octokit",
-      "github>bfra-me/renovate-config:group/prettier",
-      "github>bfra-me/renovate-config:group/rollup",
-      "github>bfra-me/renovate-config:group/types"
-    ]
+    "extends": ["github>bfra-me/renovate-config:group"]
   },
 
   "github-actions": {

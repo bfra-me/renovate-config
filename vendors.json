@@ -1,19 +1,21 @@
 {
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Use default vendor config presets.",
+  "extends": [
+    "github>bfra-me/renovate-config:vendors/bfra-me",
+    "github>bfra-me/renovate-config:vendors/exivity"
+  ],
+
   "default": {
-    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-    "description": "Use default vendor config presets.",
-    "extends": [
-      "github>bfra-me/renovate-config:vendors/bfra-me",
-      "github>bfra-me/renovate-config:vendors/exivity"
-    ]
+    "extends": "github>bfra-me/renovate-config:vendors"
   },
 
   "bfra-me": {
-    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
     "description": "Update dependencies for @bfra-me.",
     "packageRules": [
       {
         "commitMessageTopic": "{{{depName}}} preset",
+        "groupName": "bfra-me config preset",
         "matchFileNames": [
           ".github/renovate.json5",
           ".github/renovate.json",
