@@ -1,13 +1,14 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "description": "Use @bfra-me replacements config presets.",
-  "extends": ["github>bfra-me/renovate-config:replacements/default"],
+  "extends": [
+    "github>bfra-me/renovate-config:replacements/zeit-ncc-to-vercel-ncc"
+  ],
+
   "default": {
-    "description": "Default @bfra-me replacements config presets.",
-    "extends": [
-      "github>bfra-me/renovate-config:replacements/zeit-ncc-to-vercel-ncc"
-    ]
+    "extends": ["github>bfra-me/renovate-config:replacements"]
   },
+
   "zeit-ncc-to-vercel-ncc": {
     "description": "The `@zeit/ncc` package has been renamed to `@vercel/ncc`.",
     "packageRules": [
