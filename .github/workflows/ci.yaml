@@ -27,7 +27,7 @@ jobs:
     name: Renovate CI
     runs-on: ubuntu-latest
     steps:
-      - uses: bfra-me/renovate-action@187eafe3093c44cf4f51b6ba35cce4e5df60baaa # v2.1.28
+      - uses: bfra-me/renovate-action@1003a806821960d2a09d1fd6bc1e6ff24d79d48c # v2.1.30
         with:
           branch: ${{ github.head_ref }}
           dry_run: ${{ github.event_name == 'pull_request' || github.event.inputs.dry_run && true }}
@@ -56,7 +56,7 @@ jobs:
           token: ${{ steps.get-workflow-access-token.outputs.token }}
 
       - name: Setup Node.js
-        uses: actions/setup-node@1a4442cacd436585916779262731d5b162bc6ec7 # v3.8.2
+        uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65 # v4.0.0
         with:
           node-version: '18.x'
 
@@ -79,4 +79,4 @@ jobs:
         run: |
           # Run `semantic-release`
           npm install conventional-changelog-conventionalcommits@7.0.2
-          npx semantic-release@22.0.5 --dry-run ${{ env.DRY_RUN }} --ci ${{ env.CI_FLAG }}
+          npx semantic-release@22.0.7 --dry-run ${{ env.DRY_RUN }} --ci ${{ env.CI_FLAG }}
