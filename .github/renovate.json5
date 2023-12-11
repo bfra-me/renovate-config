@@ -1,0 +1,71 @@
+{
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  extends: ['local>bfra-me/renovate-config'],
+  automergeType: 'pr',
+  prCreation: 'immediate',
+  semanticCommitScope: 'deps',
+  postUpgradeTasks: {
+    commands: ['npx prettier --no-color --write .'],
+    executionMode: 'branch',
+  },
+  packageRules: [
+    {
+      matchDatasources: ['docker'],
+      semanticCommitType: 'build',
+    },
+    {
+      matchDepTypes: ['dependencies'],
+      semanticCommitType: 'build',
+    },
+    {
+      matchPackageNames: [
+        'conventional-changelog-conventionalcommits',
+        'semantic-release',
+      ],
+      matchPackagePrefixes: ['@semantic-release/'],
+      semanticCommitType: 'build',
+    },
+    {
+      matchFileNames: ['.github/workflows/**'],
+      semanticCommitType: 'ci',
+    },
+    {
+      matchFileNames: ['**/*.md'],
+      extends: [
+        'schedule:weekly',
+        'github>bfra-me/renovate-config:automerge/enabled',
+      ],
+      additionalBranchPrefix: 'docs-',
+      commitMessageTopic: 'references to {{{depName}}}',
+      semanticCommitType: 'docs',
+      semanticCommitScope: null,
+      separateMajorMinor: false,
+      minimumReleaseAge: null,
+    },
+  ],
+  customManagers: [
+    {
+      customType: 'regex',
+      fileMatch: ['^README\\.md$'],
+      matchStrings: ['"github>bfra-me\\/renovate-config#(?<currentValue>.+?)"'],
+      depNameTemplate: 'bfra-me/renovate-config',
+      datasourceTemplate: 'github-releases',
+    },
+    {
+      customType: 'regex',
+      datasourceTemplate: 'npm',
+      depNameTemplate: 'semantic-release',
+      fileMatch: ['^\\.github\\/(actions|workflows)\\/[^/]+\\.ya?ml$'],
+      matchStrings: ['\\snpx semantic-release@(?<currentValue>.*?)\\s'],
+    },
+    {
+      customType: 'regex',
+      datasourceTemplate: 'npm',
+      depNameTemplate: 'conventional-changelog-conventionalcommits',
+      fileMatch: ['^\\.github\\/(actions|workflows)\\/[^/]+\\.ya?ml$'],
+      matchStrings: [
+        '\\snpm install conventional-changelog-conventionalcommits@(?<currentValue>.*?)\\s',
+      ],
+    },
+  ],
+}
