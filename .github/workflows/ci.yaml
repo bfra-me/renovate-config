@@ -21,20 +21,6 @@ permissions:
   contents: read
 
 jobs:
-  # Validate config presets in PRs. This job is not run on pushes to the main branch.
-  renovate-ci:
-    if: github.repository == 'bfra-me/renovate-config' && github.event_name == 'pull_request'
-    name: Renovate CI
-    runs-on: ubuntu-latest
-    steps:
-      - uses: bfra-me/renovate-action@e8a649957ea367f7d6a65953f9fec48cbfa79ec6 # v2.2.1
-        with:
-          branch: ${{ github.head_ref }}
-          dry_run: ${{ github.event_name == 'pull_request' || github.event.inputs.dry_run && true }}
-          renovate_app_id: ${{ secrets.APPLICATION_ID }}
-          renovate_app_pem: ${{ secrets.APPLICATION_PRIVATE_KEY }}
-          renovate_app_slug: ${{ github.repository_owner }}
-
   release:
     env:
       DRY_RUN: ${{ github.event_name == 'pull_request' || github.event.inputs.dry_run && 'true' || 'false' }}
