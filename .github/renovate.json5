@@ -10,6 +10,10 @@
   },
   packageRules: [
     {
+      matchFileNames: ['.github/workflows/**'],
+      semanticCommitType: 'ci',
+    },
+    {
       matchDatasources: ['docker'],
       semanticCommitType: 'build',
     },
@@ -24,10 +28,6 @@
       ],
       matchPackagePrefixes: ['@semantic-release/'],
       semanticCommitType: 'build',
-    },
-    {
-      matchFileNames: ['.github/workflows/**'],
-      semanticCommitType: 'ci',
     },
     {
       matchFileNames: ['**/*.md'],
