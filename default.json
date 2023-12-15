@@ -79,8 +79,9 @@
       "matchRepositories": ["bfra-me/**"]
     }
   ],
-  "regexManagers": [
+  "customManagers": [
     {
+      "customType": "regex",
       "description": "Update `version` and <*>`_VERSION` values in GitHub Actions and workflows.",
       "fileMatch": [
         "^action\\.ya?ml$",
@@ -92,6 +93,7 @@
       ]
     },
     {
+      "customType": "regex",
       "description": "Update `install-`<*> Buildpack commands and <*>`_VERSION` values in Dockerfiles.",
       "fileMatch": ["(^|/|\\.)Dockerfile$", "(^|/)Dockerfile\\.[^/]*$"],
       "matchStrings": [
@@ -101,6 +103,7 @@
       "versioningTemplate": "{{#if versioning}}{{versioning}}{{else}}semver{{/if}}"
     },
     {
+      "customType": "regex",
       "description": "Update GitHub Action references in Markdown files.",
       "fileMatch": ["\\.md$"],
       "matchStrings": [
