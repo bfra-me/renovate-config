@@ -55,6 +55,7 @@
       {
         "customType": "regex",
         "autoReplaceStringTemplate": "uses: {{depName}}@{{#if newDigest}}{{newDigest}}{{#if newValue}} # {{newValue}}{{/if}}{{/if}}{{#unless newDigest}}{{newValue}}{{/unless}}",
+        "currentValueTemplate": "v3-beta",
         "datasourceTemplate": "git-refs",
         "depTypeTemplate": "action",
         "fileMatch": [
@@ -62,8 +63,8 @@
           "(^|/)action\\.ya?ml$"
         ],
         "matchStrings": [
-          "uses:\\s+(?<depName>elstudio\\/actions-settings)@(?<currentValue>v3-beta)",
-          "uses:\\s+(?<depName>elstudio\\/actions-settings)@(?<currentDigest>[a-f0-9]+)"
+          "uses:\\s+(?<depName>elstudio\\/actions-settings)@(?<currentDigest>[a-f0-9]+)",
+          "uses:\\s+(?<depName>elstudio\\/actions-settings)@(?<currentValue>v3-beta)"
         ],
         "packageNameTemplate": "https://github.com/elstudio/actions-settings"
       }
