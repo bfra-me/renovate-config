@@ -1,6 +1,6 @@
 {
   $schema: 'https://docs.renovatebot.com/renovate-schema.json',
-  extends: ['local>bfra-me/renovate-config'],
+  extends: ['github>bfra-me/renovate-config#v2.1.0'],
   automergeType: 'pr',
   prCreation: 'immediate',
   semanticCommitScope: 'deps',
@@ -10,7 +10,7 @@
   },
   packageRules: [
     {
-      matchFileNames: ['.github/workflows/**'],
+      matchFileNames: ['.github/workflows/main.yaml'],
       semanticCommitType: 'ci',
     },
     {
@@ -65,6 +65,14 @@
       fileMatch: ['^\\.github\\/(actions|workflows)\\/[^/]+\\.ya?ml$'],
       matchStrings: [
         '\\snpm install conventional-changelog-conventionalcommits@(?<currentValue>.*?)\\s',
+      ],
+    },
+    {
+      customType: 'regex',
+      datasourceTemplate: 'npm',
+      fileMatch: ['^\\.github\\/renovate\\.json5$'],
+      matchStrings: [
+        'npx\\s+(?<depName>prettier)(?:@(?<currentValue>\\d+\\.\\d+\\.\\d+))?',
       ],
     },
   ],
