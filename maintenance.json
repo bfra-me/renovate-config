@@ -74,7 +74,7 @@
     "description": "Internal Renovate configuration for @bfra-me.",
     "extends": [
       "github>bfra-me/renovate-config:maintenance/pinGitHubActionDigestsToSemver#v2.1.0",
-      "github>bfra-me/renovate-config:vendors/elstudio#v2.1.0"
+      "github>bfra-me/renovate-config:vendors/elstudio#v2.2.0"
     ]
   }
 }
