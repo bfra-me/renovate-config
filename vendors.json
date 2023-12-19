@@ -2,12 +2,12 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "description": "Use default vendor config presets.",
   "extends": [
-    "github>bfra-me/renovate-config:vendors/bfra-me",
-    "github>bfra-me/renovate-config:vendors/exivity"
+    "github>bfra-me/renovate-config:vendors/bfra-me#v2.3.0",
+    "github>bfra-me/renovate-config:vendors/exivity#v2.3.0"
   ],
 
   "default": {
-    "extends": "github>bfra-me/renovate-config:vendors"
+    "extends": "github>bfra-me/renovate-config:vendors#v2.3.0"
   },
 
   "bfra-me": {
@@ -54,7 +54,8 @@
         "autoReplaceStringTemplate": "uses: {{depName}}@{{#if newDigest}}{{newDigest}}{{#if newValue}} # {{newValue}}{{/if}}{{/if}}{{#unless newDigest}}{{newValue}}{{/unless}}",
         "packageNameTemplate": "https://github.com/elstudio/actions-settings",
         "depTypeTemplate": "action",
-        "datasourceTemplate": "git-refs"
+        "datasourceTemplate": "git-refs",
+        "versioningTemplate": "git"
       }
     ]
   },
