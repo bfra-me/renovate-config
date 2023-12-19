@@ -75,5 +75,14 @@
         'npx\\s+(?<depName>prettier)(?:@(?<currentValue>\\d+\\.\\d+\\.\\d+))?',
       ],
     },
+    {
+      customType: 'regex',
+      datasourceTemplate: 'github-releases',
+      fileMatch: ['\\.json[5]?$', '!renovate\\.json5$'],
+      matchStrings: [
+        '["\']github>(?<depName>bfra-me\\/renovate-config)(?:(?::|\\/\\/)(?<path>.+?))?#(?<currentValue>.+?)["\']',
+      ],
+      versioningTemplate: 'semver',
+    },
   ],
 }

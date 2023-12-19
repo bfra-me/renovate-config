@@ -16,18 +16,7 @@
       {
         "commitMessageTopic": "{{{depName}}} preset",
         "groupName": "bfra-me config preset",
-        "matchFileNames": [
-          ".github/renovate.json5",
-          ".github/renovate.json",
-          ".gitlab/renovate.json5",
-          ".gitlab/renovate.json",
-          ".renovaterc.json5",
-          ".renovaterc.json",
-          ".renovaterc",
-          "renovate.json5",
-          "renovate.json"
-        ],
-        "matchPackageNames": ["bfra-me/renovate-config"]
+        "matchDepNames": ["bfra-me/renovate-config"]
       }
     ],
     "customManagers": [
@@ -35,11 +24,11 @@
         "customType": "regex",
         "datasourceTemplate": "github-releases",
         "fileMatch": [
-          "^\\.github\\/renovate\\.json5?$",
-          "^\\.gitlab\\/renovate\\.json5?$",
-          "^\\.renovaterc\\.json5?$",
-          "^\\.renovaterc$",
-          "^renovate\\.json5?$"
+          "^renovate\\.json[5]?$",
+          "^\\.github\\/renovate\\.json[5]?$",
+          "^\\.gitlab\\/renovate\\.json[5]?$",
+          "^\\.renovaterc\\.json[5]?$",
+          "^\\.renovaterc$"
         ],
         "matchStrings": [
           "[\"']github>(?<depName>bfra-me\\/renovate-config)(?:(?::|\\/\\/)(?<path>.+?))?#(?<currentValue>.+?)[\"']"
@@ -55,12 +44,11 @@
       {
         "customType": "regex",
         "fileMatch": [
-          "^\\.github/(?:workflows|actions)/.+\\.ya?ml$",
-          "(^|/)action\\.ya?ml$"
+          "^\\.github/(?:workflows|actions)/.+\\.y[a]?ml$",
+          "(^|/)action\\.y[a]?ml$"
         ],
         "matchStrings": [
-          "uses:\\s+(?<depName>elstudio\\/actions-settings(?<path>\\/.*)?)@(?<currentDigest>[a-f0-9]+)",
-          "uses:\\s+(?<depName>elstudio\\/actions-settings(?<path>\\/.*)?)@(?<currentValue>v3-beta)"
+          "uses:\\s+(?<depName>elstudio\\/actions-settings(?<path>\\/.*)?)@(?<currentDigest>[a-f0-9]+)"
         ],
         "currentValueTemplate": "v3-beta",
         "autoReplaceStringTemplate": "uses: {{depName}}@{{#if newDigest}}{{newDigest}}{{#if newValue}} # {{newValue}}{{/if}}{{/if}}{{#unless newDigest}}{{newValue}}{{/unless}}",
