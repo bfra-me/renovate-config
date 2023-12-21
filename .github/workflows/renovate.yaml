@@ -58,6 +58,12 @@ jobs:
             changes:
               - '.github/workflows/renovate.yaml'
               - '.github/renovate.json5'
+              - 'automerge.json'
+              - 'default.json'
+              - 'group.json'
+              - 'maintenance.json'
+              - 'replacements.json'
+              - 'vendors.json'
       - id: create-output
         if: github.event_name != 'push' || steps.filter.outputs.changes == 'true'
         run: |
