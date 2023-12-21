@@ -10,11 +10,11 @@
     ":separateMultipleMajorReleases",
     "helpers:pinGitHubActionDigests",
     "github>whitesource/merge-confidence:beta#v2.3.1",
-    "github>bfra-me/renovate-config:automerge#v2.3.1",
-    "github>bfra-me/renovate-config:group#v2.3.1",
-    "github>bfra-me/renovate-config:replacements#v2.3.1",
-    "github>bfra-me/renovate-config:maintenance#v2.3.1",
-    "github>bfra-me/renovate-config:vendors#v2.3.1"
+    "github>bfra-me/renovate-config:automerge#v2.3.2",
+    "github>bfra-me/renovate-config:group#v2.3.2",
+    "github>bfra-me/renovate-config:replacements#v2.3.2",
+    "github>bfra-me/renovate-config:maintenance#v2.3.2",
+    "github>bfra-me/renovate-config:vendors#v2.3.2"
   ],
 
   "commitMessageLowerCase": "never",
@@ -74,7 +74,7 @@
       "matchManagers": ["dockerfile", "docker-compose"]
     },
     {
-      "extends": ["github>bfra-me/renovate-config:maintenance/internal#v2.3.1"],
+      "extends": ["github>bfra-me/renovate-config:maintenance/internal#v2.3.2"],
       "matchRepositories": ["bfra-me/**"]
     }
   ],

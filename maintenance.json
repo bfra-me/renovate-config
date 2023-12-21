@@ -6,7 +6,7 @@
     ":prNotPending",
     ":prHourlyLimitNone",
     ":updateNotScheduled",
-    "github>bfra-me/renovate-config:maintenance/security#v2.3.1"
+    "github>bfra-me/renovate-config:maintenance/security#v2.3.2"
   ],
   "addLabels": ["dependencies"],
 
@@ -25,7 +25,7 @@
 
   "timezone": "America/Phoenix",
 
-  "default": {"extends": ["github>bfra-me/renovate-config:maintenance#v2.3.1"]},
+  "default": {"extends": ["github>bfra-me/renovate-config:maintenance#v2.3.2"]},
 
   "dashboardApprovalForMajorUpdates": {
     "description": "Enable dependency dashboard approval for major updates.",
@@ -69,15 +69,15 @@
       "prBodyDefinitions": {
         "Change": "All lock files updated (every Monday before 6 AM)"
       },
-      "extends": ["github>bfra-me/renovate-config:automerge/enabled#v2.3.1"]
+      "extends": ["github>bfra-me/renovate-config:automerge/enabled#v2.3.2"]
     }
   },
 
   "internal": {
     "description": "Internal Renovate configuration for @bfra-me.",
     "extends": [
-      "github>bfra-me/renovate-config:maintenance/pinGitHubActionDigestsToSemver#v2.3.1",
-      "github>bfra-me/renovate-config:vendors/elstudio#v2.3.1"
+      "github>bfra-me/renovate-config:maintenance/pinGitHubActionDigestsToSemver#v2.3.2",
+      "github>bfra-me/renovate-config:vendors/elstudio#v2.3.2"
     ]
   }
 }
