@@ -15,7 +15,6 @@
     "packageRules": [
       {
         "commitMessageTopic": "{{{depName}}} preset",
-        "groupName": "bfra-me config preset",
         "matchDepNames": ["bfra-me/renovate-config"]
       }
     ],
