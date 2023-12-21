@@ -43,7 +43,10 @@
     "packageRules": [
       {
         "extends": ["helpers:pinGitHubActionDigests"],
-        "excludeDepNames": ["elstudio/actions-settings", "exivity/actions"],
+        "excludeDepPatterns": [
+          "^elstudio/actions-settings(\\/.*)?$",
+          "^exivity/actions(\\/.*)?$"
+        ],
         "extractVersion": "^(?<version>v?\\d+\\.\\d+\\.\\d+)$",
         "versioning": "regex:^v?(?<major>\\d+)(\\.(?<minor>\\d+))?(\\.(?<patch>\\d+))?$"
       }
