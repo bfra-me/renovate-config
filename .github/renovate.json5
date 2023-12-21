@@ -1,6 +1,6 @@
 {
   $schema: 'https://docs.renovatebot.com/renovate-schema.json',
-  extends: ['github>bfra-me/renovate-config#v2.3.5'],
+  extends: ['github>bfra-me/renovate-config#v2.3.6'],
   automergeType: 'pr',
   prCreation: 'immediate',
   semanticCommitScope: 'deps',
@@ -33,7 +33,7 @@
       matchFileNames: ['**/*.md'],
       extends: [
         'schedule:weekly',
-        'github>bfra-me/renovate-config:automerge/enabled#v2.3.5',
+        'github>bfra-me/renovate-config:automerge/enabled#v2.3.6',
       ],
       additionalBranchPrefix: 'docs-',
       commitMessageTopic: 'references to {{{depName}}}',
