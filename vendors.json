@@ -2,12 +2,12 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "description": "Use default vendor config presets.",
   "extends": [
-    "github>bfra-me/renovate-config:vendors/bfra-me#v2.3.4",
-    "github>bfra-me/renovate-config:vendors/exivity#v2.3.4"
+    "github>bfra-me/renovate-config:vendors/bfra-me#v2.3.5",
+    "github>bfra-me/renovate-config:vendors/exivity#v2.3.5"
   ],
 
   "default": {
-    "extends": "github>bfra-me/renovate-config:vendors#v2.3.4"
+    "extends": "github>bfra-me/renovate-config:vendors#v2.3.5"
   },
 
   "bfra-me": {

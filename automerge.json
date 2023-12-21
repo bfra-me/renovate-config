@@ -4,12 +4,12 @@
   "extends": [
     ":automergeBranch",
     ":automergeRequireAllStatusChecks",
-    "github>bfra-me/renovate-config:automerge/all-update-types-except-major#v2.3.4"
+    "github>bfra-me/renovate-config:automerge/all-update-types-except-major#v2.3.5"
   ],
   "automergeStrategy": "squash",
 
   "default": {
-    "extends": ["github>bfra-me/renovate-config:automerge#v2.3.4"]
+    "extends": ["github>bfra-me/renovate-config:automerge#v2.3.5"]
   },
 
   "enabled": {
@@ -29,13 +29,13 @@
     "packageRules": [
       {
         "matchUpdateTypes": ["patch", "pin", "pinDigest", "digest"],
-        "extends": ["github>bfra-me/renovate-config:automerge/enabled#v2.3.4"],
+        "extends": ["github>bfra-me/renovate-config:automerge/enabled#v2.3.5"],
         "separateMinorPatch": true
       },
       {
         "matchUpdateTypes": ["minor"],
         "matchCurrentVersion": "!/^0\\./",
-        "extends": ["github>bfra-me/renovate-config:automerge/enabled#v2.3.4"]
+        "extends": ["github>bfra-me/renovate-config:automerge/enabled#v2.3.5"]
       }
     ]
   },
