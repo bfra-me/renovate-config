@@ -1,31 +1,32 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "description": "Include default config presets for repository maintenance.",
-  "extends": [
-    ":rebaseStalePrs",
-    ":prNotPending",
-    ":prHourlyLimitNone",
-    ":updateNotScheduled",
-    "github>bfra-me/renovate-config:maintenance/security#v2.3.6"
-  ],
-  "addLabels": ["dependencies"],
 
-  "configMigration": true,
-  "configWarningReuseIssue": false,
+  "default": {
+    "description": "Include default config presets for repository maintenance.",
+    "extends": [
+      ":rebaseStalePrs",
+      ":prNotPending",
+      ":prHourlyLimitNone",
+      ":updateNotScheduled",
+      "github>bfra-me/renovate-config:maintenance/security#v2.3.6"
+    ],
+    "addLabels": ["dependencies"],
 
-  "dependencyDashboardTitle": "Renovate Dashboard",
+    "configMigration": true,
+    "configWarningReuseIssue": false,
 
-  "prConcurrentLimit": 5,
-  "recreateClosed": true,
+    "dependencyDashboardTitle": "Renovate Dashboard",
 
-  "assigneesFromCodeOwners": true,
-  "assigneesSampleSize": 1,
-  "reviewersFromCodeOwners": true,
-  "reviewersSampleSize": 1,
+    "prConcurrentLimit": 5,
+    "recreateClosed": true,
 
-  "timezone": "America/Phoenix",
+    "assigneesFromCodeOwners": true,
+    "assigneesSampleSize": 1,
+    "reviewersFromCodeOwners": true,
+    "reviewersSampleSize": 1,
 
-  "default": {"extends": ["github>bfra-me/renovate-config:maintenance#v2.3.6"]},
+    "timezone": "America/Phoenix"
+  },
 
   "dashboardApprovalForMajorUpdates": {
     "description": "Enable dependency dashboard approval for major updates.",

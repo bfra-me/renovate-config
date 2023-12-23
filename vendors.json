@@ -47,7 +47,7 @@
       {
         "customType": "regex",
         "fileMatch": [
-          "^\\.github/(?:workflows|actions)/.+\\.ya?ml$",
+          "^(workflow-templates|\\.github/(?:workflows|actions))/[^/]+\\.ya?ml$",
           "(^|/)action\\.ya?ml$"
         ],
         "matchStrings": [
@@ -56,9 +56,14 @@
         "currentValueTemplate": "v3-beta",
         "autoReplaceStringTemplate": "uses: {{depName}}@{{#if newDigest}}{{newDigest}}{{#if newValue}} # {{newValue}}{{/if}}{{/if}}{{#unless newDigest}}{{newValue}}{{/unless}}",
         "packageNameTemplate": "https://github.com/elstudio/actions-settings",
-        "depTypeTemplate": "action",
-        "datasourceTemplate": "git-refs",
-        "versioningTemplate": "git"
+        "datasourceTemplate": "git-refs"
+      }
+    ],
+    "packageRules": [
+      {
+        "matchCurrentValue": "/^v3-beta$/",
+        "matchDepPatterns": ["^elstudio/actions-settings(\\/.*)?$"],
+        "versioning": "loose"
       }
     ]
   },
