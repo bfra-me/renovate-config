@@ -51,7 +51,8 @@
           "(^|/)action\\.ya?ml$"
         ],
         "matchStrings": [
-          "uses:\\s+(?<depName>elstudio\\/actions-settings(?<path>\\/.*)?)@(?<currentDigest>[a-f0-9]+)"
+          "uses:\\s+(?<depName>elstudio\\/actions-settings(?<path>\\/.*)?)@(?<currentDigest>[a-f0-9]+)",
+          "uses:\\s+(?<depName>elstudio\\/actions-settings(?<path>\\/.*)?)@(?<currentValue>v3-beta)"
         ],
         "currentValueTemplate": "v3-beta",
         "autoReplaceStringTemplate": "uses: {{depName}}@{{#if newDigest}}{{newDigest}}{{#if newValue}} # {{newValue}}{{/if}}{{/if}}{{#unless newDigest}}{{newValue}}{{/unless}}",
@@ -61,7 +62,7 @@
     ],
     "packageRules": [
       {
-        "matchCurrentValue": "/^v3-beta$/",
+        "groupName": "elstudio actions-settings",
         "matchDepPatterns": ["^elstudio/actions-settings(\\/.*)?$"],
         "versioning": "loose"
       }
