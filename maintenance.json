@@ -30,9 +30,20 @@
 
   "dashboardApprovalForMajorUpdates": {
     "description": "Enable dependency dashboard approval for major updates.",
+    "major": {
+      "dependencyDashboardApproval": true,
+      "dependencyDashboardLabels": ["approval-pending"]
+    },
     "packageRules": [
       {
-        "matchUpdateTypes": ["major"],
+        "matchPackageNames": ["go", "python", "typescript"],
+        "matchUpdateTypes": ["minor"],
+        "dependencyDashboardApproval": true,
+        "dependencyDashboardLabels": ["approval-pending"]
+      },
+      {
+        "matchCurrentVersion": ">=0.1.0 <1.0.0-0",
+        "matchUpdateTypes": ["minor"],
         "dependencyDashboardApproval": true,
         "dependencyDashboardLabels": ["approval-pending"]
       }
@@ -77,6 +88,7 @@
   "internal": {
     "description": "Internal Renovate configuration for @bfra-me.",
     "extends": [
+      "github>bfra-me/renovate-config:maintenance/dashboardApprovalForMajorUpdates#v2.3.7",
       "github>bfra-me/renovate-config:maintenance/pinGitHubActionDigestsToSemver#v2.3.7",
       "github>bfra-me/renovate-config:vendors/elstudio#v2.3.7"
     ]

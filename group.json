@@ -14,6 +14,16 @@
     ]
   },
 
+  "eslint": {
+    "description": "Group ESLint and related packages together.",
+    "packageRules": [
+      {
+        "groupName": "eslint packages",
+        "matchPackagePatterns": ["eslint"]
+      }
+    ]
+  },
+
   "github-actions": {
     "description": "Group GitHub Actions updates together.",
     "packageRules": [
@@ -41,7 +51,7 @@
       {
         "groupName": "Jest packages",
         "matchPackageNames": ["@types/jest", "ts-jest"],
-        "matchPackagePrefixes": ["@types/jest-", "jest"]
+        "matchPackagePrefixes": ["@types/jest-", "jest-"]
       }
     ]
   },
@@ -67,11 +77,27 @@
     ]
   },
 
+  "react": {
+    "description": "Group React and related packages together.",
+    "packageRules": [
+      {
+        "groupName": "react monorepo",
+        "matchPackageNames": [
+          "@types/react",
+          "@types/react-dom",
+          "@types/react-test-renderer",
+          "@types/react-is",
+          "@types/scheduler"
+        ]
+      }
+    ]
+  },
+
   "rollup": {
     "description": "Group Rollup and related packages together.",
     "packageRules": [
       {
-        "groupName": "Rollup packages",
+        "groupName": "rollup packages",
         "matchPackagePatterns": ["^rollup"],
         "matchPackagePrefixes": ["@rollup"]
       }
@@ -83,12 +109,27 @@
     "packageRules": [
       {
         "groupName": "@types packages",
+        "matchDepTypes": ["devDependencies"],
+        "matchManagers": ["npm"],
         "matchPackagePrefixes": ["@types/"],
         "matchUpdateTypes": ["minor", "patch"],
-        "matchCurrentVersion": ">1.0.0"
+        "matchCurrentVersion": ">1.0.0",
+        "excludePackagePrefixes": ["@types/d3-", "@types/jest-"],
+        "excludePackageNames": [
+          "@types/jest",
+          "@types/react",
+          "@types/react-dom",
+          "@types/react-is",
+          "@types/react-test-renderer",
+          "@types/scheduler",
+          "@types/yargs",
+          "@types/yargs-parser"
+        ]
       },
       {
         "groupName": "@types packages",
+        "matchDepTypes": ["devDependencies"],
+        "matchManagers": ["npm"],
         "matchPackagePrefixes": ["@types/"],
         "matchUpdateTypes": ["patch"],
         "matchCurrentVersion": "0.x"
