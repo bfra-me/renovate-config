@@ -4,8 +4,8 @@
   "default": {
     "description": "Use default vendor config presets.",
     "extends": [
-      "github>bfra-me/renovate-config:vendors/bfra-me#v2.4.0",
-      "github>bfra-me/renovate-config:vendors/exivity#v2.4.0"
+      "github>bfra-me/renovate-config:vendors/bfra-me#v2.4.1",
+      "github>bfra-me/renovate-config:vendors/exivity#v2.4.1"
     ]
   },
 
