@@ -30,7 +30,7 @@
       matchFileNames: ['**/*.md'],
       extends: [
         'schedule:weekly',
-        'github>bfra-me/renovate-config:automerge/enabled',
+        'github>bfra-me/renovate-config:automerge(enable)',
       ],
       additionalBranchPrefix: 'docs-',
       commitMessageTopic: 'references to {{{depName}}}',
