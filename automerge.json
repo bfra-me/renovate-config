@@ -1,6 +1,8 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
 
+  "extends": ["github>bfra-me/renovate-config:automerge#v2.4.1(/{{arg0}})"],
+
   "default": {
     "description": "Use default automerge settings.",
     "extends": [
@@ -12,6 +14,10 @@
   },
 
   "enabled": {
+    "extends": ["github>bfra-me/renovate-config:automerge(enable)"]
+  },
+
+  "/enable": {
     "automerge": true,
     "addLabels": ["automerge"],
     "azureAutoApprove": true,
@@ -28,13 +34,13 @@
     "packageRules": [
       {
         "matchUpdateTypes": ["patch", "pin", "pinDigest", "digest"],
-        "extends": ["github>bfra-me/renovate-config:automerge/enabled#v2.4.1"],
+        "extends": ["github>bfra-me/renovate-config:automerge(enable)"],
         "separateMinorPatch": true
       },
       {
         "matchUpdateTypes": ["minor"],
         "matchCurrentVersion": "!/^0\\./",
-        "extends": ["github>bfra-me/renovate-config:automerge/enabled#v2.4.1"]
+        "extends": ["github>bfra-me/renovate-config:automerge(enable)"]
       }
     ]
   },
