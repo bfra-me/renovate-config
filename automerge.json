@@ -1,14 +1,14 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
 
-  "extends": ["github>bfra-me/renovate-config:automerge#v2.4.1(/{{arg0}})"],
+  "extends": ["github>bfra-me/renovate-config:automerge(/{{arg0}})"],
 
   "default": {
     "description": "Use default automerge settings.",
     "extends": [
       ":automergeBranch",
       ":automergeRequireAllStatusChecks",
-      "github>bfra-me/renovate-config:automerge/all-update-types-except-major#v2.5.0"
+      "github>bfra-me/renovate-config:automerge/all-update-types-except-major"
     ],
     "automergeStrategy": "squash"
   },

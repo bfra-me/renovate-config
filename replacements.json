@@ -4,7 +4,7 @@
   "default": {
     "description": "Use @bfra-me replacements config presets.",
     "extends": [
-      "github>bfra-me/renovate-config:replacements/zeit-ncc-to-vercel-ncc#v2.5.0"
+      "github>bfra-me/renovate-config:replacements/zeit-ncc-to-vercel-ncc"
     ]
   },
 
