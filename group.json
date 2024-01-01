@@ -2,30 +2,38 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
 
   "default": {
-    "description": "Use default group preset settings.",
+    "description": ["Use default group preset settings."],
     "extends": [
-      "group:linters",
+      "github>bfra-me/renovate-config:group/eslint",
       "github>bfra-me/renovate-config:group/github-actions",
       "github>bfra-me/renovate-config:group/jest",
       "github>bfra-me/renovate-config:group/octokit",
       "github>bfra-me/renovate-config:group/prettier",
+      "github>bfra-me/renovate-config:group/react",
       "github>bfra-me/renovate-config:group/rollup",
       "github>bfra-me/renovate-config:group/types"
     ]
   },
 
   "eslint": {
-    "description": "Group ESLint and related packages together.",
+    "description": ["Group ESLint and related packages together."],
     "packageRules": [
       {
         "groupName": "eslint packages",
+        "excludePackagePrefixes": ["@typecript-eslint/"],
         "matchPackagePatterns": ["eslint"]
+      },
+      {
+        "groupName": "typescript-eslint monorepo",
+        "matchSourceUrls": [
+          "https://github.com/typescript-eslint/typescript-eslint"
+        ]
       }
     ]
   },
 
   "github-actions": {
-    "description": "Group GitHub Actions updates together.",
+    "description": ["Group GitHub Actions updates together."],
     "packageRules": [
       {
         "groupName": "GitHub Actions",
@@ -36,7 +44,7 @@
   },
 
   "jest": {
-    "description": "Group Jest and related packages together.",
+    "description": ["Group Jest and related packages together."],
     "ignorePresets": [
       "group:jestMonorepo",
       "group:jestPlusTypes",
@@ -57,7 +65,7 @@
   },
 
   "octokit": {
-    "description": "Group Octokit packages together.",
+    "description": ["Group Octokit packages together."],
     "packageRules": [
       {
         "groupName": "Octokit packages",
@@ -67,7 +75,7 @@
   },
 
   "prettier": {
-    "description": "Group Prettier packages together.",
+    "description": ["Group Prettier packages together."],
     "packageRules": [
       {
         "groupName": "Prettier packages",
@@ -78,7 +86,7 @@
   },
 
   "react": {
-    "description": "Group React and related packages together.",
+    "description": ["Group React and related packages together."],
     "packageRules": [
       {
         "groupName": "react monorepo",
@@ -94,7 +102,7 @@
   },
 
   "rollup": {
-    "description": "Group Rollup and related packages together.",
+    "description": ["Group Rollup and related packages together."],
     "packageRules": [
       {
         "groupName": "rollup packages",
@@ -105,7 +113,7 @@
   },
 
   "types": {
-    "description": "Group <code>@types</code> dependencies together.",
+    "description": ["Group <code>@types</code> dependencies together."],
     "packageRules": [
       {
         "groupName": "@types packages",
