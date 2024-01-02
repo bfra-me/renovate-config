@@ -25,7 +25,7 @@
     "customManagers": [
       {
         "customType": "regex",
-        "datasourceTemplate": "github-releases",
+        "datasourceTemplate": "github-tags",
         "fileMatch": [
           "^renovate\\.json5?$",
           "^\\.github\\/renovate\\.json5?$",
