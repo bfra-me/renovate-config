@@ -7,7 +7,7 @@
   },
   packageRules: [
     {
-      matchFileNames: ['.github/workflows/main.yaml'],
+      matchFileNames: ['.github/workflows/**'],
       semanticCommitType: 'ci',
     },
     {
@@ -43,10 +43,10 @@
   customManagers: [
     {
       customType: 'regex',
-      fileMatch: ['^README\\.md$'],
+      fileMatch: ['^(README|readme)\\.md$'],
       matchStrings: ['"github>bfra-me\\/renovate-config#(?<currentValue>.+?)"'],
       depNameTemplate: 'bfra-me/renovate-config',
-      datasourceTemplate: 'github-releases',
+      datasourceTemplate: 'github-tags',
     },
     {
       customType: 'regex',
@@ -74,7 +74,7 @@
     },
     {
       customType: 'regex',
-      datasourceTemplate: 'github-releases',
+      datasourceTemplate: 'github-tags',
       fileMatch: [
         '^automerge\\.json$',
         '^default\\.json$',
