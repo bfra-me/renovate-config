@@ -75,6 +75,7 @@
     {
       customType: 'regex',
       datasourceTemplate: 'github-tags',
+      extractVersionTemplate: '^(?<version>v?\\d+\\.\\d+\\.\\d+)$',
       fileMatch: [
         '^automerge\\.json$',
         '^default\\.json$',
@@ -86,7 +87,8 @@
       matchStrings: [
         '["\']github>(?<depName>bfra-me\\/renovate-config)(?:(?::|\\/\\/)(?<path>.+?))?#(?<currentValue>.+?)["\']',
       ],
-      versioningTemplate: 'semver',
+      versioningTemplate: 'regex:^v?(?<major>\\d+)(\\.(?<minor>\\d+))?(\\.(?<patch>\\d+))?$',
     },
   ],
+  printConfig: true,
 }
