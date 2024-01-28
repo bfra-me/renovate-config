@@ -68,8 +68,8 @@
   "security": {
     "description": "Enable security updates from vulnerability alerts.",
     "extends": [":enableVulnerabilityAlertsWithLabel(security)"],
-    "dependencyDashboardOSVVulnerabilitySummary": "all",
-    "osvVulnerabilityAlerts": true
+    "dependencyDashboardOSVVulnerabilitySummary": "none",
+    "osvVulnerabilityAlerts": false
   },
 
   "weeklyLockFileUpdates": {
