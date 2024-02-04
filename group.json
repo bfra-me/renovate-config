@@ -11,7 +11,8 @@
       "github>bfra-me/renovate-config:group/prettier",
       "github>bfra-me/renovate-config:group/react",
       "github>bfra-me/renovate-config:group/rollup",
-      "github>bfra-me/renovate-config:group/types"
+      "github>bfra-me/renovate-config:group/types",
+      "github>bfra-me/renovate-config:group/vite"
     ]
   },
 
@@ -162,6 +163,18 @@
         "matchPackagePrefixes": ["@types/"],
         "matchUpdateTypes": ["patch"],
         "matchCurrentVersion": "0.x"
+      }
+    ]
+  },
+
+  "vite": {
+    "description": ["Group all Vite related packages together."],
+    "packageRules": [
+      {
+        "description": ["All Vite related packages"],
+        "groupName": "Vite packages",
+        "matchDatasources": ["npm"],
+        "matchPackagePatterns": ["^vite$", "vite-plugin", "@vitejs"]
       }
     ]
   }
