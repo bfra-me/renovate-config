@@ -49,7 +49,9 @@
       "group:jestMonorepo",
       "group:jestPlusTypes",
       "group:jestPlusTsJest",
-      "monorepo:jest"
+      "monorepo:jest",
+      "packages:jsUnitTest",
+      "packages:unitTest"
     ],
     "packageRules": [
       {
@@ -61,8 +63,19 @@
       },
       {
         "groupName": "Jest packages",
-        "matchPackageNames": ["@types/jest", "ts-jest"],
-        "matchPackagePrefixes": ["@types/jest-", "jest-"]
+        "matchPackageNames": ["ts-jest"],
+        "matchPackagePrefixes": ["jest-"]
+      },
+      {
+        "groupName": "Jest packages",
+        "matchPackageNames": ["@types/jest"],
+        "matchPackagePrefixes": ["@types/jest-"],
+        "matchUpdateTypes": ["digest", "patch", "minor", "major"]
+      },
+      {
+        "groupName": "Jest packages",
+        "matchSourceUrls": ["https://github.com/kulshekhar/ts-jest"],
+        "matchUpdateTypes": ["major"]
       }
     ]
   },
