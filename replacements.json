@@ -11,7 +11,7 @@
     ]
   },
 
-  "eslint-plugin-node-to-eslint-plugin-n": {
+  "_eslint-plugin-node-to-eslint-plugin-n": {
     "description": "The `eslint-plugin-node` package is now maintained by the fork `eslint-plugin-n`.",
     "packageRules": [
       {
