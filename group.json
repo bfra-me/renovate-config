@@ -45,7 +45,16 @@
       {
         "groupName": "GitHub Actions",
         "matchManagers": ["github-actions"],
-        "matchUpdateTypes": ["minor", "patch", "pin"]
+        "matchUpdateTypes": ["digest", "minor", "patch", "pin"]
+      },
+      {
+        "description": "Group major versions of GitHub artifact Actions together.",
+        "groupName": "GitHub artifact Actions",
+        "matchPackageNames": [
+          "actions/download-artifact",
+          "actions/upload-artifact"
+        ],
+        "matchUpdateTypes": ["major"]
       }
     ]
   },
@@ -172,7 +181,7 @@
     "description": ["Group all Vite related packages together."],
     "packageRules": [
       {
-        "description": ["All Vite related packages"],
+        "description": "All Vite related packages",
         "groupName": "Vite packages",
         "matchDatasources": ["npm"],
         "matchPackagePatterns": ["^vite$", "vite-plugin", "@vitejs"]
