@@ -54,7 +54,10 @@
     "packageRules": [
       {
         "groupName": "Jest packages",
-        "matchSourceUrls": ["https://github.com/facebook/jest"]
+        "matchSourceUrls": [
+          "https://github.com/facebook/jest",
+          "https://github.com/jestjs/jest"
+        ]
       },
       {
         "groupName": "Jest packages",
