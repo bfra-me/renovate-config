@@ -24,7 +24,12 @@
         "matchPackagePatterns": ["eslint"]
       },
       {
-        "groupName": "typescript-eslint monorepo",
+        "groupName": "eslint packages",
+        "excludePackageNames": ["eslint-config-next"],
+        "matchUpdateTypes": ["major"]
+      },
+      {
+        "groupName": "eslint packages",
         "matchSourceUrls": [
           "https://github.com/typescript-eslint/typescript-eslint"
         ]
