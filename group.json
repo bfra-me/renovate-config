@@ -20,14 +20,15 @@
     "description": ["Group ESLint and related packages together."],
     "packageRules": [
       {
+        "extends": ["packages:eslint"],
         "groupName": "eslint packages",
-        "excludePackagePrefixes": ["@typecript-eslint/"],
-        "matchPackagePatterns": ["eslint"]
+        "excludePackageNames": ["eslint-config-next"],
+        "excludePackagePrefixes": ["@typecript-eslint/"]
       },
       {
         "groupName": "eslint packages",
-        "excludePackageNames": ["eslint-config-next"],
-        "matchUpdateTypes": ["major"]
+        "matchPackageNames": ["eslint-config-next"],
+        "matchUpdateTypes": ["digest", "patch", "minor", "pin"]
       },
       {
         "groupName": "eslint packages",
