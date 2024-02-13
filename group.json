@@ -28,13 +28,15 @@
       {
         "groupName": "eslint packages",
         "matchPackageNames": ["eslint-config-next"],
+        "matchPackagePrefixes": ["@typecript-eslint/"],
         "matchUpdateTypes": ["digest", "patch", "minor", "pin"]
       },
       {
-        "groupName": "eslint packages",
+        "groupName": "typescript-eslint monorepo",
         "matchSourceUrls": [
           "https://github.com/typescript-eslint/typescript-eslint"
-        ]
+        ],
+        "matchUpdateTypes": ["major"]
       }
     ]
   },
