@@ -1,6 +1,8 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
 
+  "extends": ["github>bfra-me/renovate-config:automerge/_{{arg0}}"],
+
   "default": {
     "description": ["Use default group preset settings."],
     "extends": [
@@ -42,15 +44,23 @@
   },
 
   "github-actions": {
-    "description": ["Group GitHub Actions updates together."],
+    "description": "Group GitHub Actions updates together.",
+    "extends": [
+      "github>bfra-me/renovate-config:group(github-artifact-actions-major-updates)"
+    ],
     "packageRules": [
       {
         "groupName": "GitHub Actions",
         "matchManagers": ["github-actions"],
         "matchUpdateTypes": ["digest", "minor", "patch", "pin"]
-      },
+      }
+    ]
+  },
+
+  "_github-artifact-actions-major-updates": {
+    "description": "Group major updates of GitHub artifact Actions together.",
+    "packageRules": [
       {
-        "description": "Group major versions of GitHub artifact Actions together.",
         "groupName": "GitHub artifact Actions",
         "matchPackageNames": [
           "actions/download-artifact",
