@@ -3,7 +3,7 @@
 
   "extends": [
     "github>bfra-me/renovate-config:vendors/_{{arg0}}",
-    "github>@bfra-me:vendors/_{{arg1}"
+    "github>bfra-me/renovate-config:vendors/_{{arg1}}"
   ],
 
   "default": {
