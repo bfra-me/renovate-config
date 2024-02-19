@@ -91,7 +91,8 @@
       "github>bfra-me/renovate-config:maintenance/dashboardApprovalForMajorUpdates",
       "github>bfra-me/renovate-config:maintenance/pinGitHubActionDigestsToSemver",
       "github>bfra-me/renovate-config:vendors/elstudio",
-      "github>bfra-me/renovate-config:group(github-artifact-actions-major-updates)"
+      "github>bfra-me/renovate-config:group(github-artifact-actions-major-updates)",
+      "github>@bfra-me:vendors(bfra-me/actions)"
     ],
     "ignorePresets": ["github>bfra-me/renovate-config:group/github-actions"]
   }
