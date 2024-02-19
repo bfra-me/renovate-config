@@ -14,7 +14,7 @@
     ]
   },
 
-  "_bfra-me/actions": {
+  "_bfra-me+actions": {
     "description": "All @bfra-me GitHub actions and reusable workflows.",
     "packageRules": {
       "matchDepTypes": ["action"],
