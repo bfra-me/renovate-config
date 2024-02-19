@@ -1,7 +1,7 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
 
-  "extends": ["github>bfra-me/renovate-config:vendors/_{{arg0}}+{{arg1}}"],
+  "extends": ["github>bfra-me/renovate-config:vendors/_{{arg0}}{{arg1}}"],
 
   "default": {
     "description": "Use default vendor config presets.",
@@ -17,6 +17,18 @@
       "matchDepTypes": ["action"],
       "matchPackagePrefixes": ["bfra-me/"]
     }
+  },
+
+  "_bfra-me-disableDigestPinning": {
+    "description": "Disable digest pinning for @bfra-me GitHub actions and reusable workflows.",
+    "packageRules": [
+      {
+        "extends": [
+          "github>bfra-me/renovate-config:vendors(bfra-me, +actions)"
+        ],
+        "pinDigests": false
+      }
+    ]
   },
 
   "bfra-me": {
