@@ -48,7 +48,7 @@
       {
         "customType": "regex",
         "datasourceTemplate": "github-tags",
-        "extractVersionTemplate": "^(?<version>v?\\d+\\.\\d+\\.\\d+)$",
+        "extractVersionTemplate": "^v(?<version>.+)$",
         "fileMatch": [
           "^renovate\\.json5?$",
           "^\\.github\\/renovate\\.json5?$",
@@ -58,8 +58,7 @@
         ],
         "matchStrings": [
           "[\"']github>(?<depName>bfra-me\\/renovate-config)(?:(?::|\\/\\/)(?<path>.+?))?#(?<currentValue>.+?)[\"']"
-        ],
-        "versioningTemplate": "regex:^v?(?<major>\\d+)(\\.(?<minor>\\d+))?(\\.(?<patch>\\d+))?$"
+        ]
       }
     ]
   },
