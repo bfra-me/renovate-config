@@ -75,7 +75,7 @@
     {
       customType: 'regex',
       datasourceTemplate: 'github-tags',
-      extractVersionTemplate: '^v(?<version>.+)$',
+      extractVersionTemplate: '^v?(?<version>.+)$',
       fileMatch: [
         '^automerge\\.json$',
         '^default\\.json$',
