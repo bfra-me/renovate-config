@@ -74,6 +74,7 @@ jobs:
           branch: ${{ env.dry_run == 'true' && github.ref_name || '' }}
           cache: ${{ env.cache }}
           dry_run: ${{ env.dry_run }}
+          log_level: debug
           print_config: ${{ inputs.print_config }}
           renovate_app_id: ${{ secrets.APPLICATION_ID }}
           renovate_app_pem: ${{ secrets.APPLICATION_PRIVATE_KEY }}
