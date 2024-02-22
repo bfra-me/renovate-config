@@ -1,15 +1,11 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Use @bfra-me replacements config presets.",
 
-  "extends": ["github>bfra-me/renovate-config:replacements/_{{arg0}}"],
-
-  "default": {
-    "description": "Use @bfra-me replacements config presets.",
-    "extends": [
-      "github>bfra-me/renovate-config:replacements(eslint-plugin-node-to-eslint-plugin-n)",
-      "github>bfra-me/renovate-config:replacements/zeit-ncc-to-vercel-ncc"
-    ]
-  },
+  "extends": [
+    "github>bfra-me/renovate-config:replacements/_eslint-plugin-node-to-eslint-plugin-n",
+    "github>bfra-me/renovate-config:replacements/_zeit-ncc-to-vercel-ncc"
+  ],
 
   "_eslint-plugin-node-to-eslint-plugin-n": {
     "description": "The `eslint-plugin-node` package is now maintained by the fork `eslint-plugin-n`.",
@@ -23,7 +19,7 @@
     ]
   },
 
-  "zeit-ncc-to-vercel-ncc": {
+  "_zeit-ncc-to-vercel-ncc": {
     "description": "The `@zeit/ncc` package has been renamed to `@vercel/ncc`.",
     "packageRules": [
       {
