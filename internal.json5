@@ -27,36 +27,36 @@
   automergeStrategy: 'squash',
   automergeType: 'branch',
   commitBodyTable: true,
-  "commitMessageAction": "update",
-  "commitMessageLowerCase": "never",
-  "lockFileMaintenance": {
-    "commitMessageAction": "maintain lockfiles"
+  commitMessageAction: 'update',
+  commitMessageLowerCase: 'never',
+  lockFileMaintenance: {
+    commitMessageAction: 'maintain lockfiles',
   },
-  "pin": {
-    "commitMessageAction": "pin"
+  pin: {
+    commitMessageAction: 'pin',
   },
-  "pinDigest": {
-    "commitMessageAction": "pin (digest)"
+  pinDigest: {
+    commitMessageAction: 'pin (digest)',
   },
-  "replacement": {
-    "commitMessageAction": "replace"
+  replacement: {
+    commitMessageAction: 'replace',
   },
-  "rollback": {
-    "commitMessageAction": "rollback"
+  rollback: {
+    commitMessageAction: 'rollback',
   },
 
-  "ignorePresets": [":ignoreModulesAndTests"],
-  "ignorePaths": [
-    "**/node_modules/**",
-    "**/bower_components/**",
-    "**/vendor/**",
-    "**/examples/**",
-    "**/__tests__/**",
-    "**/test/**",
-    "**/tests/**",
-    "**/__fixtures__/**",
-    "**/out/**",
-    "**/dist/**"
+  ignorePresets: [':ignoreModulesAndTests'],
+  ignorePaths: [
+    '**/node_modules/**',
+    '**/bower_components/**',
+    '**/vendor/**',
+    '**/examples/**',
+    '**/__tests__/**',
+    '**/test/**',
+    '**/tests/**',
+    '**/__fixtures__/**',
+    '**/out/**',
+    '**/dist/**',
   ],
 
   addLabels: ['dependencies'],
@@ -81,8 +81,8 @@
   packageRules: [
     {
       description: 'Automerge GitHub Actions as PRs.',
-      matchManagers: ['github-actions'],,
+      matchManagers: ['github-actions'],
       extends: ['github>bfra-me/renovate-config:maintenance/automergeForCI'],
-    }
+    },
   ],
 }
