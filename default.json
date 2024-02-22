@@ -2,69 +2,19 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "description": "Use the default Renovate config preset for the @bfra-me organization.",
 
-  "ignorePresets": [":ignoreModulesAndTests"],
-
   "extends": [
     "config:recommended",
     ":semanticCommits",
-    ":separateMultipleMajorReleases",
-    "helpers:pinGitHubActionDigests",
-    "github>whitesource/merge-confidence:beta",
-    "github>bfra-me/renovate-config:automerge/default",
-    "github>bfra-me/renovate-config:group/default",
-    "github>bfra-me/renovate-config:replacements/default",
-    "github>bfra-me/renovate-config:maintenance/default",
-    "github>bfra-me/renovate-config:vendors/default"
-  ],
-
-  "commitMessageLowerCase": "never",
-
-  "transitiveRemediation": true,
-
-  "postUpdateOptions": [
-    "gomodTidy",
-    "npmDedupe",
-    "pnpmDedupe",
-    "yarnDedupeHighest"
-  ],
-
-  "commitMessageAction": "update",
-  "lockFileMaintenance": {
-    "commitMessageAction": "maintain lockfiles"
-  },
-  "pin": {
-    "commitMessageAction": "pin"
-  },
-  "pinDigest": {
-    "commitMessageAction": "pin"
-  },
-  "replacement": {
-    "commitMessageAction": "replace"
-  },
-  "rollback": {
-    "commitMessageAction": "rollback"
-  },
-
-  "ignorePaths": [
-    "**/node_modules/**",
-    "**/bower_components/**",
-    "**/vendor/**",
-    "**/examples/**",
-    "**/__tests__/**",
-    "**/test/**",
-    "**/tests/**",
-    "**/__fixtures__/**",
-    "**/out/**",
-    "**/dist/**",
-    "**/.yarn/**"
+    ":automergeRequireAllStatusChecks",
+    "mergeConfidence:age-confidence-badges",
+    "github>bfra-me/renovate-config:replacements",
+    "github>bfra-me/renovate-config:vendors/bfra.me"
   ],
 
   "packageRules": [
     {
-      "description": "Delay updates until npm packages are safe from unpublishing (except Renovate)",
+      "description": "Delay updates until npm packages are safe from unpublishing.",
       "matchDatasources": ["npm"],
-      "excludePackageNames": ["renovate"],
-      "excludePackagePrefixes": ["@renovatebot/"],
       "extends": ["npm:unpublishSafe"],
       "prNotPendingHours": 73
     },
@@ -75,7 +25,7 @@
     },
     {
       "description": "Use internal presets for @bfra-me organization repositories.",
-      "extends": ["github>bfra-me/renovate-config:maintenance/internal"],
+      "extends": ["github>bfra-me/renovate-config:internal.json5"],
       "matchRepositories": ["bfra-me/**"],
       "platformAutomerge": true
     }
@@ -113,6 +63,15 @@
       ],
       "datasourceTemplate": "github-tags",
       "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "description": "Update _VERSION variables in shell scripts.",
+      "fileMatch": ["\\.sh$"],
+      "matchStrings": [
+        "# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>.+?)(?: (?:packageName|lookupName)=(?<packageName>.+?))?(?: versioning=(?<versioning>[a-z-]+?))?\\s+?.+?_VERSION=(?<currentValue>.+?)\\s"
+      ],
+      "versioningTemplate": "{{#if versioning}}{{versioning}}{{else}}semver{{/if}}"
     }
   ]
 }

@@ -1,17 +1,5 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-
-  "extends": ["github>bfra-me/renovate-config:vendors/_{{arg0}}{{arg1}}"],
-
-  "default": {
-    "description": "Use default vendor config presets.",
-    "extends": [
-      "github>bfra-me/renovate-config:vendors/bfra-me",
-      "github>bfra-me/renovate-config:vendors/exivity"
-    ]
-  },
-
-  "_bfra-me+actions": {
+  "bfra.me+actions": {
     "description": "All @bfra-me GitHub actions and reusable workflows.",
     "packageRules": {
       "matchDepTypes": ["action"],
@@ -19,19 +7,17 @@
     }
   },
 
-  "_bfra-me-disableDigestPinning": {
+  "bfra.me-disableDigestPinning": {
     "description": "Disable digest pinning for @bfra-me GitHub actions and reusable workflows.",
     "packageRules": [
       {
-        "extends": [
-          "github>bfra-me/renovate-config:vendors(bfra-me, +actions)"
-        ],
+        "extends": ["github>bfra-me/renovate-config:vendors/bfra.me+actions"],
         "pinDigests": false
       }
     ]
   },
 
-  "bfra-me": {
+  "bfra.me": {
     "description": "Update dependencies for @bfra-me.",
     "packageRules": [
       {
@@ -40,7 +26,7 @@
       },
       {
         "description": "Exclude broken versions of the `bfra-me/renovate-config` preset.",
-        "allowedVersions": "!/v?2\\.3\\.[0-3]$/",
+        "allowedVersions": ">=2.11.0",
         "matchDepNames": ["bfra-me/renovate-config"]
       }
     ],

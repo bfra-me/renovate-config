@@ -1,54 +1,13 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-
-  "extends": ["github>bfra-me/renovate-config:automerge/_{{arg0}}"],
-
-  "default": {
-    "description": "Use default automerge settings.",
-    "extends": [
-      ":automergeBranch",
-      ":automergeRequireAllStatusChecks",
-      "github>bfra-me/renovate-config:automerge/all-update-types-except-major"
-    ],
-    "automergeStrategy": "squash"
-  },
-
-  "enabled": {
-    "extends": ["github>bfra-me/renovate-config:automerge(enable)"]
-  },
-
-  "_enable": {
-    "automerge": true,
-    "addLabels": ["automerge"],
-    "azureAutoApprove": true,
-    "gitLabAutomerge": true,
-    "gitLabIgnoreApprovals": true,
-    "assignAutomerge": false,
-    "assigneesFromCodeOwners": false,
-    "dependencyDashboardApproval": false,
-    "reviewersFromCodeOwners": false
-  },
-
-  "all-update-types-except-major": {
-    "description": "Automerge all update types except `major` and unstable (`0.x.x`) versions.",
-    "packageRules": [
-      {
-        "matchUpdateTypes": ["patch", "pin", "pinDigest", "digest"],
-        "extends": ["github>bfra-me/renovate-config:automerge(enable)"]
-      },
-      {
-        "matchUpdateTypes": ["minor"],
-        "matchCurrentVersion": "!/^0\\./",
-        "extends": ["github>bfra-me/renovate-config:automerge(enable)"]
-      }
-    ]
-  },
-
-  "prForCI": {
-    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-    "description": "Optimize settings for GitHub merge queues.",
-    "automergeType": "pr",
-    "prCreation": "immediate",
-    "platformAutomerge": true
-  }
+  "description": "Enable automerge for Renovate updates.",
+  "automerge": true,
+  "addLabels": ["automerge"],
+  "azureAutoApprove": true,
+  "gitLabAutomerge": true,
+  "gitLabIgnoreApprovals": true,
+  "assignAutomerge": false,
+  "assigneesFromCodeOwners": false,
+  "dependencyDashboardApproval": false,
+  "reviewersFromCodeOwners": false
 }

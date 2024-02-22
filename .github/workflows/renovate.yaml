@@ -5,6 +5,7 @@ name: Renovate
 'on':
   issues:
     types: [edited]
+  merge_group:
   pull_request:
     types: [edited]
   push:
@@ -19,7 +20,7 @@ name: Renovate
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.number || github.ref }}
-  cancel-in-progress: ${{ github.ref_name != 'main' || github.event_name != 'push'}}
+  cancel-in-progress: ${{ github.event == 'push' && github.ref != 'refs/heads/main' }}
 
 permissions:
   contents: read

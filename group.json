@@ -1,13 +1,8 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-
-  "extends": ["github>bfra-me/renovate-config:group/_{{arg0}}"],
-
   "default": {
     "description": ["Use default group preset settings."],
     "extends": [
       "github>bfra-me/renovate-config:group/eslint",
-      "github>bfra-me/renovate-config:group/github-actions",
       "github>bfra-me/renovate-config:group/jest",
       "github>bfra-me/renovate-config:group/octokit",
       "github>bfra-me/renovate-config:group/prettier",
@@ -44,29 +39,12 @@
   },
 
   "github-actions": {
-    "description": "Group GitHub Actions updates together.",
-    "extends": [
-      "github>bfra-me/renovate-config:group(github-artifact-actions-major-updates)"
-    ],
+    "description": "Group non-major updates of GitHub Actions together.",
     "packageRules": [
       {
         "groupName": "GitHub Actions",
         "matchManagers": ["github-actions"],
         "matchUpdateTypes": ["digest", "minor", "patch", "pin"]
-      }
-    ]
-  },
-
-  "_github-artifact-actions-major-updates": {
-    "description": "Group major updates of GitHub artifact Actions together.",
-    "packageRules": [
-      {
-        "groupName": "GitHub artifact Actions",
-        "matchPackageNames": [
-          "actions/download-artifact",
-          "actions/upload-artifact"
-        ],
-        "matchUpdateTypes": ["major"]
       }
     ]
   },
