@@ -59,7 +59,7 @@
           "^elstudio/actions-settings(\\/.*)?$",
           "^exivity/actions(\\/.*)?$"
         ],
-        "extractVersion": "^(?<version>?v\\d+(\\.\\d+\\.\\d+)?)$"
+        "extractVersion": "^(?<version>v?\\d+(\\.\\d+\\.\\d+)?)$"
       }
     ]
   },
