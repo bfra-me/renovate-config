@@ -1,0 +1,11 @@
+{
+  "automerge": true,
+  "addLabels": ["automerge"],
+  "azureAutoApprove": true,
+  "gitLabAutomerge": true,
+  "gitLabIgnoreApprovals": true,
+  "assignAutomerge": false,
+  "assigneesFromCodeOwners": false,
+  "dependencyDashboardApproval": false,
+  "reviewersFromCodeOwners": false
+}

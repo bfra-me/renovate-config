@@ -1,13 +1,15 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "description": "Enable automerge for Renovate updates.",
-  "automerge": true,
-  "addLabels": ["automerge"],
-  "azureAutoApprove": true,
-  "gitLabAutomerge": true,
-  "gitLabIgnoreApprovals": true,
-  "assignAutomerge": false,
-  "assigneesFromCodeOwners": false,
-  "dependencyDashboardApproval": false,
-  "reviewersFromCodeOwners": false
+  "extends": ["github>bfra-me/renovate-config:automerge.json5"],
+  "default": {
+    "description": "Use default automerge settings.",
+    "extends": [
+      "github>bfra-me/renovate-config:automergeNonMajorUpdates.json5"
+    ],
+    "automergeStrategy": "squash",
+    "automergeType": "branch",
+    "ignoreTests": false
+  },
+  "enable": {
+    "extends": ["github>bfra-me/renovate-config:automerge.json5"]
+  }
 }

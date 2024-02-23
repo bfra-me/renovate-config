@@ -1,4 +1,6 @@
 {
+  "default": {"extends": ["github>bfra-me/renovate-config:vendors/bfra.me"]},
+
   "bfra.me+actions": {
     "description": "All @bfra-me GitHub actions and reusable workflows.",
     "packageRules": {
@@ -26,7 +28,7 @@
       },
       {
         "description": "Exclude broken versions of the `bfra-me/renovate-config` preset.",
-        "allowedVersions": ">=3.0.2",
+        "allowedVersions": ">=3.0.5",
         "matchDepNames": ["bfra-me/renovate-config"]
       }
     ],

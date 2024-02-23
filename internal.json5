@@ -5,7 +5,7 @@
   extends: [
     'github>bfra-me/renovate-config:group/default',
     'github>bfra-me/renovate-config:maintenance/security',
-    'github>bfra-me/renovate-config:maintenance/automergeNonMajorUpdates',
+    'github>bfra-me/renovate-config:automergeNonMajorUpdates.json5',
     'github>bfra-me/renovate-config:maintenance/weeklyLockFileUpdates',
     'github>bfra-me/renovate-config:maintenance/dashboardApprovalForMajorUpdates',
     'github>bfra-me/renovate-config:maintenance/pinGitHubActionDigestsToSemver',
