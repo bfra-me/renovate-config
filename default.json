@@ -24,8 +24,7 @@
       "matchManagers": ["dockerfile", "docker-compose"]
     },
     {
-      "description": "Use internal presets for @bfra-me organization repositories.",
-      "extends": ["github>bfra-me/renovate-config:internal.json5"],
+      "description": "Enable platform automerge feature for @bfra-me organization repositories.",
       "matchRepositories": ["bfra-me/**"],
       "platformAutomerge": true
     }
