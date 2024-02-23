@@ -26,7 +26,7 @@
       },
       {
         "description": "Exclude broken versions of the `bfra-me/renovate-config` preset.",
-        "allowedVersions": ">=2.11.0",
+        "allowedVersions": ">=3.0.2",
         "matchDepNames": ["bfra-me/renovate-config"]
       }
     ],
