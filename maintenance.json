@@ -1,6 +1,5 @@
 {
   "automergeForCI": {
-    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
     "description": "Optimize settings for GitHub PRs and merge queues.",
     "automergeType": "pr",
     "platformAutomerge": true,
@@ -9,7 +8,7 @@
   },
 
   "automergeNonMajorUpdates": {
-    "extends": ["github>bfra-me/renovate-config:automerge.json5"]
+    "extends": ["github>bfra-me/renovate-config:automergeNonMajorUpdates.json5"]
   },
 
   "dashboardApprovalForMajorUpdates": {
