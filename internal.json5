@@ -82,7 +82,10 @@
     {
       description: 'Automerge GitHub Actions as PRs.',
       matchManagers: ['github-actions'],
-      extends: ['github>bfra-me/renovate-config:maintenance/automergeForCI'],
+      automergeType: 'pr',
+      platformAutomerge: true,
+      prCreation: 'immediate',
+      rebaseWhen: 'conflicted',
     },
   ],
 }
