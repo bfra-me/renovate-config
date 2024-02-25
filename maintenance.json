@@ -8,7 +8,18 @@
   },
 
   "automergeNonMajorUpdates": {
-    "extends": ["github>bfra-me/renovate-config:automergeNonMajorUpdates.json5"]
+    "description": "Automerge all update types except `major` and unstable (`0.x.x`) versions.",
+    "packageRules": [
+      {
+        "matchUpdateTypes": ["patch", "digest"],
+        "extends": ["github>bfra-me/renovate-config:automerge.json5"]
+      },
+      {
+        "matchUpdateTypes": ["minor"],
+        "matchCurrentVersion": "!/^0\\./",
+        "extends": ["github>bfra-me/renovate-config:automerge.json5"]
+      }
+    ]
   },
 
   "dashboardApprovalForMajorUpdates": {
@@ -41,7 +52,7 @@
       ":prNotPending",
       ":prHourlyLimitNone",
       ":updateNotScheduled",
-      "github>bfra-me/renovate-config:maintenance/security"
+      ":enableVulnerabilityAlertsWithLabel(security)"
     ],
     "addLabels": ["dependencies"],
 
@@ -66,15 +77,17 @@
   },
 
   "pinGitHubActionDigestsToSemver": {
-    "description": "Pin GitHub Action digests to semver versions.",
+    "description": "Pin GitHub Action digests to SemVer versions.",
     "packageRules": [
       {
-        "extends": ["helpers:pinGitHubActionDigestsToSemver"],
+        "matchDepTypes": ["action"],
         "excludeDepPatterns": [
           "^elstudio/actions-settings(\\/.*)?$",
           "^exivity/actions(\\/.*)?$"
         ],
-        "extractVersion": "^(?<version>v?\\d+(\\.\\d+\\.\\d+)?)$"
+        "extractVersion": "^(?<version>v?\\d+(\\.\\d+\\.\\d+)?)$",
+        "pinDigests": true,
+        "versioning": "regex:^v?(?<major>\\d+)(\\.(?<minor>\\d+)\\.(?<patch>\\d+))?$"
       }
     ]
   },

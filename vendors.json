@@ -13,7 +13,8 @@
     "description": "Disable digest pinning for @bfra-me GitHub actions and reusable workflows.",
     "packageRules": [
       {
-        "extends": ["github>bfra-me/renovate-config:vendors/bfra.me+actions"],
+        "matchDepTypes": ["action"],
+        "matchPackagePrefixes": ["bfra-me/"],
         "pinDigests": false
       }
     ]
@@ -28,7 +29,7 @@
       },
       {
         "description": "Exclude broken versions of the `bfra-me/renovate-config` preset.",
-        "allowedVersions": ">=3.1.0",
+        "allowedVersions": ">=3.1.2",
         "matchDepNames": ["bfra-me/renovate-config"]
       }
     ],
