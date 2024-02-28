@@ -10,7 +10,6 @@
     'github>bfra-me/renovate-config:maintenance/dashboardApprovalForMajorUpdates',
     'github>bfra-me/renovate-config:maintenance/pinGitHubActionDigestsToSemver',
     'github>bfra-me/renovate-config:vendors/elstudio',
-    'github>bfra-me/renovate-config:vendors/bfra.me-disableDigestPinning',
   ],
 
   timezone: 'America/Phoenix',
@@ -86,6 +85,12 @@
       platformAutomerge: true,
       prCreation: 'immediate',
       rebaseWhen: 'conflicted',
+    },
+    {
+      description: 'Disable digest and version pinning for @bfra-me GitHub actions and reusable workflows.',
+      matchDepTypes: ['action'],
+      matchPackagePrefixes: ['bfra-me/'],
+      pinDigests: false,
     },
   ],
 }
