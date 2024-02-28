@@ -25,6 +25,8 @@
 
   automergeStrategy: 'squash',
   automergeType: 'branch',
+  platformAutomerge: true,
+
   commitBodyTable: true,
   commitMessageAction: 'update',
   commitMessageLowerCase: 'never',
@@ -82,7 +84,6 @@
       description: 'Automerge GitHub Actions as PRs.',
       matchManagers: ['github-actions'],
       automergeType: 'pr',
-      platformAutomerge: true,
       prCreation: 'immediate',
       rebaseWhen: 'conflicted',
     },
@@ -91,7 +92,7 @@
       matchDepTypes: ['action'],
       matchPackagePrefixes: ['bfra-me/'],
       pinDigests: false,
-      rangeStrategy: 'replace',
+      rangeStrategy: 'auto',
     },
     {
       description: 'Group @types/* dependencies together with the npm dependency they are for.',
