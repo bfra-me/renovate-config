@@ -27,6 +27,20 @@
       "description": "Enable platform automerge feature for @bfra-me organization repositories.",
       "matchRepositories": ["bfra-me/**"],
       "platformAutomerge": true
+    },
+    {
+      "description": "Remove minimum release age config for bfra.me packages.",
+      "matchPackagePrefixes": ["@bfra.me/", "bfra-me/"],
+      "matchSourceUrlPrefixes": ["https://github.com/bfra-me/"],
+      "minimumReleaseAge": null,
+      "prNotPendingHours": 0
+    },
+    {
+      "description": "Disable dependency dashboard for unstable versions of bfra.me packages.",
+      "matchCurrentVersion": ">=0.1.0 <1.0.0-0",
+      "matchPackagePrefixes": ["@bfra.me/", "bfra-me/"],
+      "matchUpdateTypes": ["minor"],
+      "dependencyDashboardApproval": false
     }
   ],
   "customManagers": [
