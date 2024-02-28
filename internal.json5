@@ -69,7 +69,7 @@
   prConcurrentLimit: 5,
   prCreation: 'not-pending',
   prHourlyLimit: 0,
-  rebaseWhen: 'conflicted',
+  rebaseWhen: 'behind-base-branch',
   recreateClosed: true,
 
   assigneesFromCodeOwners: true,
