@@ -17,17 +17,23 @@ name: Renovate
         required: false
         type: boolean
         default: false
+  workflow_run:
+    workflows: ['CI']
+    branches: ['renovate/**']
+    types: [completed]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.number || github.ref }}
-  cancel-in-progress: ${{ github.event == 'push' && github.ref != 'refs/heads/main' }}
+  cancel-in-progress: false
 
 permissions:
   contents: read
 
 jobs:
   renovate:
+    name: Renovate
     if: >-
+      (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push') ||
       (github.event_name != 'issues' && github.event_name != 'pull_request') ||
       (
         contains(join(github.event.*.body, ''), '- [x] <!-- approve-all-pending-prs -->') ||
@@ -44,7 +50,6 @@ jobs:
         contains(join(github.event.*.body, ''), '- [x] <!-- unlimit-branch=') ||
         contains(join(github.event.*.body, ''), '- [x] <!-- unschedule-branch=')
       )
-    name: Renovate
     runs-on: ubuntu-latest
     steps:
       - if: github.event_name == 'push'
