@@ -93,5 +93,19 @@
       pinDigests: false,
       rangeStrategy: 'replace',
     },
+    {
+      description: 'Group @types/* dependencies together with the npm dependency they are for.',
+      groupName: "{{{replace '^@types/' '' depName}}}",
+      matchPackagePrefixes: ['@types/'],
+      matchDepTypes: ['dependencies', 'devDependencies'],
+      matchDatasources: ['npm'],
+    },
+    {
+      description: 'Group npm dependencies by name.',
+      groupName: '{{depName}}',
+      excludePackagePrefixes: ['@types/'],
+      matchDepTypes: ['dependencies', 'devDependencies'],
+      matchDatasources: ['npm'],
+    },
   ],
 }
