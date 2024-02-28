@@ -91,6 +91,7 @@
       matchDepTypes: ['action'],
       matchPackagePrefixes: ['bfra-me/'],
       pinDigests: false,
+      rangeStrategy: 'replace',
     },
   ],
 }
