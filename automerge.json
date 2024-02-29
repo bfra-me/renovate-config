@@ -1,21 +1,7 @@
 {
   "extends": ["github>bfra-me/renovate-config:automerge.json5"],
   "default": {
-    "description": "Use default automerge settings.",
-    "automergeStrategy": "squash",
-    "automergeType": "branch",
-    "ignoreTests": false,
-    "packageRules": [
-      {
-        "matchUpdateTypes": ["patch", "pin", "digest"],
-        "extends": ["github>bfra-me/renovate-config:automerge.json5"]
-      },
-      {
-        "matchUpdateTypes": ["minor"],
-        "matchCurrentVersion": "!/^0\\./",
-        "extends": ["github>bfra-me/renovate-config:automerge.json5"]
-      }
-    ]
+    "description": "[DEPRECATED-automerge] Use default automerge settings."
   },
   "enable": {
     "extends": ["github>bfra-me/renovate-config:automerge.json5"]

@@ -1,6 +1,5 @@
 {
   automerge: true,
   addLabels: ['automerge'],
-  azureAutoApprove: true,
-  gitLabIgnoreApprovals: true,
+  rebaseWhen: 'behind-base-branch',
 }

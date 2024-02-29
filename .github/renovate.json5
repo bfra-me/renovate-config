@@ -31,16 +31,16 @@
     },
     {
       matchFileNames: ['**/*.md'],
-      extends: [
-        'schedule:weekly',
-        'github>bfra-me/renovate-config:automerge.json5',
-      ],
+      addLabels: ['automerge'],
       additionalBranchPrefix: 'docs-',
+      automerge: true,
       commitMessageTopic: 'references to {{{depName}}}',
-      semanticCommitType: 'docs',
-      semanticCommitScope: null,
-      separateMajorMinor: false,
       minimumReleaseAge: null,
+      rebaseWhen: 'behind-base-branch',
+      schedule: ['before 6am on Monday'],
+      semanticCommitScope: null,
+      semanticCommitType: 'docs',
+      separateMajorMinor: false,
     },
   ],
   customManagers: [
