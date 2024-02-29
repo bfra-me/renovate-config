@@ -1,14 +1,3 @@
 {
-  description: 'Automerge all update types except `major` and unstable (`0.x.x`) versions.',
-  packageRules: [
-    {
-      matchUpdateTypes: ['patch', 'pin', 'digest'],
-      extends: ['github>bfra-me/renovate-config:automerge.json5'],
-    },
-    {
-      matchUpdateTypes: ['minor'],
-      matchCurrentVersion: '!/^0\\./',
-      extends: ['github>bfra-me/renovate-config:automerge.json5'],
-    },
-  ],
+  description: '[DEPRECATED-automergeNonMajorUpdates] Automerge all update types except `major` and unstable (`0.x.x`) versions.',
 }

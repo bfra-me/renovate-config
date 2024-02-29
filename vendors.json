@@ -1,5 +1,5 @@
 {
-  "default": {"extends": ["github>bfra-me/renovate-config:vendors/bfra.me"]},
+  "default": {},
 
   "bfra.me-disableDigestPinning": {
     "packageRules": [
@@ -15,17 +15,6 @@
 
   "bfra.me": {
     "description": "Update dependencies for @bfra-me.",
-    "packageRules": [
-      {
-        "commitMessageTopic": "{{{depName}}} preset",
-        "matchDepNames": ["bfra-me/renovate-config"]
-      },
-      {
-        "description": "Exclude broken versions of the `bfra-me/renovate-config` preset.",
-        "allowedVersions": ">=3.4.2",
-        "matchDepNames": ["bfra-me/renovate-config"]
-      }
-    ],
     "customManagers": [
       {
         "customType": "regex",
