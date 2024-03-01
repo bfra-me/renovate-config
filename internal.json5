@@ -22,11 +22,12 @@
 
   automergeStrategy: 'squash',
   automergeType: 'branch',
-  platformAutomerge: true,
+  platformAutomerge: false,
 
   commitBodyTable: true,
   commitMessageAction: 'update',
   commitMessageLowerCase: 'never',
+
   lockFileMaintenance: {
     commitMessageAction: 'maintain lockfiles',
   },
@@ -78,19 +79,21 @@
 
   packageRules: [
     {
-      descrioption: 'Enable dependency dashboard approval for major updates.',
+      description: 'Require dependency dashboard approval for major updates.',
       matchUpdateTypes: ['major'],
       dependencyDashboardApproval: true,
       dependencyDashboardLabels: ['approval-pending'],
     },
     {
+      description: 'Require approval for minor updates of specific packages',
       matchPackageNames: ['go', 'python', 'typescript'],
       matchUpdateTypes: ['minor'],
       dependencyDashboardApproval: true,
       dependencyDashboardLabels: ['approval-pending'],
     },
     {
-      matchCurrentVersion: '>=0.1.0 <1.0.0-0',
+      description: 'Require approval for minor updates of unstable paackages (version is 0.x).',
+      matchCurrentVersion: '/^v?0/',
       matchUpdateTypes: ['minor'],
       dependencyDashboardApproval: true,
       dependencyDashboardLabels: ['approval-pending'],
@@ -98,16 +101,16 @@
       excludePackagePrefixes: ['@bfra.me/', 'bfra-me/'],
     },
     {
-      description: 'Automerge patch update types.',
-      matchUpdateTypes: ['patch', 'digest'],
+      description: 'Automerge `digest`, `patch`, and `pinDigest` update types.',
+      matchUpdateTypes: ['digest', 'patch', 'pinDigest'],
       addLabels: ['automerge'],
       automerge: true,
       rebaseWhen: 'behind-base-branch',
     },
     {
-      description: 'Automerge minor update types except unstable (`0.x.x`) versions.',
-      matchUpdateTypes: ['minor'],
-      matchCurrentVersion: '!/^0\\./',
+      description: 'Automerge `minor` and `patch` update types (except unstable versions, e.g., `0.x`).',
+      matchCurrentVersion: '!/^v?0/',
+      matchUpdateTypes: ['minor', 'patch'],
       addLabels: ['automerge'],
       automerge: true,
       rebaseWhen: 'behind-base-branch',
@@ -154,7 +157,7 @@
     {
       description: 'Exclude broken versions of the `bfra-me/renovate-config` preset.',
       matchDepNames: ['bfra-me/renovate-config'],
-      allowedVersions: '>=v3.4.4',
+      allowedVersions: '>=v3.4.5',
     },
     {
       description: 'Enable platform automerge feature for @bfra-me organization repositories.',
@@ -162,23 +165,24 @@
       platformAutomerge: true,
     },
     {
+      description: 'Automerge `minor` and `patch` update types of @bfra-me packages.',
+      matchPackagePrefixes: ['@bfra.me/', 'bfra-me/'],
+      matchUpdateTypes: ['minor', 'patch'],
+      addLabels: ['automerge'],
+      automerge: true,
+      dependencyDashboardApproval: false,
+      rebaseWhen: 'behind-base-branch',
+    },
+    {
       description: 'Remove minimum release age config for bfra.me packages.',
       matchPackagePrefixes: ['@bfra.me/', 'bfra-me/'],
-      matchSourceUrlPrefixes: ['https://github.com/bfra-me/'],
       minimumReleaseAge: null,
       prNotPendingHours: 0,
     },
     {
-      description: 'Disable dependency dashboard for unstable versions of bfra.me packages.',
-      matchCurrentVersion: '>=0.1.0 <1.0.0-0',
-      matchPackagePrefixes: ['@bfra.me/', 'bfra-me/'],
-      matchUpdateTypes: ['digest', 'minor', 'patch'],
-      dependencyDashboardApproval: false,
-    },
-    {
-      description: 'Disable digest and version pinning for @bfra-me GitHub actions and reusable workflows.',
+      description: 'Disable digest pinning for @bfra-me GitHub actions and reusable workflows.',
       matchDepTypes: ['action'],
-      matchPackagePrefixes: ['bfra-me/'],
+      matchPackagePrefixes: ['@bfra.me/', 'bfra-me/'],
       pinDigests: false,
     },
   ],
