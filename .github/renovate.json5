@@ -56,16 +56,13 @@
       datasourceTemplate: 'npm',
       depNameTemplate: 'semantic-release',
       fileMatch: ['^\\.github\\/(actions|workflows)\\/[^/]+\\.ya?ml$'],
-      matchStrings: ['\\snpx semantic-release@(?<currentValue>.*?)\\s'],
+      matchStrings: ['\\snpx (?<depName>)@(?<currentValue>.*?)\\s'],
     },
     {
       customType: 'regex',
       datasourceTemplate: 'npm',
-      depNameTemplate: 'conventional-changelog-conventionalcommits',
       fileMatch: ['^\\.github\\/(actions|workflows)\\/[^/]+\\.ya?ml$'],
-      matchStrings: [
-        '\\snpm install conventional-changelog-conventionalcommits@(?<currentValue>.*?)\\s',
-      ],
+      matchStrings: ['\\snpm install (?<depName>)@(?<currentValue>.*?)\\s'],
     },
     {
       customType: 'regex',
