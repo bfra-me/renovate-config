@@ -55,14 +55,14 @@
     {
       customType: 'regex',
       datasourceTemplate: 'npm',
-      fileMatch: ['^\\.github\\/(actions|workflows)\\/[^/]+\\.ya?ml$'],
-      matchStrings: ['\\snpx (?<depName>.+?)@(?<currentValue>.*?)\\s'],
-    },
-    {
-      customType: 'regex',
-      datasourceTemplate: 'npm',
-      fileMatch: ['^\\.github\\/(actions|workflows)\\/[^/]+\\.ya?ml$'],
-      matchStrings: ['\\snpm install (?<depName>.+?)@(?<currentValue>.*?)\\s'],
+      fileMatch: [
+        '(^|/)(workflow-templates|\\.(?:github|gitea|forgejo)/(?:workflows|actions))/.+\\.ya?ml$',
+        '(^|/)action\\.ya?ml$',
+      ],
+      matchStrings: [
+        '\\snpx (?<depName>.+?)@(?<currentValue>.*?)\\s',
+        '\\snpm install (?<depName>.+?)@(?<currentValue>.*?)\\s',
+      ],
     },
     {
       customType: 'regex',
