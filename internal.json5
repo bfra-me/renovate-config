@@ -157,7 +157,7 @@
     {
       description: 'Exclude broken versions of the `bfra-me/renovate-config` preset.',
       matchDepNames: ['bfra-me/renovate-config'],
-      allowedVersions: '>=v3.4.5',
+      allowedVersions: '>=v3.4.6',
     },
     {
       description: 'Enable platform automerge feature for @bfra-me organization repositories.',
@@ -184,6 +184,8 @@
       matchDepTypes: ['action'],
       matchPackagePrefixes: ['@bfra.me/', 'bfra-me/'],
       pinDigests: false,
+      rangeStrategy: 'replace',
+      updatePinnedDependencies: false,
     },
   ],
 }
