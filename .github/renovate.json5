@@ -47,16 +47,16 @@
     {
       customType: 'regex',
       fileMatch: ['^(README|readme)\\.md$'],
-      matchStrings: ['"github>bfra-me\\/renovate-config#(?<currentValue>.+?)"'],
-      depNameTemplate: 'bfra-me/renovate-config',
+      matchStrings: [
+        '"github>(?<depName>bfra-me\\/renovate-config)#(?<currentValue>.+?)"',
+      ],
       datasourceTemplate: 'github-tags',
     },
     {
       customType: 'regex',
       datasourceTemplate: 'npm',
-      depNameTemplate: 'semantic-release',
       fileMatch: ['^\\.github\\/(actions|workflows)\\/[^/]+\\.ya?ml$'],
-      matchStrings: ['\\snpx (?<depName.+?>)@(?<currentValue>.*?)\\s'],
+      matchStrings: ['\\snpx (?<depName>.+?)@(?<currentValue>.*?)\\s'],
     },
     {
       customType: 'regex',
