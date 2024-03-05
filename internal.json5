@@ -134,14 +134,6 @@
       rebaseWhen: 'conflicted',
     },
     {
-      description: 'Group @types/* dependencies together with the npm dependency they are for.',
-      matchDatasources: ['npm'],
-      matchDepTypes: ['dependencies', 'devDependencies'],
-      matchPackagePrefixes: ['@types/'],
-      branchTopic: "{{{replace '^types-' '' depNameSanitized}}}",
-      groupName: "{{{replace '^@types/' '' depName}}}",
-    },
-    {
       description: 'Group npm dependencies by name.',
       matchDatasources: ['npm'],
       matchDepTypes: ['dependencies', 'devDependencies'],
@@ -150,9 +142,18 @@
       groupName: '{{{depName}}}',
     },
     {
+      description: 'Group @types/* dependencies together with the npm dependency they are for.',
+      matchDatasources: ['npm'],
+      matchDepTypes: ['dependencies', 'devDependencies'],
+      matchPackagePrefixes: ['@types/'],
+      groupName: "{{{replace '^@types/' '' depName}}}",
+    },
+    {
       description: 'Add support for @bfra-me Renovate config presets.',
       matchDepNames: ['bfra-me/renovate-config'],
       commitMessageTopic: '{{{depName}}} preset',
+      pinDigests: false,
+      rangeStrategy: 'replace',
     },
     {
       description: 'Exclude broken versions of the `bfra-me/renovate-config` preset.',
