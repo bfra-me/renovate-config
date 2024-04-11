@@ -34,7 +34,7 @@
       addLabels: ['automerge'],
       additionalBranchPrefix: 'docs-',
       automerge: true,
-      commitMessageTopic: 'references to {{{depName}}}',
+      commitMessageTopic: 'references to {{depName}}',
       minimumReleaseAge: null,
       rebaseWhen: 'behind-base-branch',
       schedule: ['before 6am on Monday'],
