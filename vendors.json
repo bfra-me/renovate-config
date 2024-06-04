@@ -43,9 +43,10 @@
           "^\\.renovaterc$"
         ],
         "matchStrings": [
-          "\\s*npx\\s+(?<depName>.+?)@(?<currentValue>.+?)(?:\\s+?.*)*$",
-          "\\s*npm\\s+install\\s+(?:-(?:g|-global)\\s+)?(?<depName>.+?)@(?<currentValue>.+?)(?:\\s+?.*)*$"
-        ]
+          "\\s*npx\\s+(?<depName>.+?)@(?<currentValue>[a-z0-9.-]+)",
+          "\\s*npm\\s+install\\s+(?:-(?:g|-global)\\s+)?(?<depName>.+?)@(?<currentValue>[a-z0-9.-]+)"
+        ],
+        "versioningTemplate": "loose"
       }
     ]
   },
