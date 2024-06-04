@@ -31,6 +31,21 @@
           "[\"']github>(?<depName>bfra-me\\/renovate-config)(?:(?::|\\/\\/)(?<path>.+?))?#(?<currentValue>.+?)[\"']"
         ],
         "versioningTemplate": "regex:^v?(?<major>\\d+)(\\.(?<minor>\\d+)(\\.(?<patch>\\d+)))?$"
+      },
+      {
+        "customType": "regex",
+        "datasourceTemplate": "npm",
+        "fileMatch": [
+          "^renovate\\.json5?$",
+          "^\\.github\\/renovate\\.json5?$",
+          "^\\.gitlab\\/renovate\\.json5?$",
+          "^\\.renovaterc\\.json5?$",
+          "^\\.renovaterc$"
+        ],
+        "matchStrings": [
+          "\\s*npx\\s+(?<depName>.+?)@(?<currentValue>.+?)(?:\\s+?.*)*$",
+          "\\s*npm\\s+install\\s+(?:-(?:g|-global)\\s+)?(?<depName>.+?)@(?<currentValue>.+?)(?:\\s+?.*)*$"
+        ]
       }
     ]
   },
