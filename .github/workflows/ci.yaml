@@ -68,7 +68,7 @@ jobs:
         run: |
           # Run `semantic-release`
           npm install conventional-changelog-conventionalcommits@8.0.0
-          npm install semantic-release-export-data@1.0.1
+          npm install semantic-release-export-data@1.1.0
           npx semantic-release@24.0.0 --dry-run ${{ env.DRY_RUN }} --ci ${{ env.CI_FLAG }}
 
       - name: Push Release Branch To Major Branch
