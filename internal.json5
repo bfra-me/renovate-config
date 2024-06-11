@@ -24,7 +24,6 @@
   automergeType: 'branch',
   platformAutomerge: false,
 
-  commitBodyTable: true,
   commitMessageAction: 'update',
   commitMessageLowerCase: 'never',
 
