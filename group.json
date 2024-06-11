@@ -19,14 +19,23 @@
       {
         "extends": ["packages:eslint"],
         "groupName": "eslint packages",
+        "matchPackageNames": ["eslint-ts-patch"],
         "excludePackageNames": ["eslint-config-next"],
         "excludePackagePrefixes": ["@typecript-eslint/"]
       },
       {
         "groupName": "eslint packages",
-        "matchPackageNames": ["eslint-config-next"],
-        "matchPackagePrefixes": ["@typecript-eslint/"],
+        "matchPackageNames": ["eslint-config-next", "eslint-define-config"],
+        "matchPackagePrefixes": ["@eslint-types/", "@typecript-eslint/"],
         "matchUpdateTypes": ["digest", "patch", "minor"]
+      },
+      {
+        "groupName": "@eslint-types packages",
+        "matchSourceUrls": [
+          "https://github.com/eslint-types/define-config-plugin-types",
+          "https://github.com/eslint-types/eslint-define-config"
+        ],
+        "matchUpdateTypes": ["major"]
       },
       {
         "groupName": "typescript-eslint monorepo",
@@ -34,6 +43,10 @@
           "https://github.com/typescript-eslint/typescript-eslint"
         ],
         "matchUpdateTypes": ["major"]
+      },
+      {
+        "matchPackageNames": ["eslint-ts-patch"],
+        "ignoreUnstable": false
       }
     ]
   },
