@@ -19,9 +19,10 @@
       {
         "extends": ["packages:eslint"],
         "groupName": "eslint packages",
-        "matchPackageNames": ["eslint-ts-patch"],
         "excludePackageNames": ["eslint-config-next"],
-        "excludePackagePrefixes": ["@typecript-eslint/"]
+        "excludePackagePrefixes": ["@typecript-eslint/", "eslint"],
+        "matchPackageNames": ["eslint"],
+        "matchPackagePrefixes": ["eslint-"]
       },
       {
         "groupName": "eslint packages",
