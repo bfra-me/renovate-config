@@ -91,7 +91,7 @@
       dependencyDashboardLabels: ['approval-pending'],
     },
     {
-      description: 'Require approval for minor updates of unstable paackages (version is 0.x).',
+      description: 'Require approval for minor updates of unstable packages (version is 0.x).',
       matchCurrentVersion: '/^v?0/',
       matchUpdateTypes: ['minor'],
       dependencyDashboardApproval: true,
@@ -163,6 +163,12 @@
       description: 'Enable platform automerge feature for @bfra-me organization repositories.',
       matchRepositories: ['bfra-me/**'],
       platformAutomerge: true,
+    },
+    {
+      description: ['Disable patch updates except for @bfra-me packages.'],
+      excludePackagePrefixes: ['@bfra.me/', 'bfra-me/'],
+      matchUpdateTypes: ['patch'],
+      enabled: false,
     },
     {
       description: 'Automerge `minor` and `patch` update types of @bfra-me packages.',
