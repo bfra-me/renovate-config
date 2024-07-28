@@ -3,7 +3,16 @@
   description: 'Internal Renovate configuration for @bfra-me.',
 
   extends: [
-    'github>bfra-me/renovate-config:group/default',
+    // Group types before specific package groups.
+    'github>bfra-me/renovate-config:group/types',
+
+    'github>bfra-me/renovate-config:group/eslint',
+    'github>bfra-me/renovate-config:group/jest',
+    'github>bfra-me/renovate-config:group/octokit',
+    'github>bfra-me/renovate-config:group/prettier',
+    'github>bfra-me/renovate-config:group/react',
+    'github>bfra-me/renovate-config:group/rollup',
+    'github>bfra-me/renovate-config:group/vite',
     'github>bfra-me/renovate-config:maintenance/security',
     'github>bfra-me/renovate-config:maintenance/weeklyLockFileUpdates',
     'github>bfra-me/renovate-config:vendors/elstudio',
