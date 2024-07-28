@@ -1,6 +1,9 @@
 {
   "default": {
-    "description": ["Use default group preset settings."],
+    "description": [
+      "[DEPRECATED PRESET: group/default]",
+      "Use default group preset settings."
+    ],
     "extends": [
       "github>bfra-me/renovate-config:group/eslint",
       "github>bfra-me/renovate-config:group/jest",
