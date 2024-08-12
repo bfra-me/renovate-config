@@ -1,5 +1,6 @@
 {
   $schema: 'https://docs.renovatebot.com/renovate-schema.json',
-  description: 'Internal Renovate configuration for @bfra-me.',
-  extends: ['github>bfra-me/renovate-config'],
+  description: [
+    '**[DEPRECATED This preset will be removed in a future release]** Internal Renovate configuration for @bfra-me.',
+  ],
 }

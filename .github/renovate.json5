@@ -1,8 +1,11 @@
 {
   $schema: 'https://docs.renovatebot.com/renovate-schema.json',
-  extends: ['github>bfra-me/renovate-config'],
+  extends: [
+    'github>bfra-me/renovate-config',
+    'github>bfra-me/renovate-config:internal.json5',
+  ],
   postUpgradeTasks: {
-    commands: ['npx prettier@3.2.5 --no-color --write .'],
+    commands: ['npx prettier@3.3.3 --no-color --write .'],
     executionMode: 'branch',
   },
   packageRules: [
@@ -23,45 +26,41 @@
         'conventional-changelog-conventionalcommits',
         'semantic-release',
       ],
-      matchPackagePrefixes: ['@semantic-release/'],
       semanticCommitType: 'build',
     },
     {
       matchFileNames: ['**/*.md'],
-      extends: [
-        'schedule:weekly',
-        'github>bfra-me/renovate-config:automerge.json5',
-      ],
+      addLabels: ['automerge'],
       additionalBranchPrefix: 'docs-',
-      commitMessageTopic: 'references to {{{depName}}}',
-      semanticCommitType: 'docs',
-      semanticCommitScope: null,
-      separateMajorMinor: false,
+      automerge: true,
+      commitMessageTopic: 'references to {{depName}}',
       minimumReleaseAge: null,
+      rebaseWhen: 'behind-base-branch',
+      schedule: ['before 6am on Monday'],
+      semanticCommitScope: null,
+      semanticCommitType: 'docs',
+      separateMajorMinor: false,
     },
   ],
   customManagers: [
     {
       customType: 'regex',
       fileMatch: ['^(README|readme)\\.md$'],
-      matchStrings: ['"github>bfra-me\\/renovate-config#(?<currentValue>.+?)"'],
-      depNameTemplate: 'bfra-me/renovate-config',
+      matchStrings: [
+        '"github>(?<depName>bfra-me\\/renovate-config)#(?<currentValue>.+?)"',
+      ],
       datasourceTemplate: 'github-tags',
     },
     {
       customType: 'regex',
       datasourceTemplate: 'npm',
-      depNameTemplate: 'semantic-release',
-      fileMatch: ['^\\.github\\/(actions|workflows)\\/[^/]+\\.ya?ml$'],
-      matchStrings: ['\\snpx semantic-release@(?<currentValue>.*?)\\s'],
-    },
-    {
-      customType: 'regex',
-      datasourceTemplate: 'npm',
-      depNameTemplate: 'conventional-changelog-conventionalcommits',
-      fileMatch: ['^\\.github\\/(actions|workflows)\\/[^/]+\\.ya?ml$'],
+      fileMatch: [
+        '(^|/)(workflow-templates|\\.(?:github|gitea|forgejo)/(?:workflows|actions))/.+\\.ya?ml$',
+        '(^|/)action\\.ya?ml$',
+      ],
       matchStrings: [
-        '\\snpm install conventional-changelog-conventionalcommits@(?<currentValue>.*?)\\s',
+        '\\snpx (?<depName>.+?)@(?<currentValue>.*?)\\s',
+        '\\snpm install (?<depName>.+?)@(?<currentValue>.*?)\\s',
       ],
     },
     {

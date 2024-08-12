@@ -1,6 +1,9 @@
 {
   "default": {
-    "description": ["Use default group preset settings."],
+    "description": [
+      "[DEPRECATED PRESET: group/default]",
+      "Use default group preset settings."
+    ],
     "extends": [
       "github>bfra-me/renovate-config:group/eslint",
       "github>bfra-me/renovate-config:group/jest",
@@ -20,13 +23,23 @@
         "extends": ["packages:eslint"],
         "groupName": "eslint packages",
         "excludePackageNames": ["eslint-config-next"],
-        "excludePackagePrefixes": ["@typecript-eslint/"]
+        "excludePackagePrefixes": ["@typecript-eslint/", "eslint"],
+        "matchPackageNames": ["eslint"],
+        "matchPackagePrefixes": ["eslint-"]
       },
       {
         "groupName": "eslint packages",
-        "matchPackageNames": ["eslint-config-next"],
-        "matchPackagePrefixes": ["@typecript-eslint/"],
-        "matchUpdateTypes": ["digest", "patch", "minor", "pin"]
+        "matchPackageNames": ["eslint-config-next", "eslint-define-config"],
+        "matchPackagePrefixes": ["@eslint-types/", "@typecript-eslint/"],
+        "matchUpdateTypes": ["digest", "patch", "minor"]
+      },
+      {
+        "groupName": "@eslint-types packages",
+        "matchSourceUrls": [
+          "https://github.com/eslint-types/define-config-plugin-types",
+          "https://github.com/eslint-types/eslint-define-config"
+        ],
+        "matchUpdateTypes": ["major"]
       },
       {
         "groupName": "typescript-eslint monorepo",
@@ -34,6 +47,10 @@
           "https://github.com/typescript-eslint/typescript-eslint"
         ],
         "matchUpdateTypes": ["major"]
+      },
+      {
+        "matchPackageNames": ["eslint-ts-patch"],
+        "ignoreUnstable": false
       }
     ]
   },
@@ -44,7 +61,7 @@
       {
         "groupName": "GitHub Actions",
         "matchManagers": ["github-actions"],
-        "matchUpdateTypes": ["digest", "minor", "patch", "pin"]
+        "matchUpdateTypes": ["digest", "minor", "patch"]
       }
     ]
   },
