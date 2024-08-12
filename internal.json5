@@ -162,7 +162,6 @@
       commitMessageTopic: '{{depName}} preset',
       pinDigests: false,
       rangeStrategy: 'replace',
-      updatePinnedDependencies: false,
     },
     {
       description: 'Exclude broken versions of the `bfra-me/renovate-config` preset.',
@@ -202,7 +201,6 @@
       excludeUpdateTypes: ['major'],
       pinDigests: false,
       rangeStrategy: 'replace',
-      updatePinnedDependencies: false,
     },
   ],
 }
