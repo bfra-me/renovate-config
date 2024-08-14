@@ -17,10 +17,6 @@ name: Renovate
         required: false
         type: boolean
         default: false
-  workflow_run:
-    workflows: ['CI']
-    branches: ['renovate/**']
-    types: [completed]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.number || github.ref }}
@@ -33,7 +29,6 @@ jobs:
   renovate:
     name: Renovate
     if: >-
-      (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push') ||
       (github.event_name != 'issues' && github.event_name != 'pull_request') ||
       (
         contains(join(github.event.*.body, ''), '- [x] <!-- approve-all-pending-prs -->') ||
@@ -79,10 +74,9 @@ jobs:
         with:
           branch: ${{ env.dry_run == 'true' && github.ref_name || '' }}
           cache: ${{ env.cache }}
-          dry_run: ${{ env.dry_run }}
-          log_level: debug
-          print_config: ${{ inputs.print_config }}
-          renovate_app_id: ${{ secrets.APPLICATION_ID }}
-          renovate_app_pem: ${{ secrets.APPLICATION_PRIVATE_KEY }}
-          renovate_app_slug: ${{ github.repository_owner }}
+          dry-run: ${{ env.dry_run }}
+          log-level: debug
+          print-config: ${{ inputs.print_config }}
+          renovate-app-id: ${{ secrets.APPLICATION_ID }}
+          renovate-app-private-key: ${{ secrets.APPLICATION_PRIVATE_KEY }}
     timeout-minutes: 10
