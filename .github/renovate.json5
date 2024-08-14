@@ -29,11 +29,21 @@
       semanticCommitType: 'build',
     },
     {
-      description: 'Pin @bfra-me/renovate-action.',
+      description: 'Keep @bfra-me/renovate-action at the pinned version.',
       matchPackageNames: ['@bfra-me/renovate-action'],
       matchDepTypes: ['action'],
+      matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
       commitMessageTopic: '{{depName}}',
-      rangeStrategy: 'pin',
+      pinDigests: false,
+      updatePinnedDependencies: false,
+    },
+    {
+      description: 'Update @bfra-me/renovate-action to a major version when pinned.',
+      matchPackageNames: ['@bfra-me/renovate-action'],
+      matchDepTypes: ['action'],
+      matchUpdateTypes: ['major'],
+      commitMessageTopic: '{{depName}}',
+      updatePinnedDependencies: true,
     },
     {
       matchFileNames: ['**/*.md'],
