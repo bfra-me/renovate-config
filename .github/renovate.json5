@@ -29,6 +29,13 @@
       semanticCommitType: 'build',
     },
     {
+      description: 'Pin @bfra-me/renovate-action.',
+      matchPackageNames: ['@bfra-me/renovate-action'],
+      matchDepTypes: ['action'],
+      commitMessageTopic: '{{depName}}',
+      rangeStrategy: 'pin',
+    },
+    {
       matchFileNames: ['**/*.md'],
       addLabels: ['automerge'],
       additionalBranchPrefix: 'docs-',
