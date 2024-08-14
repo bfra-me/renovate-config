@@ -152,13 +152,22 @@
       description: 'Group @types/* dependencies together with the npm dependency they are for.',
       matchDatasources: ['npm'],
       matchDepTypes: ['dependencies', 'devDependencies'],
-      matchPackagePrefixes: ['@types/'],
+      matchPackageNames: ['@types/**'],
       groupName: "{{{replace '@types/' '' depName}}}",
     },
     {
       description: 'Add support for @bfra-me Renovate config presets.',
       matchDepNames: ['bfra-me/renovate-config'],
       commitMessageTopic: '{{depName}} preset',
+    },
+    {
+      description: 'Pin digests of @bfra-me GitHub actions, reusable workflows, and Renovate config presets to SemVer versions.',
+      matchDatasources: ['github-tags'],
+      matchPackageNames: ['@bfra.me/**', 'bfra-me/**'],
+      extractVersion: '^(?<version>v\\d+\\.\\d+\\.\\d+)$',
+      pinDigests: true,
+      rangeStrategy: 'replace',
+      versioning: 'regex:^v?(?<major>\\d+)(\\.(?<minor>\\d+)\\.(?<patch>\\d+))?$',
     },
     {
       description: 'Exclude broken versions of the `bfra-me/renovate-config` preset.',
@@ -172,13 +181,13 @@
     },
     {
       description: ['Disable patch updates except for @bfra-me packages.'],
-      excludePackagePrefixes: ['@bfra.me/', 'bfra-me/'],
+      excludePackageNames: ['@bfra.me/**', 'bfra-me/**'],
       matchUpdateTypes: ['patch'],
       enabled: false,
     },
     {
       description: 'Automerge `minor` and `patch` update types of @bfra-me packages.',
-      matchPackagePrefixes: ['@bfra.me/', 'bfra-me/'],
+      matchPackageNames: ['@bfra.me/**', 'bfra-me/**'],
       matchUpdateTypes: ['minor', 'patch'],
       addLabels: ['automerge'],
       automerge: true,
@@ -187,7 +196,7 @@
     },
     {
       description: 'Remove minimum release age config for bfra.me packages.',
-      matchPackagePrefixes: ['@bfra.me/', 'bfra-me/'],
+      matchPackageNames: ['@bfra.me/**', 'bfra-me/**'],
       minimumReleaseAge: null,
       prNotPendingHours: 0,
     },
