@@ -158,10 +158,7 @@
     {
       description: 'Add support for @bfra-me Renovate config presets.',
       matchDepNames: ['bfra-me/renovate-config'],
-      excludeUpdateTypes: ['major'],
       commitMessageTopic: '{{depName}} preset',
-      pinDigests: false,
-      rangeStrategy: 'replace',
     },
     {
       description: 'Exclude broken versions of the `bfra-me/renovate-config` preset.',
@@ -193,14 +190,6 @@
       matchPackagePrefixes: ['@bfra.me/', 'bfra-me/'],
       minimumReleaseAge: null,
       prNotPendingHours: 0,
-    },
-    {
-      description: 'Disable digest pinning for @bfra-me GitHub actions and reusable workflows.',
-      matchDepTypes: ['action'],
-      matchPackagePrefixes: ['@bfra.me/', 'bfra-me/'],
-      excludeUpdateTypes: ['major'],
-      pinDigests: false,
-      rangeStrategy: 'replace',
     },
   ],
 }
