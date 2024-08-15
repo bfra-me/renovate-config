@@ -35,7 +35,6 @@
       commitMessageTopic: '{{depName}}',
       pinDigests: false,
       rangeStrategy: 'pin',
-      updatePinnedDependencies: false,
     },
     {
       matchFileNames: ['**/*.md'],
