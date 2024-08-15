@@ -33,7 +33,9 @@
       matchPackageNames: ['bfra-me/renovate-action'],
       matchDepTypes: ['action'],
       commitMessageTopic: '{{depName}}',
+      pinDigests: false,
       rangeStrategy: 'pin',
+      updatePinnedDependencies: false,
     },
     {
       matchFileNames: ['**/*.md'],
