@@ -43,6 +43,7 @@
       matchDepTypes: ['action'],
       matchUpdateTypes: ['major'],
       commitMessageTopic: '{{depName}}',
+      pinDigests: false,
       updatePinnedDependencies: true,
     },
     {
