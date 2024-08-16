@@ -139,7 +139,7 @@
       matchManagers: ['github-actions'],
       automergeType: 'pr',
       prCreation: 'immediate',
-      rebaseWhen: 'conflicted',
+      rebaseWhen: 'behind-base-branch',
     },
     {
       description: 'Group npm dependencies by name.',
