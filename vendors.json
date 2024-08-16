@@ -36,6 +36,10 @@
         "customType": "regex",
         "datasourceTemplate": "npm",
         "fileMatch": [
+          "(^|/)(workflow-templates|\\.(?:github|gitea|forgejo)/(?:workflows|actions))/.+\\.ya?ml$",
+          "(^|/)action\\.ya?ml$",
+          "(^|/|\\.)([Dd]ocker|[Cc]ontainer)file$",
+          "(^|/)([Dd]ocker|[Cc]ontainer)file[^/]*$",
           "^renovate\\.json5?$",
           "^\\.github\\/renovate\\.json5?$",
           "^\\.gitlab\\/renovate\\.json5?$",
