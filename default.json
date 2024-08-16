@@ -19,12 +19,6 @@
       "matchDatasources": ["npm"],
       "extends": ["npm:unpublishSafe"],
       "prNotPendingHours": 73
-    },
-    {
-      "description": "Remove 'v' prefix from `regex` manager version strings",
-      "matchManagers": ["regex"],
-      "extractVersion": "^?v?(?<version>\\d+\\.\\d+\\.\\d+)$",
-      "versioning": "regex:^v?(?<major>\\d+)(\\.(?<minor>\\d+)\\.(?<patch>\\d+))?$"
     }
   ],
   "customManagers": [
