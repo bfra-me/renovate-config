@@ -61,4 +61,7 @@
       datasourceTemplate: 'github-tags',
     },
   ],
+  automergeType: 'pr',
+  prCreation: 'not-pending',
+  rebaseWhen: 'behind-base-branch',
 }
