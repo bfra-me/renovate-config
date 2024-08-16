@@ -28,9 +28,9 @@
           "^\\.renovaterc$"
         ],
         "matchStrings": [
-          "[\"']github>(?<depName>bfra-me\\/renovate-config)(?:(?::|\\/\\/)(?<path>.+?))?#(?<currentValue>.+?)[\"']"
+          "[\"']?github>(?<depName>bfra-me\\/renovate-config)(?:(?::|\\/\\/)(?<path>.+?))?#(?<currentValue>[^\\s\"']+)[\"']?"
         ],
-        "versioningTemplate": "docker"
+        "versioningTemplate": "regex:^v?(?<major>\\d+)(\\.(?<minor>\\d+)\\.(?<patch>\\d+))?$"
       },
       {
         "customType": "regex",

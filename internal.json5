@@ -161,9 +161,10 @@
       commitMessageTopic: '{{depName}} preset',
     },
     {
-      description: 'Pin digests of @bfra-me GitHub actions, reusable workflows, and Renovate config presets to SemVer versions.',
+      description: 'Pin digests of @bfra-me GitHub actions and reusable workflows to SemVer versions.',
       matchDatasources: ['github-tags'],
       matchPackageNames: ['@bfra.me/**', 'bfra-me/**'],
+      excludePackageNames: ['bfra-me/renovate-config'],
       extractVersion: '^(?<version>v\\d+\\.\\d+\\.\\d+)$',
       pinDigests: true,
       rangeStrategy: 'replace',
