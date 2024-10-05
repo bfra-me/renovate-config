@@ -52,6 +52,13 @@
         ],
         "versioningTemplate": "loose"
       }
+    ],
+    "packageRules": [
+      {
+        "description": "Add support for @bfra-me Renovate config presets.",
+        "matchDepNames": ["bfra-me/renovate-config"],
+        "commitMessageTopic": "{{depName}} preset"
+      }
     ]
   },
 
