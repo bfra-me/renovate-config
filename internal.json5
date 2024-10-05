@@ -3,11 +3,6 @@
   description: 'Internal Renovate configuration for @bfra-me.',
 
   extends: [
-    // Group types before specific package groups.
-    'github>bfra-me/renovate-config:group/types',
-
-    'github>bfra-me/renovate-config:group/eslint',
-    'github>bfra-me/renovate-config:group/jest',
     'github>bfra-me/renovate-config:group/octokit',
     'github>bfra-me/renovate-config:group/prettier',
     'github>bfra-me/renovate-config:group/react',
@@ -138,33 +133,16 @@
       description: 'Automerge GitHub Actions as PRs.',
       matchManagers: ['github-actions'],
       automergeType: 'pr',
-      prCreation: 'immediate',
-      rebaseWhen: 'behind-base-branch',
-    },
-    {
-      description: 'Group npm dependencies by name.',
-      matchDatasources: ['npm'],
-      matchDepTypes: ['dependencies', 'devDependencies'],
-      excludePackagePrefixes: ['@types/'],
-      groupName: '{{depName}}',
-    },
-    {
-      description: 'Group @types/* dependencies together with the npm dependency they are for.',
-      matchDatasources: ['npm'],
-      matchDepTypes: ['dependencies', 'devDependencies'],
-      matchPackageNames: ['@types/**'],
-      groupName: "{{{replace '@types/' '' depName}}}",
-    },
-    {
-      description: 'Add support for @bfra-me Renovate config presets.',
-      matchDepNames: ['bfra-me/renovate-config'],
-      commitMessageTopic: '{{depName}} preset',
+      rebaseWhen: 'auto',
     },
     {
       description: 'Pin digests of @bfra-me GitHub actions and reusable workflows to SemVer versions.',
       matchDatasources: ['github-tags'],
-      matchPackageNames: ['@bfra.me/**', 'bfra-me/**'],
-      excludePackageNames: ['bfra-me/renovate-config'],
+      matchPackageNames: [
+        '@bfra.me/**',
+        'bfra-me/**',
+        '!bfra-me/renovate-config',
+      ],
       extractVersion: '^(?<version>v\\d+\\.\\d+\\.\\d+)$',
       pinDigests: true,
       rangeStrategy: 'replace',
@@ -172,7 +150,7 @@
     },
     {
       description: 'Exclude broken versions of the `bfra-me/renovate-config` preset.',
-      matchDepNames: ['bfra-me/renovate-config'],
+      matchPackageNames: ['bfra-me/renovate-config'],
       allowedVersions: '>=v3.4.6',
     },
     {
@@ -193,7 +171,7 @@
       addLabels: ['automerge'],
       automerge: true,
       dependencyDashboardApproval: false,
-      rebaseWhen: 'behind-base-branch',
+      rebaseWhen: 'auto',
     },
     {
       description: 'Remove minimum release age config for bfra.me packages.',
