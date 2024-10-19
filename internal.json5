@@ -133,11 +133,6 @@
       automergeType: 'pr',
     },
     {
-      description: 'Enable platform automerge feature for @bfra-me organization repositories.',
-      matchRepositories: ['bfra-me/**'],
-      platformAutomerge: true,
-    },
-    {
       description: 'Automerge `minor` and `patch` update types of @bfra-me packages.',
       matchPackageNames: ['@bfra.me/**', 'bfra-me/**'],
       matchUpdateTypes: ['minor', 'patch'],
