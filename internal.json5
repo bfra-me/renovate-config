@@ -47,7 +47,7 @@
     commitMessageAction: 'rollback',
   },
 
-  ignorePresets: [':ignoreModulesAndTests'],
+  ignorePresets: [':ignoreModulesAndTests', 'docker:pinDigests'],
   ignorePaths: [
     '**/node_modules/**',
     '**/bower_components/**',
@@ -115,17 +115,6 @@
       matchUpdateTypes: ['minor', 'patch'],
       addLabels: ['automerge'],
       automerge: true,
-    },
-    {
-      description: 'Pin GitHub Action digests to SemVer versions.',
-      matchDepTypes: ['action'],
-      excludeDepPatterns: [
-        '^elstudio/actions-settings(\\/.*)?$',
-        '^exivity/actions(\\/.*)?$',
-      ],
-      extractVersion: '^(?<version>v?\\d+(\\.\\d+\\.\\d+)?)$',
-      pinDigests: true,
-      versioning: 'regex:^v?(?<major>\\d+)(\\.(?<minor>\\d+)\\.(?<patch>\\d+))?$',
     },
     {
       description: 'Automerge GitHub Actions as PRs.',
