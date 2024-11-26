@@ -5,7 +5,7 @@
     'github>bfra-me/renovate-config:internal.json5',
   ],
   postUpgradeTasks: {
-    commands: ['npx prettier@3.3.3 --no-color --write .'],
+    commands: ['npx prettier@3.4.0 --no-color --write .'],
     executionMode: 'branch',
   },
   packageRules: [
