@@ -44,14 +44,14 @@ jobs:
       log_level: ${{ inputs.log-level || 'debug' }}
       path_filters: >-
         [
-          '.github/workflows/renovate.yaml'
-          '.github/renovate.json5'
-          'automerge.json5?'
-          'default.json'
-          'group.json'
-          'internal.json5'
-          'maintenance.json'
-          'replacements.json5?'
+          '.github/workflows/renovate.yaml',
+          '.github/renovate.json5',
+          'automerge.json5?',
+          'default.json',
+          'group.json',
+          'internal.json5',
+          'maintenance.json',
+          'replacements.json5?',
           'vendors.json',
         ]
       print_config: ${{ inputs.print-config || false }}
