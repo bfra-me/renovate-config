@@ -3,10 +3,11 @@
   description: 'Internal Renovate configuration for @bfra-me.',
 
   extends: [
+    'github>microsoft/m365-renovate-config:groupTypes#v2.6.1',
     'github>bfra-me/renovate-config:group/octokit',
     'github>bfra-me/renovate-config:group/prettier',
-    'github>bfra-me/renovate-config:group/react',
-    'github>bfra-me/renovate-config:group/rollup',
+    'github>microsoft/m365-renovate-config:groupReact#v2.6.1',
+    'github>microsoft/m365-renovate-config:groupRollup#v2.6.1',
     'github>bfra-me/renovate-config:group/vite',
     'github>bfra-me/renovate-config:maintenance/security',
     'github>bfra-me/renovate-config:maintenance/weeklyLockFileUpdates',
