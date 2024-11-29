@@ -25,6 +25,7 @@
       matchPackageNames: [
         'conventional-changelog-conventionalcommits',
         'semantic-release',
+        'semantic-release-export-data',
       ],
       semanticCommitType: 'build',
     },
@@ -34,13 +35,13 @@
       matchDepTypes: ['action'],
       commitMessageTopic: '{{depName}}',
       rangeStrategy: 'pin',
-      updatePinnedDependencies: false,
     },
     {
       matchFileNames: ['**/*.md'],
       addLabels: ['automerge'],
       additionalBranchPrefix: 'docs-',
       automerge: true,
+      platformAutomerge: true,
       commitMessageTopic: 'references to {{depName}}',
       minimumReleaseAge: null,
       pinDigests: false,

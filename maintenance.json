@@ -59,6 +59,7 @@
       "enabled": true,
       "addLabels": ["automerge", "scheduled"],
       "automerge": true,
+      "platformAutomerge": true,
       "rebaseWhen": "behind-base-branch",
       "schedule": ["before 3am on Monday"],
       "prBodyDefinitions": {
