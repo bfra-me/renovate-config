@@ -108,7 +108,7 @@
     "packageRules": [
       {
         "groupName": "Octokit packages",
-        "matchSourceUrlPrefixes": ["https://github.com/octokit/"]
+        "matchSourceUrls": ["https://github.com/octokit/*"]
       }
     ]
   },
@@ -118,8 +118,7 @@
     "packageRules": [
       {
         "groupName": "Prettier packages",
-        "matchPackageNames": ["prettier"],
-        "matchPackagePatterns": ["^@prettier\\/", "^prettier-plugin-"]
+        "matchPackageNames": ["prettier", "@prettier/*", "prettier-plugin-*"]
       }
     ]
   },
@@ -191,7 +190,7 @@
         "description": "All Vite related packages",
         "groupName": "Vite packages",
         "matchDatasources": ["npm"],
-        "matchPackagePatterns": ["^vite$", "vite-plugin", "@vitejs"]
+        "matchPackageNames": ["vite", "vite-plugin*", "@vitejs/*"]
       }
     ]
   }
