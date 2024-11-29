@@ -109,6 +109,7 @@
       matchUpdateTypes: ['digest', 'patch', 'pinDigest'],
       addLabels: ['automerge'],
       automerge: true,
+      platformAutomerge: true,
     },
     {
       description: 'Automerge `minor` and `patch` update types (except unstable versions, e.g., `0.x`).',
@@ -116,6 +117,7 @@
       matchUpdateTypes: ['minor', 'patch'],
       addLabels: ['automerge'],
       automerge: true,
+      platformAutomerge: true,
     },
     {
       description: 'Automerge GitHub Actions as PRs.',
@@ -128,6 +130,7 @@
       matchUpdateTypes: ['minor', 'patch'],
       addLabels: ['automerge'],
       automerge: true,
+      platformAutomerge: true,
       dependencyDashboardApproval: false,
     },
     {
