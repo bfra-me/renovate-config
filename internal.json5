@@ -17,7 +17,6 @@
   timezone: 'America/Phoenix',
   updateNotScheduled: true,
 
-  transitiveRemediation: true,
   postUpdateOptions: [
     'gomodTidy',
     'npmDedupe',
