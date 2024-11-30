@@ -48,7 +48,7 @@
     commitMessageAction: 'rollback',
   },
 
-  ignorePresets: [':ignoreModulesAndTests', 'docker:pinDigests'],
+  ignorePresets: [':ignoreModulesAndTests'],
   ignorePaths: [
     '**/node_modules/**',
     '**/bower_components/**',
@@ -105,8 +105,8 @@
       excludePackagePrefixes: ['@bfra.me/', 'bfra-me/'],
     },
     {
-      description: 'Automerge `digest`, `patch`, and `pinDigest` update types.',
-      matchUpdateTypes: ['digest', 'patch', 'pinDigest'],
+      description: 'Automerge `patch`, and `pin` update types.',
+      matchUpdateTypes: ['digest', 'patch', 'pin'],
       addLabels: ['automerge'],
       automerge: true,
       platformAutomerge: true,
