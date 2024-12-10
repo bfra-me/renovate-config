@@ -30,8 +30,8 @@
       semanticCommitType: 'build',
     },
     {
-      description: 'Keep @bfra-me/renovate-action at the pinned version.',
-      matchPackageNames: ['bfra-me/renovate-action'],
+      description: 'Keep @bfra-me actions at the pinned version.',
+      matchPackageNames: ['bfra-me/**'],
       matchDepTypes: ['action'],
       commitMessageTopic: '{{depName}}',
       rangeStrategy: 'pin',
