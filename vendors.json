@@ -61,7 +61,8 @@
         "description": "Group packages from @bfra-me/works monorepo together.",
         "matchSourceUrls": ["https://github.com/bfra-me/works"],
         "matchUpdateTypes": ["digest", "patch", "minor", "major"],
-        "groupName": "bfra-me/works monorepo"
+        "groupName": "bfra-me/works monorepo",
+        "groupSlug": "bfra-me-works-monorepo"
       }
     ]
   },
