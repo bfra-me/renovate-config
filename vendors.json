@@ -1,6 +1,5 @@
 {
   "default": {},
-
   "bfra.me-disableDigestPinning": {
     "packageRules": [
       {
@@ -12,7 +11,6 @@
       }
     ]
   },
-
   "bfra.me": {
     "description": "Update dependencies for @bfra-me.",
     "customManagers": [
@@ -58,10 +56,15 @@
         "description": "Add support for @bfra-me Renovate config presets.",
         "matchDepNames": ["bfra-me/renovate-config"],
         "commitMessageTopic": "{{depName}} preset"
+      },
+      {
+        "description": "Group packages from @bfra-me/works monorepo together.",
+        "matchSourceUrls": ["https://github.com/bfra-me/works"],
+        "matchUpdateTypes": ["digest", "patch", "minor", "major"],
+        "groupName": "bfra-me/works monorepo"
       }
     ]
   },
-
   "elstudio": {
     "description": "Update @elstudio/actions-settings digests in GitHub actions and workflows.",
     "customManagers": [
@@ -93,7 +96,6 @@
       }
     ]
   },
-
   "exivity": {
     "description": "Update @exivity/actions digests in GitHub actions and workflows.",
     "packageRules": [
