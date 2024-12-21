@@ -1,0 +1,21 @@
+{
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  description: 'Add PR labels.',
+  addLabels: ['dependencies'],
+  dotnet: {
+    addLabels: ['.NET'],
+  },
+  'github-actions': {
+    addLabels: ['github-actions'],
+  },
+  js: {
+    addLabels: ['javascript'],
+  },
+  'pre-commit': {
+    addLabels: ['pre-commit'],
+    enabled: true,
+  },
+  python: {
+    addLabels: ['python'],
+  },
+}
