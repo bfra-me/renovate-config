@@ -9,6 +9,7 @@
     'github>microsoft/m365-renovate-config:groupReact#v2.6.1',
     'github>microsoft/m365-renovate-config:groupRollup#v2.6.1',
     'github>bfra-me/renovate-config:group/vite',
+    'github>bfra-me/renovate-config:labels.json5',
     'github>bfra-me/renovate-config:maintenance/security',
     'github>bfra-me/renovate-config:maintenance/weeklyLockFileUpdates',
     'github>bfra-me/renovate-config:vendors/elstudio',
