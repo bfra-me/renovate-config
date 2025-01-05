@@ -139,5 +139,17 @@
       minimumReleaseAge: null,
       prNotPendingHours: 0,
     },
+    {
+      matchDepTypes: ['config'],
+      semanticCommitScope: 'config',
+    },
+    {
+      matchDepTypes: ['dev-dependencies', 'devDependencies'],
+      semanticCommitScope: 'dev',
+    },
+    {
+      matchDepTypes: ['engines'],
+      semanticCommitScope: 'engines',
+    },
   ],
 }
