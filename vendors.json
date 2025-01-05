@@ -17,6 +17,7 @@
       {
         "customType": "regex",
         "datasourceTemplate": "github-tags",
+        "depTypeTemplate": "config",
         "extractVersionTemplate": "^(?<version>v?\\d+(\\.\\d+\\.\\d+)?)$",
         "fileMatch": [
           "^renovate\\.json5?$",
