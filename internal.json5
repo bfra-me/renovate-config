@@ -83,6 +83,11 @@
 
   packageRules: [
     {
+      description: 'Pin Jiti to < 2.2.0.',
+      matchDepNames: ['jiti'],
+      allowedVersions: '<2.2.0',
+    },
+    {
       description: 'Require dependency dashboard approval for major updates.',
       matchUpdateTypes: ['major'],
       dependencyDashboardApproval: true,
