@@ -41,8 +41,8 @@ jobs:
     secrets: inherit
     uses: bfra-me/.github/.github/workflows/renovate.yaml@50651078befe0bc504e47cf5041c6428ab50fd60 # v4.0.1
     with:
-      log_level: ${{ inputs.log-level || 'debug' }}
-      path_filters: >-
+      log-level: ${{ inputs.log-level || 'debug' }}
+      path-filters: >-
         [
           '.github/workflows/renovate.yaml',
           '.github/renovate.json5',
@@ -54,4 +54,4 @@ jobs:
           'replacements.json5?',
           'vendors.json',
         ]
-      print_config: ${{ inputs.print-config || false }}
+      print-config: ${{ inputs.print-config || false }}
