@@ -55,7 +55,7 @@
   customManagers: [
     {
       customType: 'regex',
-      fileMatch: ['^(README|readme)\\.md$'],
+      managerFilePatterns: ['^(README|readme)\\.md$'],
       matchStrings: [
         '"github>(?<depName>bfra-me\\/renovate-config)#(?<currentValue>.+?)"',
       ],
