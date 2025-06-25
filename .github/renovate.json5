@@ -30,11 +30,11 @@
       semanticCommitType: 'build',
     },
     {
-      description: 'Keep @bfra-me actions at the pinned version.',
+      description: 'Disable Dependency Dashboard approval for @bfra-me actions.',
       matchPackageNames: ['bfra-me/**'],
       matchDepTypes: ['action'],
       commitMessageTopic: '{{depName}}',
-      rangeStrategy: 'pin',
+      dependencyDashboardApproval: false,
     },
     {
       matchFileNames: ['**/*.md'],
