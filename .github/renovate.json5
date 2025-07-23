@@ -5,7 +5,7 @@
     'github>bfra-me/renovate-config:internal.json5',
   ],
   postUpgradeTasks: {
-    commands: ['npx prettier@3.3.3 --no-color --write .'],
+    commands: ['npx prettier@3.6.2 --no-color --write .'],
     executionMode: 'branch',
   },
   packageRules: [
@@ -25,16 +25,26 @@
       matchPackageNames: [
         'conventional-changelog-conventionalcommits',
         'semantic-release',
+        'semantic-release-export-data',
       ],
       semanticCommitType: 'build',
+    },
+    {
+      description: 'Disable Dependency Dashboard approval for @bfra-me actions.',
+      matchPackageNames: ['bfra-me/**'],
+      matchDepTypes: ['action'],
+      commitMessageTopic: '{{depName}}',
+      dependencyDashboardApproval: false,
     },
     {
       matchFileNames: ['**/*.md'],
       addLabels: ['automerge'],
       additionalBranchPrefix: 'docs-',
       automerge: true,
+      platformAutomerge: true,
       commitMessageTopic: 'references to {{depName}}',
       minimumReleaseAge: null,
+      pinDigests: false,
       rebaseWhen: 'behind-base-branch',
       schedule: ['before 6am on Monday'],
       semanticCommitScope: null,
@@ -45,31 +55,13 @@
   customManagers: [
     {
       customType: 'regex',
-      fileMatch: ['^(README|readme)\\.md$'],
+      managerFilePatterns: ['^(README|readme)\\.md$'],
       matchStrings: [
         '"github>(?<depName>bfra-me\\/renovate-config)#(?<currentValue>.+?)"',
       ],
       datasourceTemplate: 'github-tags',
     },
-    {
-      customType: 'regex',
-      datasourceTemplate: 'npm',
-      fileMatch: [
-        '(^|/)(workflow-templates|\\.(?:github|gitea|forgejo)/(?:workflows|actions))/.+\\.ya?ml$',
-        '(^|/)action\\.ya?ml$',
-      ],
-      matchStrings: [
-        '\\snpx (?<depName>.+?)@(?<currentValue>.*?)\\s',
-        '\\snpm install (?<depName>.+?)@(?<currentValue>.*?)\\s',
-      ],
-    },
-    {
-      customType: 'regex',
-      datasourceTemplate: 'npm',
-      fileMatch: ['^\\.github\\/renovate\\.json5$'],
-      matchStrings: [
-        'npx\\s+(?<depName>prettier)(?:@(?<currentValue>\\d+\\.\\d+\\.\\d+))?',
-      ],
-    },
   ],
+  automergeType: 'pr',
+  prCreation: 'not-pending',
 }

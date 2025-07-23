@@ -15,7 +15,7 @@ This repository contains [Renovate](https://renovatebot.com/) configuration pres
 
 ```json
 {
-  "extends": ["github>bfra-me/renovate-config#v3.7.7"]
+  "extends": ["github>bfra-me/renovate-config#v3.14.6"]
 }
 ```
 

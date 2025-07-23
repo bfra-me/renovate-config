@@ -6,29 +6,24 @@
     'config:recommended',
     ':semanticCommits',
     ':automergeRequireAllStatusChecks',
+    'docker:enableMajor',
+    'docker:pinDigests',
     'mergeConfidence:age-confidence-badges',
-    'github>bfra-me/renovate-config:replacements.json5',
-    'github>bfra-me/renovate-config:vendors/bfra.me',
-
-    // Group types before specific package groups.
-    'github>bfra-me/renovate-config:group/types',
-
-    'github>bfra-me/renovate-config:group/eslint',
-    'github>bfra-me/renovate-config:group/jest',
-    'github>bfra-me/renovate-config:group/octokit',
-    'github>bfra-me/renovate-config:group/prettier',
-    'github>bfra-me/renovate-config:group/react',
-    'github>bfra-me/renovate-config:group/rollup',
-    'github>bfra-me/renovate-config:group/vite',
-    'github>bfra-me/renovate-config:maintenance/security',
-    'github>bfra-me/renovate-config:maintenance/weeklyLockFileUpdates',
-    'github>bfra-me/renovate-config:vendors/elstudio',
+    'bfra-me/renovate-config:replacements.json5',
+    'bfra-me/renovate-config:labels.json5',
+    'bfra-me/renovate-config//maintenance/security.json5',
+    'bfra-me/renovate-config//maintenance/weeklyLockFileUpdates.json5',
+    'github>microsoft/m365-renovate-config:groupTypes#v2.6.1',
+    'github>microsoft/m365-renovate-config:groupReact#v2.6.1',
+    'github>microsoft/m365-renovate-config:groupRollup#v2.6.1',
+    'bfra-me/renovate-config//group/prettier.json5',
+    'group:vite',
+    'bfra-me/renovate-config//vendors/elstudio.json5',
   ],
 
   timezone: 'America/Phoenix',
   updateNotScheduled: true,
 
-  transitiveRemediation: true,
   postUpdateOptions: [
     'gomodTidy',
     'npmDedupe',
@@ -74,164 +69,76 @@
 
   addLabels: ['dependencies', 'renovate', '{{depType}}', '{{updateType}}'],
 
-  // TODO: Renovate does not preserve JSON5 config files
-  configMigration: false,
-  configWarningReuseIssue: false,
+  configMigration: true,
 
-  dependencyDashboardTitle: 'Renovate Dashboard',
+  dependencyDashboardTitle: '📦 Dependency Dashboard',
 
   prConcurrentLimit: 5,
   prCreation: 'not-pending',
   prHourlyLimit: 0,
-  rebaseWhen: 'behind-base-branch',
-  recreateClosed: true,
 
   assigneesFromCodeOwners: true,
-  assigneesSampleSize: 1,
+  assigneesSampleSize: 2,
   reviewersFromCodeOwners: true,
-  reviewersSampleSize: 1,
+  reviewersSampleSize: 2,
 
-  packageRules: [
-    {
-      description: 'Delay updates until npm packages are safe from unpublishing.',
-      matchDatasources: ['npm'],
-      extends: ['npm:unpublishSafe'],
-      prNotPendingHours: 73,
-    },
-    {
-      description: 'Enable major version updates for Docker images and pin digests in Dockerfiles and docker-compose.yml',
-      extends: ['docker:enableMajor', 'docker:pinDigests'],
-      matchManagers: ['dockerfile', 'docker-compose'],
-    },
-    {
-      description: 'Require dependency dashboard approval for major updates.',
-      matchUpdateTypes: ['major'],
-      dependencyDashboardApproval: true,
-    },
-    {
-      description: 'Require approval for minor updates of specific packages',
-      matchPackageNames: ['go', 'python', 'typescript'],
-      matchUpdateTypes: ['minor'],
-      dependencyDashboardApproval: true,
-    },
-    {
-      description: 'Require approval for minor updates of unstable packages (version is 0.x).',
-      matchCurrentVersion: '/^v?0/',
-      matchUpdateTypes: ['minor'],
-      dependencyDashboardApproval: true,
-      excludePackageNames: ['lucide-react'],
-      excludePackagePrefixes: ['@bfra.me/', 'bfra-me/'],
-    },
-    {
-      description: 'Automerge `digest`, `patch`, and `pinDigest` update types.',
-      matchUpdateTypes: ['digest', 'patch', 'pinDigest'],
-      addLabels: ['automerge'],
-      automerge: true,
-      rebaseWhen: 'behind-base-branch',
-    },
-    {
-      description: 'Automerge `minor` and `patch` update types (except unstable versions, e.g., `0.x`).',
-      matchCurrentVersion: '!/^v?0/',
-      matchUpdateTypes: ['minor', 'patch'],
-      addLabels: ['automerge'],
-      automerge: true,
-      rebaseWhen: 'behind-base-branch',
-    },
-    {
-      description: 'Pin GitHub Action digests to SemVer versions.',
-      matchDepTypes: ['action'],
-      extractVersion: '^(?<version>v?\\d+(\\.\\d+\\.\\d+)?)$',
-      pinDigests: true,
-      versioning: 'regex:^v?(?<major>\\d+)(\\.(?<minor>\\d+)\\.(?<patch>\\d+))?$',
-    },
-    {
-      description: 'Automerge GitHub Actions as PRs.',
-      matchManagers: ['github-actions'],
-      automergeType: 'pr',
-      prCreation: 'immediate',
-      rebaseWhen: 'behind-base-branch',
-    },
-    {
-      description: 'Group npm dependencies by name.',
-      matchDatasources: ['npm'],
-      matchDepTypes: ['dependencies', 'devDependencies'],
-      excludePackageNames: ['@types/**'],
-      groupName: '{{depName}}',
-    },
-    {
-      description: 'Group @types/* dependencies together with the npm dependency they are for.',
-      matchDatasources: ['npm'],
-      matchDepTypes: ['dependencies', 'devDependencies'],
-      matchPackageNames: ['@types/**'],
-      groupName: "{{{replace '@types/' '' depName}}}",
-    },
-    {
-      description: 'Add support for @bfra-me Renovate config presets.',
-      matchDepNames: ['bfra-me/renovate-config'],
-      excludeUpdateTypes: ['major'],
-      commitMessageTopic: '{{depName}} preset',
-      pinDigests: false,
-      rangeStrategy: 'replace',
-    },
-    {
-      description: 'Exclude broken versions of the `bfra-me/renovate-config` preset.',
-      matchDepNames: ['bfra-me/renovate-config'],
-      allowedVersions: '>=v3.4.6',
-    },
-    {
-      description: 'Enable platform automerge feature for @bfra-me organization repositories.',
-      matchRepositories: ['bfra-me/**'],
-      platformAutomerge: true,
-    },
-    {
-      description: ['Disable patch updates except for @bfra-me packages.'],
-      excludePackageNames: ['@bfra.me/**', 'bfra-me/**'],
-      matchUpdateTypes: ['patch'],
-      enabled: false,
-    },
-    {
-      description: 'Automerge `minor` and `patch` update types of @bfra-me packages.',
-      matchPackageNames: ['@bfra.me/**', 'bfra-me/**'],
-      matchUpdateTypes: ['minor', 'patch'],
-      addLabels: ['automerge'],
-      automerge: true,
-      dependencyDashboardApproval: false,
-      rebaseWhen: 'behind-base-branch',
-    },
-    {
-      description: 'Remove minimum release age config for bfra.me packages.',
-      matchPackageNames: ['@bfra.me/**', 'bfra-me/**'],
-      minimumReleaseAge: null,
-      prNotPendingHours: 0,
-    },
-  ],
   customManagers: [
     {
       customType: 'regex',
-      description: 'Update `version` and <*>`_VERSION` values in GitHub Actions and workflows.',
-      fileMatch: [
-        '^action\\.ya?ml$',
-        '^\\.github\\/(actions|workflows)\\/[^/]+\\.ya?ml$',
+      description: [
+        'Update npm packages in container files, GitHub actions, workflows, and Renovate config presets.',
+      ],
+      datasourceTemplate: 'npm',
+      managerFilePatterns: [
+        '(^|/)(workflow-templates|\\.(?:github|gitea|forgejo)/(?:workflows|actions))/.+\\.ya?ml$',
+        '(^|/)action\\.ya?ml$',
+        '(^|/|\\.)([Dd]ocker|[Cc]ontainer)file$',
+        '(^|/)([Dd]ocker|[Cc]ontainer)file[^/]*$',
+        '^renovate\\.json5?$',
+        '^\\.github\\/renovate\\.json5?$',
+        '^\\.gitlab\\/renovate\\.json5?$',
+        '^\\.renovaterc\\.json5?$',
+        '^\\.renovaterc$',
       ],
       matchStrings: [
-        '\\s+version: (?<currentValue>.+?) # renovate: datasource=(?<datasource>.+?) depName=(?<depName>.+?)(?: (?:packageName|lookupName)=(?<packageName>.+?))?(?: versioning=(?<versioning>.+?))?\\s',
-        '\\s*[A-Z0-9_]+?_VERSION: (?<currentValue>.+?) # renovate: datasource=(?<datasource>.+?) depName=(?<depName>.+?)(?: (?:packageName|lookupName)=(?<packageName>.+?))?(?: versioning=(?<versioning>.+?))?\\s',
+        '\\s*npx\\s+(?<depName>.+?)@(?<currentValue>[a-z0-9.-]+)',
+        '\\s*npm\\s+install\\s+(?:-(?:g|-global)\\s+)?(?<depName>.+?)@(?<currentValue>[a-z0-9.-]+)',
+      ],
+      versioningTemplate: 'loose',
+    },
+    {
+      customType: 'regex',
+      description: [
+        'Update `version` and <*>`_VERSION` values in GitHub Actions and workflows.',
+      ],
+      managerFilePatterns: [
+        '(^|/)action\\.ya?ml$',
+        '(^|/)(workflow-templates|\\.(?:github|gitea|forgejo)/(?:workflows|actions))/.+\\.ya?ml$',
+      ],
+      matchStrings: [
+        '\\s+version: (?<currentValue>.+?) # renovate: datasource=(?<datasource>.+?)(?: depName=(?<depName>.+?))?(?: (?:packageName|lookupName)=(?<packageName>.+?))?(?: versioning=(?<versioning>[^\\s]+?))?\\s',
+        '\\s*[A-Z0-9_]+?_VERSION: (?<currentValue>.+?) # renovate: datasource=(?<datasource>.+?)(?: depName=(?<depName>.+?))?(?: (?:packageName|lookupName)=(?<packageName>.+?))?(?: versioning=(?<versioning>[^\\s]+?))?\\s',
       ],
     },
     {
       customType: 'regex',
-      description: 'Update `install-`<*> Buildpack commands and <*>`_VERSION` values in Dockerfiles.',
-      fileMatch: ['(^|/|\\.)Dockerfile$', '(^|/)Dockerfile\\.[^/]*$'],
+      description: [
+        'Update `install-`<*> Buildpack commands and <*>`_VERSION` values in Dockerfiles.',
+      ],
+      managerFilePatterns: [
+        '(^|/|\\.)([Dd]ocker|[Cc]ontainer)file$',
+        '(^|/)([Dd]ocker|[Cc]ontainer)file[^/]*$',
+      ],
       matchStrings: [
-        '# renovate: datasource=(?<datasource>.+?) depName=(?<depName>.+?)(?: (?:packageName|lookupName)=(?<packageName>.+?))?(?: versioning=(?<versioning>.+?))?\\s(?:ENV|ARG) .+?_VERSION=(?<currentValue>.+?)\\s',
-        '# renovate: datasource=(?<datasource>.+?)(?: (?:packageName|lookupName)=(?<packageName>.+?))?(?: versioning=(?<versioning>.+?))?\\sRUN install-[a-z0-9]+? (?<depName>[a-z0-9-]+?) (?<currentValue>.+?)\\s',
+        '# renovate: datasource=(?<datasource>[a-z-.]+?)(?: depName=(?<depName>[^\\s]+?))?(?: (lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?(?: registryUrl=(?<registryUrl>[^\\s]+?))?\\s(?:ENV|ARG)\\s+[A-Za-z0-9_]+?_VERSION[ =]["\']?(?<currentValue>.+?)["\']?\\s',
+        '# renovate: datasource=(?<datasource>[a-z-.]+?)(?: (?:packageName|lookupName)=(?<packageName>.+?))?(?: versioning=(?<versioning>[^\\s]+?))?\\sRUN install-[a-z0-9]+? (?<depName>[a-z0-9-]+?) (?<currentValue>.+?)\\s',
       ],
       versioningTemplate: '{{#if versioning}}{{versioning}}{{else}}semver{{/if}}',
     },
     {
       customType: 'regex',
-      description: 'Update GitHub Action references in Markdown files.',
-      fileMatch: ['\\.md$'],
+      description: ['Update GitHub Action references in Markdown files.'],
+      managerFilePatterns: ['\\.markdown$', '\\.md$', '\\.mdx$'],
       matchStrings: [
         '\\suses: (?<depName>[\\w-]+\\/[\\w-]+)(?<path>\\/.*)?@(?<currentValue>v\\d+\\.\\d+\\.\\d+)',
         '\\suses: (?<depName>[\\w-]+\\/[\\w-]+)(?<path>\\/.*)?@(?<currentDigest>[a-z0-9]{40}|[a-z0-9]{64}) # tag=(?<currentValue>v\\d+\\.\\d+\\.\\d+)',
@@ -241,12 +148,137 @@
     },
     {
       customType: 'regex',
-      description: 'Update _VERSION variables in shell scripts.',
-      fileMatch: ['\\.sh$'],
+      description: ['Update _VERSION variables in shell scripts.'],
+      managerFilePatterns: ['\\.bash$', '\\.sh$', '\\.zsh$'],
       matchStrings: [
-        '# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>.+?)(?: (?:packageName|lookupName)=(?<packageName>.+?))?(?: versioning=(?<versioning>[a-z-]+?))?\\s+?.+?_VERSION=(?<currentValue>.+?)\\s',
+        '# renovate: datasource=(?<datasource>[a-z-.]+?)(?: depName=(?<depName>.+?))?(?: (?:packageName|lookupName)=(?<packageName>.+?))?(?: versioning=(?<versioning>[^\\s]+?))?\\s+?.+?_VERSION=(?<currentValue>.+?)\\s',
       ],
       versioningTemplate: '{{#if versioning}}{{versioning}}{{else}}semver{{/if}}',
+    },
+  ],
+
+  packageRules: [
+    {
+      description: ['Use `config` semantic commit scope for config files.'],
+      matchDepTypes: ['config'],
+      semanticCommitScope: 'config',
+    },
+    {
+      description: ['Use `dev` semantic commit scope for dev dependencies.'],
+      matchDepTypes: ['dev-dependencies', 'devDependencies'],
+      semanticCommitScope: 'dev',
+    },
+    {
+      description: [
+        'Use `engines` semantic commit scope for engines dependencies.',
+      ],
+      matchDepTypes: ['engines'],
+      semanticCommitScope: 'engines',
+    },
+    {
+      description: [
+        'Delay updates until npm packages are safe from unpublishing.',
+      ],
+      matchDatasources: ['npm'],
+      extends: ['npm:unpublishSafe'],
+      prNotPendingHours: 73,
+    },
+    {
+      description: [
+        'Add `approval-pending` label for updates requiring dependency dashboard approval.',
+      ],
+      matchUpdateTypes: ['major'],
+      extends: [':approveMajorUpdates'],
+      dependencyDashboardLabels: ['approval-pending'],
+    },
+    {
+      description: [
+        'Add `approval-pending` label for `minor` updates of specific packages requiring dependency dashboard approval.',
+      ],
+      matchPackageNames: ['go', 'python', 'typescript'],
+      matchUpdateTypes: ['minor'],
+      dependencyDashboardApproval: true,
+      dependencyDashboardLabels: ['approval-pending'],
+    },
+    {
+      description: [
+        'Require approval for minor updates of unstable SemVer packages (version is 0.x).',
+        '- Add `approval-pending` label for unstable SemVer updates requiring dependency dashboard approval.',
+        '- _Excludes bfra.me and lucide-react packages._',
+      ],
+      matchCurrentVersion: '/^v?0/',
+      matchPackageNames: ['!@bfra.me/**', '!bfra-me/**', '!lucide-react'],
+      matchUpdateTypes: ['minor'],
+      dependencyDashboardApproval: true,
+      dependencyDashboardLabels: ['approval-pending'],
+    },
+    {
+      description: ['Automerge `digest` and `pinDigest` update types.'],
+      matchUpdateTypes: ['digest', 'pinDigest'],
+      addLabels: ['automerge'],
+      automerge: true,
+      platformAutomerge: true,
+      prCreation: 'immediate',
+      rebaseWhen: 'behind-base-branch',
+    },
+    {
+      description: [
+        'Automerge `minor` and `patch` update types (except unstable versions, e.g., `0.x`).',
+      ],
+      matchCurrentVersion: '!/^v?0/',
+      matchUpdateTypes: ['minor', 'patch'],
+      addLabels: ['automerge'],
+      automerge: true,
+      platformAutomerge: true,
+      prCreation: 'immediate',
+      rebaseWhen: 'behind-base-branch',
+    },
+    {
+      description: ['Automerge GitHub Actions as PRs.'],
+      matchManagers: ['github-actions'],
+      automergeType: 'pr',
+      prCreation: 'immediate',
+      rebaseWhen: 'behind-base-branch',
+    },
+    {
+      description: ['Remove minimum release age config for bfra.me packages.'],
+      matchPackageNames: ['@bfra.me/**', 'bfra-me/**'],
+      minimumReleaseAge: null,
+      prNotPendingHours: 0,
+    },
+    {
+      description: [
+        'Automerge `minor` and `patch` update types of @bfra-me packages (disable dashboard approval).',
+      ],
+      matchPackageNames: ['@bfra.me/**', 'bfra-me/**'],
+      matchUpdateTypes: ['minor', 'patch'],
+      addLabels: ['automerge'],
+      dependencyDashboardApproval: false,
+      automerge: true,
+      platformAutomerge: true,
+      prCreation: 'immediate',
+      rebaseWhen: 'behind-base-branch',
+    },
+    {
+      description: [
+        'Exclude outdated versions of the `bfra-me/renovate-config` preset.',
+      ],
+      matchPackageNames: ['bfra-me/renovate-config'],
+      allowedVersions: '>=4.0.0',
+    },
+    {
+      description: [
+        'Add `preset` suffix to updates of @bfra-me Renovate config presets.',
+      ],
+      matchPackageNames: ['bfra-me/renovate-config'],
+      commitMessageTopic: '{{depName}} preset',
+    },
+    {
+      description: ['Group packages from @bfra-me/works monorepo together.'],
+      matchSourceUrls: ['https://github.com/bfra-me/works'],
+      matchUpdateTypes: ['digest', 'patch', 'minor', 'major'],
+      groupName: 'bfra-me/works monorepo',
+      groupSlug: 'bfra-me-works-monorepo',
     },
   ],
 }

@@ -2,6 +2,6 @@
 config:
   MD013: false
   MD033:
-    allowed_elements: [a, h3, img, p]
+    allowed_elements: [a, div, h3, img, p]
   MD041: false
   MD052: false
