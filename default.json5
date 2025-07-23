@@ -71,8 +71,6 @@
 
   configMigration: true,
 
-  dependencyDashboardTitle: '📦 Dependency Dashboard',
-
   prConcurrentLimit: 5,
   prCreation: 'not-pending',
   prHourlyLimit: 0,
