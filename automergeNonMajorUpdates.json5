@@ -1,3 +1,0 @@
-{
-  description: '[DEPRECATED-automergeNonMajorUpdates] Automerge all update types except `major` and unstable (`0.x.x`) versions.',
-}

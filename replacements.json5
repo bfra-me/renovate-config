@@ -3,13 +3,6 @@
   description: 'Use @bfra-me replacements config presets.',
   packageRules: [
     {
-      description: 'The `eslint-plugin-node` package is now maintained by the fork `eslint-plugin-n`.',
-      matchDatasources: ['npm'],
-      matchPackageNames: ['eslint-plugin-node'],
-      replacementName: 'eslint-plugin-n',
-      replacementVersion: '14.0.0',
-    },
-    {
       description: 'The `@zeit/ncc` package has been renamed to `@vercel/ncc`.',
       matchDatasources: ['npm'],
       matchPackageNames: ['@zeit/ncc'],

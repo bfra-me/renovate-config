@@ -1,0 +1,32 @@
+{
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  description: 'Update @elstudio/actions-settings digests in GitHub actions and workflows.',
+  customManagers: [
+    {
+      customType: 'regex',
+      managerFilePatterns: [
+        '^(workflow-templates|\\.github/(?:workflows|actions))/[^/]+\\.ya?ml$',
+        '(^|/)action\\.ya?ml$',
+      ],
+      matchStrings: [
+        'uses:\\s+(?<depName>elstudio\\/actions-settings(?<path>\\/.*)?)@(?<currentDigest>[a-f0-9]+)',
+      ],
+      currentValueTemplate: 'v3-beta',
+      autoReplaceStringTemplate: 'uses: {{depName}}@{{#if newDigest}}{{newDigest}}{{#if newValue}} # {{newValue}}{{/if}}{{/if}}{{#unless newDigest}}{{newValue}}{{/unless}}',
+      packageNameTemplate: 'https://github.com/elstudio/actions-settings',
+      datasourceTemplate: 'git-refs',
+    },
+  ],
+  packageRules: [
+    {
+      matchPackageNames: ['^elstudio/actions-settings(\\/.*)?$'],
+      groupName: 'elstudio actions-settings',
+      versioning: 'loose',
+    },
+    {
+      matchPackageNames: ['^elstudio/actions-settings(\\/.*)?$'],
+      enabled: false,
+      groupName: 'elstudio actions-settings',
+    },
+  ],
+}

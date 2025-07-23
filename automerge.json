@@ -1,9 +1,0 @@
-{
-  "extends": ["github>bfra-me/renovate-config:automerge.json5"],
-  "default": {
-    "description": "[DEPRECATED-automerge] Use default automerge settings."
-  },
-  "enable": {
-    "extends": ["github>bfra-me/renovate-config:automerge.json5"]
-  }
-}
