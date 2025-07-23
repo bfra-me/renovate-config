@@ -1,9 +1,6 @@
 {
   $schema: 'https://docs.renovatebot.com/renovate-schema.json',
-  extends: [
-    'github>bfra-me/renovate-config',
-    'github>bfra-me/renovate-config:internal.json5',
-  ],
+  extends: ['bfra-me/renovate-config'],
   postUpgradeTasks: {
     commands: ['npx prettier@3.6.2 --no-color --write .'],
     executionMode: 'branch',
@@ -25,6 +22,7 @@
       matchPackageNames: [
         'conventional-changelog-conventionalcommits',
         'semantic-release',
+        '@semantic-release/{/,}**',
         'semantic-release-export-data',
       ],
       semanticCommitType: 'build',
@@ -62,6 +60,4 @@
       datasourceTemplate: 'github-tags',
     },
   ],
-  automergeType: 'pr',
-  prCreation: 'not-pending',
 }
