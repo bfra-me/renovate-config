@@ -9,6 +9,7 @@
     'docker:enableMajor',
     'docker:pinDigests',
     'mergeConfidence:age-confidence-badges',
+    'security:openssf-scorecard',
     'bfra-me/renovate-config:replacements.json5',
     'bfra-me/renovate-config:labels.json5',
     'bfra-me/renovate-config//maintenance/security.json5',
@@ -211,6 +212,42 @@
       dependencyDashboardLabels: ['approval-pending'],
     },
     {
+      description: 'Show Merge Confidence, OpenSSF Scorecard, and GitHub Search badges in Renovate PRs.',
+      matchDatasources: [
+        'go',
+        'maven',
+        'npm',
+        'nuget',
+        'packagist',
+        'pypi',
+        'rubygems',
+      ],
+      matchUpdateTypes: ['pin', 'patch', 'minor', 'major'],
+      prBodyColumns: ['Package', 'Change', 'Age', 'Confidence', 'GitHub'],
+    },
+    {
+      description: 'Show Merge Confidence, OpenSSF Scorecard, and GitHub Search badges in Renovate PRs.',
+      matchDatasources: [
+        'go',
+        'maven',
+        'npm',
+        'nuget',
+        'packagist',
+        'pypi',
+        'rubygems',
+      ],
+      matchUpdateTypes: ['pin', 'patch', 'minor', 'major'],
+      matchSourceUrls: ['https://github.com/**'],
+      prBodyColumns: [
+        'Package',
+        'Change',
+        'Age',
+        'Confidence',
+        'OpenSSF',
+        'GitHub',
+      ],
+    },
+    {
       description: ['Automerge `digest` and `pinDigest` update types.'],
       matchUpdateTypes: ['digest', 'pinDigest'],
       addLabels: ['automerge'],
@@ -279,4 +316,8 @@
       groupSlug: 'bfra-me-works-monorepo',
     },
   ],
+
+  prBodyDefinitions: {
+    GitHub: '[![GitHub Code Search for "{{{depName}}}"](https://img.shields.io/badge/code_search-{{{replace "-" "--" depName}}}-2671E5.svg?logo=github)](https://github.com/search?q=repo:{{{encodeURIComponent repository}}}+NOT+path:/package(-lock)%3F%5C.json%7Cyarn%5C.lock%7Cpnpm-lock%5C.yaml%7Cbun%5C.lock(b)/+{{{encodeURIComponent depName}}})',
+  },
 }
