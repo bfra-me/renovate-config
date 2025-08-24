@@ -89,15 +89,15 @@
       ],
       datasourceTemplate: 'npm',
       managerFilePatterns: [
-        '(^|/)(workflow-templates|\\.(?:github|gitea|forgejo)/(?:workflows|actions))/.+\\.ya?ml$',
-        '(^|/)action\\.ya?ml$',
-        '(^|/|\\.)([Dd]ocker|[Cc]ontainer)file$',
-        '(^|/)([Dd]ocker|[Cc]ontainer)file[^/]*$',
-        '^renovate\\.json5?$',
-        '^\\.github\\/renovate\\.json5?$',
-        '^\\.gitlab\\/renovate\\.json5?$',
-        '^\\.renovaterc\\.json5?$',
-        '^\\.renovaterc$',
+        '/(^|/)(workflow-templates|\\.(?:github|gitea|forgejo)/(?:workflows|actions))/.+\\.ya?ml$/',
+        '/(^|/)action\\.ya?ml$/',
+        '/(^|/|\\.)([Dd]ocker|[Cc]ontainer)file$/',
+        '/(^|/)([Dd]ocker|[Cc]ontainer)file[^/]*$/',
+        '/^renovate\\.json5?$/',
+        '/^\\.github\\/renovate\\.json5?$/',
+        '/^\\.gitlab\\/renovate\\.json5?$/',
+        '/^\\.renovaterc\\.json5?$/',
+        '/^\\.renovaterc$/',
       ],
       matchStrings: [
         '\\s*npx\\s+(?<depName>.+?)@(?<currentValue>[a-z0-9.-]+)',
@@ -111,8 +111,8 @@
         'Update `version` and <*>`_VERSION` values in GitHub Actions and workflows.',
       ],
       managerFilePatterns: [
-        '(^|/)action\\.ya?ml$',
-        '(^|/)(workflow-templates|\\.(?:github|gitea|forgejo)/(?:workflows|actions))/.+\\.ya?ml$',
+        '/(^|/)action\\.ya?ml$/',
+        '/(^|/)(workflow-templates|\\.(?:github|gitea|forgejo)/(?:workflows|actions))/.+\\.ya?ml$/',
       ],
       matchStrings: [
         '\\s+version: (?<currentValue>.+?) # renovate: datasource=(?<datasource>.+?)(?: depName=(?<depName>.+?))?(?: (?:packageName|lookupName)=(?<packageName>.+?))?(?: versioning=(?<versioning>[^\\s]+?))?\\s',
@@ -125,8 +125,8 @@
         'Update `install-`<*> Buildpack commands and <*>`_VERSION` values in Dockerfiles.',
       ],
       managerFilePatterns: [
-        '(^|/|\\.)([Dd]ocker|[Cc]ontainer)file$',
-        '(^|/)([Dd]ocker|[Cc]ontainer)file[^/]*$',
+        '/(^|/|\\.)([Dd]ocker|[Cc]ontainer)file$/',
+        '/(^|/)([Dd]ocker|[Cc]ontainer)file[^/]*$/',
       ],
       matchStrings: [
         '# renovate: datasource=(?<datasource>[a-z-.]+?)(?: depName=(?<depName>[^\\s]+?))?(?: (lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?(?: registryUrl=(?<registryUrl>[^\\s]+?))?\\s(?:ENV|ARG)\\s+[A-Za-z0-9_]+?_VERSION[ =]["\']?(?<currentValue>.+?)["\']?\\s',
@@ -137,7 +137,7 @@
     {
       customType: 'regex',
       description: ['Update GitHub Action references in Markdown files.'],
-      managerFilePatterns: ['\\.markdown$', '\\.md$', '\\.mdx$'],
+      managerFilePatterns: ['/\\.markdown$/', '/\\.md$/', '/\\.mdx$/'],
       matchStrings: [
         '\\suses: (?<depName>[\\w-]+\\/[\\w-]+)(?<path>\\/.*)?@(?<currentValue>v\\d+\\.\\d+\\.\\d+)',
         '\\suses: (?<depName>[\\w-]+\\/[\\w-]+)(?<path>\\/.*)?@(?<currentDigest>[a-z0-9]{40}|[a-z0-9]{64}) # tag=(?<currentValue>v\\d+\\.\\d+\\.\\d+)',
@@ -148,7 +148,7 @@
     {
       customType: 'regex',
       description: ['Update _VERSION variables in shell scripts.'],
-      managerFilePatterns: ['\\.bash$', '\\.sh$', '\\.zsh$'],
+      managerFilePatterns: ['/\\.bash$/', '/\\.sh$/', '/\\.zsh$/'],
       matchStrings: [
         '# renovate: datasource=(?<datasource>[a-z-.]+?)(?: depName=(?<depName>.+?))?(?: (?:packageName|lookupName)=(?<packageName>.+?))?(?: versioning=(?<versioning>[^\\s]+?))?\\s+?.+?_VERSION=(?<currentValue>.+?)\\s',
       ],
