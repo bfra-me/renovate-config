@@ -47,6 +47,8 @@ jobs:
       FORCE_COLOR: true
     name: Release
     needs: [lint]
+    outputs:
+      published: ${{ steps.semantic-release.outputs.new-release-published }}
     runs-on: ubuntu-latest
     steps:
       - id: get-workflow-access-token
@@ -108,3 +110,10 @@ jobs:
             gh api -X PATCH repos/{owner}/{repo}/git/${ref} -f sha=$sha -F force=true
           fi
         shell: 'bash -Eeuxo pipefail {0}'
+
+  trigger-org-renovate:
+    if: github.repository == 'bfra-me/renovate-config' && needs.release.outputs.published == 'true'
+    name: Trigger Renovate
+    needs: release
+    secrets: inherit
+    uses: bfra-me/.github/.github/workflows/trigger-org-renovate.yaml@5b99871fcafe4ba4c574449365db1afabb7509d7 # v4.1.0
