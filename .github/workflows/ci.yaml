@@ -48,7 +48,7 @@ jobs:
     name: Release
     needs: [lint]
     outputs:
-      published: ${{ steps.semantic-release.outputs.new-release-published }}
+      published: ${{ env.DRY_RUN != 'true' && steps.semantic-release.outputs.new-release-published }}
     runs-on: ubuntu-latest
     steps:
       - id: get-workflow-access-token
