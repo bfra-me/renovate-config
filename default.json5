@@ -188,7 +188,6 @@
       ],
       matchUpdateTypes: ['major'],
       extends: [':approveMajorUpdates'],
-      dependencyDashboardLabels: ['approval-pending'],
     },
     {
       description: [
@@ -197,7 +196,6 @@
       matchPackageNames: ['go', 'python', 'typescript'],
       matchUpdateTypes: ['minor'],
       dependencyDashboardApproval: true,
-      dependencyDashboardLabels: ['approval-pending'],
     },
     {
       description: [
@@ -209,7 +207,6 @@
       matchPackageNames: ['!@bfra.me/**', '!bfra-me/**', '!lucide-react'],
       matchUpdateTypes: ['minor'],
       dependencyDashboardApproval: true,
-      dependencyDashboardLabels: ['approval-pending'],
     },
     {
       description: 'Show Merge Confidence, OpenSSF Scorecard, and GitHub Search badges in Renovate PRs.',
