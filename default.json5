@@ -312,11 +312,6 @@
       groupName: 'bfra-me/works monorepo',
       groupSlug: 'bfra-me-works-monorepo',
     },
-    {
-      description: ['Keep `jiti` package at the last compatible version.'],
-      matchPackageNames: ['jiti'],
-      allowedVersions: '<2.2.0',
-    },
   ],
 
   prBodyDefinitions: {
