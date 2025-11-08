@@ -28,13 +28,6 @@
       semanticCommitType: 'build',
     },
     {
-      description: 'Disable Dependency Dashboard approval for @bfra-me actions.',
-      matchPackageNames: ['bfra-me/**'],
-      matchDepTypes: ['action'],
-      commitMessageTopic: '{{depName}}',
-      dependencyDashboardApproval: false,
-    },
-    {
       matchFileNames: ['**/*.md'],
       addLabels: ['automerge'],
       additionalBranchPrefix: 'docs-',

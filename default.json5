@@ -3,12 +3,9 @@
   description: 'Use the default Renovate config preset for the @bfra-me organization.',
 
   extends: [
-    'config:recommended',
-    ':semanticCommits',
+    'config:best-practices',
     ':automergeRequireAllStatusChecks',
     'docker:enableMajor',
-    'docker:pinDigests',
-    'mergeConfidence:age-confidence-badges',
     'security:openssf-scorecard',
     'bfra-me/renovate-config:replacements.json5',
     'bfra-me/renovate-config:labels.json5',
@@ -69,8 +66,6 @@
   ],
 
   addLabels: ['dependencies', 'renovate', '{{depType}}', '{{updateType}}'],
-
-  configMigration: true,
 
   prConcurrentLimit: 5,
   prCreation: 'not-pending',
@@ -176,14 +171,6 @@
     },
     {
       description: [
-        'Delay updates until npm packages are safe from unpublishing.',
-      ],
-      matchDatasources: ['npm'],
-      extends: ['npm:unpublishSafe'],
-      prNotPendingHours: 73,
-    },
-    {
-      description: [
         'Add `approval-pending` label for updates requiring dependency dashboard approval.',
       ],
       matchUpdateTypes: ['major'],
@@ -209,7 +196,7 @@
       dependencyDashboardApproval: true,
     },
     {
-      description: 'Show Merge Confidence, OpenSSF Scorecard, and GitHub Search badges in Renovate PRs.',
+      description: 'Show Merge Confidence, OpenSSF Scorecard, and Code Search badges in Renovate PRs.',
       matchDatasources: [
         'go',
         'maven',
@@ -220,10 +207,10 @@
         'rubygems',
       ],
       matchUpdateTypes: ['pin', 'patch', 'minor', 'major'],
-      prBodyColumns: ['Package', 'Change', 'Age', 'Confidence', 'GitHub'],
+      prBodyColumns: ['Package', 'Change', 'Age', 'Confidence', 'Code Search'],
     },
     {
-      description: 'Show Merge Confidence, OpenSSF Scorecard, and GitHub Search badges in Renovate PRs.',
+      description: 'Show Merge Confidence, OpenSSF Scorecard, and Code Search badges in Renovate PRs.',
       matchDatasources: [
         'go',
         'maven',
@@ -241,7 +228,7 @@
         'Age',
         'Confidence',
         'OpenSSF',
-        'GitHub',
+        'Code Search',
       ],
     },
     {
@@ -293,10 +280,19 @@
     },
     {
       description: [
+        'Disable Dependency Dashboard approval for @bfra-me actions.',
+      ],
+      matchPackageNames: ['bfra-me/**'],
+      matchDepTypes: ['action'],
+      commitMessageTopic: '{{depName}}',
+      dependencyDashboardApproval: false,
+    },
+    {
+      description: [
         'Exclude outdated versions of the `bfra-me/renovate-config` preset.',
       ],
       matchPackageNames: ['bfra-me/renovate-config'],
-      allowedVersions: '>=4.0.0',
+      allowedVersions: '>=5.0.0',
     },
     {
       description: [
@@ -315,6 +311,6 @@
   ],
 
   prBodyDefinitions: {
-    GitHub: '[![GitHub Code Search for "{{{depName}}}"](https://img.shields.io/badge/code_search-{{{replace "-" "--" depName}}}-2671E5.svg?logo=github)](https://github.com/search?q=repo:{{{encodeURIComponent repository}}}+NOT+path:/package(-lock)%3F%5C.json%7Cyarn%5C.lock%7Cpnpm-lock%5C.yaml%7Cbun%5C.lock(b)/+{{{encodeURIComponent depName}}})',
+    'Code Search': '[![GitHub Code Search for "{{{depName}}}"](https://img.shields.io/badge/code_search-{{{replace "-" "--" depName}}}-2671E5.svg?logo=github)](https://github.com/search?q=repo:{{{encodeURIComponent repository}}}+NOT+path:/package(-lock)%3F%5C.json%7Cyarn%5C.lock%7Cpnpm-lock%5C.yaml%7Cbun%5C.lock(b)/+{{{encodeURIComponent depName}}})',
   },
 }
