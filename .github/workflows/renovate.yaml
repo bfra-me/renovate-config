@@ -46,12 +46,12 @@ jobs:
         [
           '.github/workflows/renovate.yaml',
           '.github/renovate.json5',
-          'automerge.json5?',
-          'default.json',
-          'group.json',
-          'internal.json5',
-          'maintenance.json',
-          'replacements.json5?',
-          'vendors.json',
+          'group/*.json5',
+          'maintenance/*.json5',
+          'vendors/*.json5',
+          'automerge.json5',
+          'default.json5?',
+          'labels.json5',
+          'replacements.json5',
         ]
       print-config: ${{ inputs.print-config || false }}
