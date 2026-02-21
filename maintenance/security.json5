@@ -1,7 +1,13 @@
 {
   $schema: 'https://docs.renovatebot.com/renovate-schema.json',
-  description: 'Enable security updates from vulnerability alerts.',
-  extends: [':enableVulnerabilityAlertsWithLabel(security)'],
+  description: 'Automerge security updates to vulnerability alerts.',
+  extends: [':enableVulnerabilityAlertsWithAdditionalLabel(security)'],
   dependencyDashboardOSVVulnerabilitySummary: 'all',
   osvVulnerabilityAlerts: true,
+  vulnerabilityAlerts: {
+    addLabels: ['automerge'],
+    automerge: true,
+    platformAutomerge: true,
+    rebaseWhen: 'behind-base-branch',
+  },
 }
