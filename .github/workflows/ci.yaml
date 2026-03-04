@@ -88,7 +88,7 @@ jobs:
           GITHUB_TOKEN: ${{ steps.get-workflow-access-token.outputs.token }}
         run: |
           # Run `semantic-release`
-          npm install conventional-changelog-conventionalcommits@9.1.0
+          npm install conventional-changelog-conventionalcommits@9.2.0
           npm install semantic-release-export-data@1.2.0
           npx semantic-release@25.0.3 --dry-run ${{ env.DRY_RUN }} --ci ${{ env.CI_FLAG }}
         shell: 'bash -Eeuxo pipefail {0}'
