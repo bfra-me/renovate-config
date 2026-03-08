@@ -1,0 +1,42 @@
+{
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  description: 'Presets for Fro Bot packages.',
+
+  packageRules: [
+    {
+      description: ['Remove minimum release age config for Fro Bot packages.'],
+      matchPackageNames: ['@fro.bot/**', 'fro-bot/**'],
+      minimumReleaseAge: null,
+      prNotPendingHours: 0,
+    },
+    {
+      description: [
+        'Automerge `minor` and `patch` update types of Fro Bot packages (disable dashboard approval).',
+      ],
+      matchPackageNames: ['@fro.bot/**', 'fro-bot/**'],
+      matchUpdateTypes: ['minor', 'patch'],
+      addLabels: ['automerge'],
+      dependencyDashboardApproval: false,
+      automerge: true,
+      platformAutomerge: true,
+      prCreation: 'immediate',
+      rebaseWhen: 'behind-base-branch',
+    },
+    {
+      description: [
+        'Disable Dependency Dashboard approval for Fro Bot actions.',
+      ],
+      matchPackageNames: ['fro-bot/**'],
+      matchDepTypes: ['action'],
+      commitMessageTopic: '{{depName}}',
+      dependencyDashboardApproval: false,
+    },
+    {
+      description: [
+        'Add `preset` suffix to updates of Fro Bot Renovate config presets.',
+      ],
+      matchPackageNames: ['fro-bot/.github'],
+      commitMessageTopic: '{{depName}} preset',
+    },
+  ],
+}
