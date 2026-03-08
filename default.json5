@@ -188,10 +188,16 @@
       description: [
         'Require approval for minor updates of unstable SemVer packages (version is 0.x).',
         '- Add `approval-pending` label for unstable SemVer updates requiring dependency dashboard approval.',
-        '- _Excludes bfra.me and lucide-react packages._',
+        '- _Excludes bfra.me, Fro Bot, and lucide-react packages._',
       ],
       matchCurrentVersion: '/^v?0/',
-      matchPackageNames: ['!@bfra.me/**', '!bfra-me/**', '!lucide-react'],
+      matchPackageNames: [
+        '!@bfra.me/**',
+        '!bfra-me/**',
+        '!@fro.bot/**',
+        '!fro-bot/**',
+        '!lucide-react',
+      ],
       matchUpdateTypes: ['minor'],
       dependencyDashboardApproval: true,
     },
