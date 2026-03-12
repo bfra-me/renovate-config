@@ -17,6 +17,8 @@
     'bfra-me/renovate-config//group/prettier.json5',
     'group:vite',
     'bfra-me/renovate-config//vendors/elstudio.json5',
+    'bfra-me/renovate-config:renovate-config.json5(bfra-me/renovate-config)',
+    'bfra-me/renovate-config:renovate-config.json5(microsoft/m365-renovate-config)',
   ],
 
   timezone: 'America/Phoenix',

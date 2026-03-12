@@ -46,11 +46,28 @@
   customManagers: [
     {
       customType: 'regex',
+      description: [
+        'Update `bfra-me/renovate-config` preset in README.md from GitHub tags.',
+      ],
       managerFilePatterns: ['/^(README|readme)\\.md$/'],
       matchStrings: [
         '"github>(?<depName>bfra-me\\/renovate-config)#(?<currentValue>.+?)"',
       ],
       datasourceTemplate: 'github-tags',
+    },
+    {
+      customType: 'regex',
+      description: [
+        'Update `microsoft/m365-renovate-config` preset from GitHub releases.',
+      ],
+      datasourceTemplate: 'github-releases',
+      depNameTemplate: 'microsoft/m365-renovate-config',
+      managerFilePatterns: ['/^default\\.json5$/'],
+      matchStrings: [
+        '[\'"]github>microsoft/m365-renovate-config#(?<currentValue>[^\'" \\n\\(]+)',
+        '[\'"]github>microsoft/m365-renovate-config:.*#(?<currentValue>[^\'" \\n\\(]+)',
+        '[\'"]github>microsoft/m365-renovate-config/.*#(?<currentValue>[^\'" \\n\\(]+)',
+      ],
     },
   ],
 }
