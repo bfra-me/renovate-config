@@ -6,6 +6,7 @@
     {
       description: ['Remove minimum release age config for Fro Bot packages.'],
       matchPackageNames: ['@fro.bot/**', 'fro-bot/**'],
+      groupName: null,
       minimumReleaseAge: null,
       prNotPendingHours: 0,
     },
