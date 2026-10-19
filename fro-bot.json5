@@ -28,7 +28,7 @@
         'Disable Dependency Dashboard approval for Fro Bot actions.',
       ],
       matchPackageNames: ['fro-bot/**'],
-      matchDepTypes: ['action'],
+      matchDepTypes: ['action', 'workflow'],
       commitMessageTopic: '{{depName}}',
       dependencyDashboardApproval: false,
     },
