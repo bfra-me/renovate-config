@@ -39,5 +39,10 @@
       matchPackageNames: ['fro-bot/.github'],
       commitMessageTopic: '{{depName}} preset',
     },
+    {
+      description: ['Use the proper name of the Systematic plugin'],
+      matchPackageNames: ['@fro.bot/systematic'],
+      commitMessageTopic: 'Systematic',
+    },
   ],
 }
