@@ -9,6 +9,8 @@
       datasourceTemplate: 'github-releases',
       depNameTemplate: '{{arg0}}',
       managerFilePatterns: [
+        '/^default\\.json5?$/',
+        '/^internal\\.json5?$/',
         '/^renovate\\.json5?$/',
         '/^\\.github/renovate\\.json5?$/',
         '/^\\.gitlab/renovate\\.json5?$/',
